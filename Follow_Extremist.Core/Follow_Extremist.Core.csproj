@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Follow_Extremist.Core</RootNamespace>
+    <AssemblyName>Follow_Extremist.Core</AssemblyName>
+  </PropertyGroup>
+
+</Project>
