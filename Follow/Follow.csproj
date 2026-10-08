@@ -24,14 +24,32 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Gui\GuiSettings\SettingsForm.cs">
+    <Compile Update="StartForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Gui\GuiLoading\LoadingForm.cs">
+    <Compile Update="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Gui\GuiNotification\NotificationForm.cs">
+    <Compile Update="Gui\GuiElementFollow\ElementFollowForm.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\GuiElementAddlInfo\AddElementAddInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\GuiElementAddlInfo\ElementAddInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Gui\GuiElementInfo\AddElementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\GuiElementInfo\AddCaseElementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\GuiElementInfo\ElementInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Gui\GuiReport\GuiReportElementFollow\ReportElementFollow.cs">
+      <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

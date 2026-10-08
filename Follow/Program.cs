@@ -35,7 +35,7 @@ namespace Follow
                 Properties.Settings.Default.Save();
             }
             SqlCon.SqlConnection = conString;
-            Application.Run(new Gui.GuiSettings.SettingsForm(false));
+            Application.Run(new StartForm1());
         }
     }
 }

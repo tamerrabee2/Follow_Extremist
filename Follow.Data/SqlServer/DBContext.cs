@@ -25,13 +25,24 @@ namespace Follow.Data.SqlServer
         }
 
         // Tables 
+        public DbSet<ElementInfo> ElementInfo { get; set; }
         public DbSet<SystemRecords> SystemRecords { get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<UsersRoles> UsersRoles { get; set; }
+        public DbSet<ElementAddInfo> ElementAddInfo { get; set; }
+        public DbSet<ElementFollowAdd> ElementFollowAdd { get; set; }
+        public DbSet<ElementCases> ElementCases { get; set; }
 
+
+        // view 
+        public DbSet<ElementInfoView> ElementInfoView { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ElementInfoView>().HasNoKey().ToView("ElementInfoView");
+            
+            // Try without specifying the schema
             modelBuilder.Entity<Users>().ToTable("Users");
+            
             base.OnModelCreating(modelBuilder);
         }
 
