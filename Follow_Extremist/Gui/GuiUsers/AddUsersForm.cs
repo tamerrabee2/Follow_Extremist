@@ -1,4 +1,4 @@
-﻿using Follow_Extremist.Gui.GuiUsers;
+using Follow_Extremist.Gui.GuiUsers;
 using Follow_Extremist.Code;
 using Follow_Extremist.Core;
 using Follow_Extremist.Data;
@@ -31,6 +31,7 @@ namespace Follow_Extremist.Gui.GuiUsers
         public AddUsersForm(int Id, UsersUserControl userControl, bool FirstStart)
         {
             InitializeComponent();
+            AppIconHelper.ApplyFormIcon(this);
             dataHelper = (IDataHelper<Users>)ConfigurationObjectManager.GetObject("Users");
             dataHelperUsersRole = (IDataHelper<UsersRoles>)ConfigurationObjectManager.GetObject("UsersRoles");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");

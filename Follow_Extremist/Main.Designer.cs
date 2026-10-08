@@ -1,4 +1,4 @@
-﻿
+
 namespace Follow_Extremist
 {
     partial class Main
@@ -223,8 +223,9 @@ namespace Follow_Extremist
             this.Name = "Main";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.ShowIcon = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "متابعة العناصر";
+            this.Text = "برنامج متابعة العناصر المتطرفة";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.flowLayoutPanel1.ResumeLayout(false);

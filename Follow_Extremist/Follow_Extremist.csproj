@@ -4,12 +4,21 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon></ApplicationIcon>
+    <ApplicationIcon>app_icon.ico</ApplicationIcon>
     <Win32Resource />
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <RootNamespace>Follow_Extremist</RootNamespace>
     <AssemblyName>Follow_Extremist</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="app_icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="شعار_قطاع_الأمن_الوطني_(مصر).ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ClosedXML.Extensions.WebApi" Version="0.3.0" />

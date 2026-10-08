@@ -1,4 +1,4 @@
-﻿using DevExpress.XtraSplashScreen;
+using DevExpress.XtraSplashScreen;
 using Follow_Extremist.Code;
 using Follow_Extremist.Core;
 using Follow_Extremist.Data;
@@ -22,6 +22,8 @@ namespace Follow_Extremist
         public StartForm1()
         {
             InitializeComponent();
+            AppIconHelper.ApplyFormIcon(this);
+            this.Text = "برنامج متابعة العناصر المتطرفة";
             this.labelCopyright.Text = "Copyright © 2023-" + DateTime.Now.Year.ToString();
         }
 

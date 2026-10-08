@@ -1,4 +1,4 @@
-﻿
+
 namespace Follow_Extremist.Gui.GuiHome
 {
     partial class HomeUserControl
@@ -159,9 +159,9 @@ namespace Follow_Extremist.Gui.GuiHome
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.labelCompany);
             this.panel2.Controls.Add(this.pictureBoxLogo);
-            this.panel2.Location = new System.Drawing.Point(787, 97);
+            this.panel2.Location = new System.Drawing.Point(730, 97);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(462, 100);
+            this.panel2.Size = new System.Drawing.Size(520, 100);
             this.panel2.TabIndex = 1;
             // 
             // labelCompany
@@ -169,16 +169,16 @@ namespace Follow_Extremist.Gui.GuiHome
             this.labelCompany.Font = new System.Drawing.Font("Cairo", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelCompany.Location = new System.Drawing.Point(7, 12);
             this.labelCompany.Name = "labelCompany";
-            this.labelCompany.Size = new System.Drawing.Size(347, 76);
+            this.labelCompany.Size = new System.Drawing.Size(415, 76);
             this.labelCompany.TabIndex = 4;
-            this.labelCompany.Text = "برنامج متابعة العناصر ";
+            this.labelCompany.Text = "برنامج متابعة العناصر المتطرفة";
             this.labelCompany.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBoxLogo.Image = global::Follow_Extremist.Properties.Resources.Smart;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(365, 0);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(423, 0);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(97, 100);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

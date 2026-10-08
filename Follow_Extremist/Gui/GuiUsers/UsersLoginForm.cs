@@ -1,4 +1,4 @@
-﻿using Follow_Extremist.Code;
+using Follow_Extremist.Code;
 using Follow_Extremist.Core;
 using Follow_Extremist.Data;
 using System;
@@ -28,15 +28,7 @@ namespace Follow_Extremist.Gui.GuiUsers
         public UsersLoginForm()
         {
             InitializeComponent();
-            try
-            {
-                string iconPath = System.IO.Path.Combine(Application.StartupPath, "شعار_قطاع_الأمن_الوطني_(مصر).ico");
-                if (System.IO.File.Exists(iconPath))
-                {
-                    this.Icon = new System.Drawing.Icon(iconPath);
-                }
-            }
-            catch { }
+            AppIconHelper.ApplyFormIcon(this);
             dataHelper = (IDataHelper<Users>)ConfigurationObjectManager.GetObject("Users");
             dataHelperUsersRole = (IDataHelper<UsersRoles>)ConfigurationObjectManager.GetObject("UsersRoles");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");

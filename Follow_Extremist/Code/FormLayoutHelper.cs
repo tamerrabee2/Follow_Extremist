@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -15,6 +15,7 @@ namespace Follow_Extremist.Code
         public static void ApplyResponsiveLayout(Form form, bool startMaximized = true)
         {
             if (form == null) return;
+            AppIconHelper.ApplyFormIcon(form);
 
             var screen = Screen.FromControl(form).WorkingArea;
 
@@ -35,6 +36,7 @@ namespace Follow_Extremist.Code
         public static void ApplyDialogLayout(Form form)
         {
             if (form == null) return;
+            AppIconHelper.ApplyFormIcon(form);
 
             var screen = Screen.FromControl(form).WorkingArea;
 

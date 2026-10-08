@@ -1,4 +1,4 @@
-﻿using Follow_Extremist.Code;
+using Follow_Extremist.Code;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +22,8 @@ namespace Follow_Extremist
         public Main()
         {
             InitializeComponent();
+            AppIconHelper.ApplyFormIcon(this);
+            this.Text = "برنامج متابعة العناصر المتطرفة";
             pageManager = new PageManager(this);
            // Load Home Page;
             pageManager.LoadPage(Gui.GuiHome.HomeUserControl.Instance());
