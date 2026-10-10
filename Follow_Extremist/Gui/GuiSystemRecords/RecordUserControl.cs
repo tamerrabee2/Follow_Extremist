@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Follow_Extremist.Gui.GuiSystemRecords
@@ -16,7 +17,6 @@ namespace Follow_Extremist.Gui.GuiSystemRecords
     {
         // variables 
         private readonly IDataHelper<SystemRecords> dataHelper;
-       
         private readonly IDataHelper<SystemRecords> dataHelperSystemRecords;
         private static RecordUserControl _CategoryUserControl;
         private int RowId;
@@ -24,15 +24,55 @@ namespace Follow_Extremist.Gui.GuiSystemRecords
         private List<int> IdList = new List<int>();
         private string SearchItem;
         private double Amount;
+        private List<SystemRecords> allRecords = new List<SystemRecords>();
+        private GuiCommon.PaginationControl paginationControl;
 
         public RecordUserControl()
         {
             InitializeComponent();
+            SetupPagination();
             SetRoles();
             dataHelper = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
             loadingForm = new GuiLoading.LoadingForm();
             LoadData();
+        }
+
+        private void SetupPagination()
+        {
+            if (comboBoxPageNo != null)
+            {
+                comboBoxPageNo.Visible = false;
+                this.Controls.Remove(comboBoxPageNo);
+            }
+            paginationControl = new GuiCommon.PaginationControl();
+            paginationControl.Dock = DockStyle.Bottom;
+            paginationControl.PageChanged += (s, e) => BindCurrentPage();
+            this.Controls.Add(paginationControl);
+            paginationControl.BringToFront();
+            dataGridView1.RowPostPaint += DataGridView1_RowPostPaint;
+        }
+
+        private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            int startIndex = paginationControl != null && !paginationControl.IsAll 
+                ? (paginationControl.CurrentPage - 1) * paginationControl.PageSize 
+                : 0;
+            string rowIdx = (startIndex + e.RowIndex + 1).ToString();
+            var centerFormat = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, dataGridView1.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+        }
+
+        private void BindCurrentPage()
+        {
+            var pageData = paginationControl.GetPageData(allRecords);
+            dataGridView1.DataSource = pageData;
+            SetColumnsTitle();
         }
 
         #region Events
@@ -119,24 +159,8 @@ namespace Follow_Extremist.Gui.GuiSystemRecords
 
         
 
-        private async void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadingForm.Show();
-            var data = await dataHelper.GetAllDataAsync();
-            var dataId = data.Select(x => x.Id).ToArray();
-            int index = comboBoxPageNo.SelectedIndex;
-            int indexNoOfRow = index * Properties.Settings.Default.DataGridViewRowNumber;
-            dataGridView1.DataSource = data.Where(x => x.Id >= dataId[indexNoOfRow]).Take(Properties.Settings.Default.DataGridViewRowNumber).ToList();
-
-            if (dataGridView1.DataSource == null)
-            {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
-                SetColumnsTitle();
-            }
-            loadingForm.Hide();
         }
         #endregion
 
@@ -147,36 +171,46 @@ namespace Follow_Extremist.Gui.GuiSystemRecords
             return _CategoryUserControl ?? (new RecordUserControl());
         }
 
-        public async void  LoadData()
+        public async void LoadData()
         {
             loadingForm.Show();
-            var data = await dataHelper.GetAllDataAsync();
-            dataGridView1.DataSource = data.ToList();
-
-            // Add No of page into combo box
-            
-            if (dataGridView1.DataSource == null)
+            try
             {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
+                var data = await dataHelper.GetAllDataAsync();
+                allRecords = data?.OrderByDescending(x => x.Id).ToList() ?? new List<SystemRecords>();
+                var pageData = paginationControl.GetPageData(allRecords, resetToFirstPage: true);
+                dataGridView1.DataSource = pageData;
                 SetColumnsTitle();
             }
-            loadingForm.Hide();
-            data.Clear();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء تحميل السجلات: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private void SetColumnsTitle()
         {
-            dataGridView1.Columns[0].HeaderText = "المعرف";
-            dataGridView1.Columns[1].HeaderText = "اسم المستخدم";
-            dataGridView1.Columns[2].HeaderText = "العنوان";
-            dataGridView1.Columns[3].HeaderText = "التفاصيل";
-            dataGridView1.Columns[4].HeaderText = "تاريخ الاضافة";
-        }
+            if (dataGridView1.Columns == null || dataGridView1.Columns.Count == 0) return;
 
-        
+            if (dataGridView1.Columns.Contains("Id"))
+                dataGridView1.Columns["Id"].HeaderText = "المعرف";
+
+            if (dataGridView1.Columns.Contains("UserName"))
+                dataGridView1.Columns["UserName"].HeaderText = "اسم المستخدم";
+
+            if (dataGridView1.Columns.Contains("Title"))
+                dataGridView1.Columns["Title"].HeaderText = "العنوان";
+
+            if (dataGridView1.Columns.Contains("Details"))
+                dataGridView1.Columns["Details"].HeaderText = "التفاصيل";
+
+            if (dataGridView1.Columns.Contains("AddedDate"))
+                dataGridView1.Columns["AddedDate"].HeaderText = "تاريخ الاضافة";
+        }
 
         private void SetIdRowForDelete()
         {
@@ -192,17 +226,23 @@ namespace Follow_Extremist.Gui.GuiSystemRecords
         public async void Search()
         {
             loadingForm.Show();
-            SearchItem = textBoxSearch.Text;
-            dataGridView1.DataSource = await dataHelper.SearchAsync(SearchItem);
-            if (dataGridView1.DataSource == null)
+            try
             {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
+                SearchItem = textBoxSearch.Text.Trim();
+                var data = await dataHelper.SearchAsync(SearchItem);
+                allRecords = data?.OrderByDescending(x => x.Id).ToList() ?? new List<SystemRecords>();
+                var pageData = paginationControl.GetPageData(allRecords, resetToFirstPage: true);
+                dataGridView1.DataSource = pageData;
                 SetColumnsTitle();
             }
-            loadingForm.Hide();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء البحث: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private DataTable SetDataTableColumns(DataTable dataTable)

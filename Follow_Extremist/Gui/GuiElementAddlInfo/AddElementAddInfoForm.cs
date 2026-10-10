@@ -112,31 +112,28 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
         
         private bool IsFieldsEmpty()
         {
-            if (comboBoxElement.SelectedItem== null|| textBoxName.Text == string.Empty
-                ||comboBoxRelationship.SelectedItem == null)
-                
+            if (searchableElementDropDown.SelectedElement == null 
+                || string.IsNullOrWhiteSpace(textBoxName.Text)
+                || comboBoxRelationship.SelectedItem == null)
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
-
 
         private async Task<bool> SaveData()
         {
+            if (searchableElementDropDown.SelectedElement != null)
+            {
+                ElementInfoId = searchableElementDropDown.SelectedElement.Id;
+            }
+
             if (ID == 0) // add
             {
-                var ElementInfoName = comboBoxElement.SelectedItem.ToString();
-                await Task.Run(() => SetElementInfoId(ElementInfoName));
                 return await AddData();
             }
             else // edit
             {
-                var ElementInfoName = comboBoxElement.SelectedItem.ToString();
-                await Task.Run(() => SetElementInfoId(ElementInfoName));
                 return await EditData();
             }
         }
@@ -146,14 +143,14 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
             // set data 
             table = new ElementAddInfo
             {
-                ElementName = comboBoxElement.SelectedItem.ToString(),
-                Relationship = comboBoxRelationship.SelectedItem.ToString(),
-                NameRelationElement = textBoxName.Text,//
-                ElementRelationNationalID = textBoxNationalID.Text,//
-                Age = textBoxAge.Text,//
-                ElemmentRelationImage = ConvertTobyteImageElement(),//
+                ElementName = searchableElementDropDown.SelectedElement?.ElementName ?? string.Empty,
+                Relationship = comboBoxRelationship.SelectedItem?.ToString(),
+                NameRelationElement = textBoxName.Text.Trim(),
+                ElementRelationNationalID = textBoxNationalID.Text.Trim(),
+                Age = textBoxAge.Text.Trim(),
+                ElemmentRelationImage = ConvertTobyteImageElement(),
                 ElementRelationNationalIDImage = convertTobyteImagenationalID(),
-                ElementInfoId = ElementInfoId,
+                ElementInfoId = searchableElementDropDown.SelectedElement?.Id ?? ElementInfoId,
             };
             // submit 
             var result = await dataHelper.AddAsync(table);
@@ -177,21 +174,20 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
             }
         }
 
-
         private async Task<bool> EditData()
         {
             // set data 
             table = new ElementAddInfo
             {
                 Id = ID,
-                ElementName = comboBoxElement.SelectedItem.ToString(),
-                Relationship = comboBoxRelationship.SelectedItem.ToString(),
-                NameRelationElement = textBoxName.Text,//
-                ElementRelationNationalID = textBoxNationalID.Text,//
-                Age = textBoxAge.Text,//
-                ElemmentRelationImage = ConvertTobyteImageElement(),//
+                ElementName = searchableElementDropDown.SelectedElement?.ElementName ?? string.Empty,
+                Relationship = comboBoxRelationship.SelectedItem?.ToString(),
+                NameRelationElement = textBoxName.Text.Trim(),
+                ElementRelationNationalID = textBoxNationalID.Text.Trim(),
+                Age = textBoxAge.Text.Trim(),
+                ElemmentRelationImage = ConvertTobyteImageElement(),
                 ElementRelationNationalIDImage = convertTobyteImagenationalID(),
-                ElementInfoId = ElementInfoId,
+                ElementInfoId = searchableElementDropDown.SelectedElement?.Id ?? ElementInfoId,
             };
             // submit 
             var result = await dataHelper.EditAsync(table);
@@ -259,40 +255,43 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
         private async void SetFieldTData()
         {
             // Get List of Element 
-            var ListElement = await dataHelperElementInfo.GetAllDataAsync();
-            comboBoxElement.DataSource = ListElement.Select(x => x.ElementName).ToList();// fill
-            // Auto complete 
-            AutoCompleteStringCollection autoCompleteString = new AutoCompleteStringCollection();
-            autoCompleteString.AddRange(ListElement.Select(x => x.ElementName).ToArray());
-            comboBoxElement.AutoCompleteCustomSource = autoCompleteString;
-            ListElement.Clear();
-            if (ID >0)
+            var allElements = await dataHelperElementInfo.GetAllDataAsync();
+            var listElement = allElements?.Where(x => x.FollowState == null || x.FollowState.Trim() != "خارج المتابعة").ToList() ?? new List<ElementInfo>();
+            searchableElementDropDown.SetElements(listElement);
+
+            if (ID > 0)
             {
                 // set field
                 table = await dataHelper.FindAsync(ID);
-                if (table!= null)
+                if (table != null)
                 {
-                    MemoryStream ma = new MemoryStream(table.ElemmentRelationImage);
-                    MemoryStream ma2 = new MemoryStream(table.ElementRelationNationalIDImage);
-                    comboBoxElement.SelectedItem = table.ElementName;
+                    if (table.ElemmentRelationImage != null && table.ElemmentRelationImage.Length > 0)
+                    {
+                        using var ma = new MemoryStream(table.ElemmentRelationImage);
+                        pictureBoxElementImage.Image = Image.FromStream(ma);
+                    }
+                    if (table.ElementRelationNationalIDImage != null && table.ElementRelationNationalIDImage.Length > 0)
+                    {
+                        using var ma2 = new MemoryStream(table.ElementRelationNationalIDImage);
+                        pictureBoxElementID.Image = Image.FromStream(ma2);
+                    }
+
+                    var selected = listElement.FirstOrDefault(x => x.Id == table.ElementInfoId || x.ElementName == table.ElementName);
+                    if (selected != null)
+                    {
+                        searchableElementDropDown.SelectedElement = selected;
+                    }
+
                     comboBoxRelationship.SelectedItem = table.Relationship;
                     textBoxName.Text = table.NameRelationElement;
                     textBoxNationalID.Text = table.ElementRelationNationalID;
                     textBoxAge.Text = table.Age;
-                    pictureBoxElementImage.Image = Image.FromStream(ma);
-                    pictureBoxElementID.Image = Image.FromStream(ma2);
                 }
                 else
                 {
                     MessageCollections.ShowErrorServer();
                 }
             }
-        }
-
-        private void SetElementInfoId(string ElementInfoName)
-        {
-            ElementInfoId = dataHelperElementInfo.GetAllData().Where(x => x.ElementName == ElementInfoName)
-                .Select(x => x.Id).First();
         }
         private void AddElementForm_Load(object sender, EventArgs e)
         {

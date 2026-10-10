@@ -33,9 +33,14 @@ namespace Follow_Extremist.Gui.GuiElementInfo
         private readonly Gui.GuiLoading.LoadingForm loadingForm;
         private List<int> idList = new List<int>();
         private string SearchItem;
+        private List<ElementInfo> allElements = new List<ElementInfo>();
+        private GuiCommon.PaginationControl paginationControl;
+
         public ElementInfoControl1()
         {
             InitializeComponent();
+            SetupPagination();
+            InitializeAdvancedSearchPanel();
             SetRoles();
             dataHelper = (IDataHelper<ElementInfo>)ConfigurationObjectManager.GetObject("ElementInfo");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
@@ -44,6 +49,28 @@ namespace Follow_Extremist.Gui.GuiElementInfo
             gridView1.CustomColumnDisplayText += gridView1_CustomColumnDisplayText;
             gridView1.CustomDrawCell += gridView1_CustomDrawCell;
             LoadData();
+        }
+
+        private void SetupPagination()
+        {
+            if (comboBoxPageNo != null)
+            {
+                comboBoxPageNo.Visible = false;
+                this.Controls.Remove(comboBoxPageNo);
+            }
+            paginationControl = new GuiCommon.PaginationControl();
+            paginationControl.Dock = DockStyle.Bottom;
+            paginationControl.PageChanged += (s, e) => BindCurrentPage();
+            this.Controls.Add(paginationControl);
+            paginationControl.BringToFront();
+        }
+
+        public void BindCurrentPage()
+        {
+            var pageData = paginationControl.GetPageData(allElements);
+            gridControl1.DataSource = pageData;
+            SetColumnsTitleElement1();
+            gridControl1.BringToFront();
         }
 
         #region Methods
@@ -59,7 +86,10 @@ namespace Follow_Extremist.Gui.GuiElementInfo
             try
             {
                 var data = await dataHelper.GetAllDataAsync();
-                gridControl1.DataSource = data.ToList();
+                // استبعاد العناصر التي خارج المتابعة بحيث لا تظهر في جدول العناصر
+                allElements = data?.Where(x => x.FollowState == null || x.FollowState.Trim() != "خارج المتابعة").ToList() ?? new List<ElementInfo>();
+                var pageData = paginationControl.GetPageData(allElements, resetToFirstPage: true);
+                gridControl1.DataSource = pageData;
 
                 if (gridControl1.DataSource == null)
                 {
@@ -68,14 +98,17 @@ namespace Follow_Extremist.Gui.GuiElementInfo
                 else
                 {
                     SetColumnsTitleElement1();
+                    gridControl1.BringToFront();
                 }
-                loadingForm.Hide();
-                data.Clear();
             }
             catch (Exception ex)
             {
                 // Handle exceptions if needed
                 MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
             }
         }
 
@@ -138,16 +171,30 @@ namespace Follow_Extremist.Gui.GuiElementInfo
         private void EditData()
         {
             var view = gridControl1.MainView as GridView;
-            if (view != null && view.RowCount>0)
+            if (view != null && view.RowCount > 0)
             {
                 int selectedRowHandle = view.FocusedRowHandle;
-                if (selectedRowHandle >=0)
+                if (selectedRowHandle >= 0)
                 {
-                    object value = view.GetRowCellValue(selectedRowHandle, view.Columns[0]);
-                    if (value !=null && int.TryParse(value.ToString(), out int rowId))
+                    int rowId = 0;
+                    if (view.GetRow(selectedRowHandle) is ElementInfo elem)
+                    {
+                        rowId = elem.Id;
+                    }
+                    else
+                    {
+                        object value = view.GetRowCellValue(selectedRowHandle, "Id");
+                        if (value != null) int.TryParse(value.ToString(), out rowId);
+                    }
+
+                    if (rowId > 0)
                     {
                         var addElementForm = new AddElementForm(rowId, this, false, true);
                         addElementForm.Show();
+                    }
+                    else
+                    {
+                        MessageCollections.ShowEmptyDataMessage();
                     }
                 }
                 else
@@ -167,11 +214,17 @@ namespace Follow_Extremist.Gui.GuiElementInfo
         {   
                 foreach (int rowHandle in view.GetSelectedRows())
                 {
-                    // Get the value from the first cell (adjust the index based on your actual ID
-                    object value = view.GetRowCellValue(rowHandle, view.Columns[0]);
-                    if (value != null && int.TryParse(value.ToString(), out int id)) 
+                    if (view.GetRow(rowHandle) is ElementInfo elem)
                     {
-                        idList.Add(id);
+                        idList.Add(elem.Id);
+                    }
+                    else
+                    {
+                        object value = view.GetRowCellValue(rowHandle, "Id");
+                        if (value != null && int.TryParse(value.ToString(), out int id)) 
+                        {
+                            idList.Add(id);
+                        }
                     }
                 }
         }
@@ -179,19 +232,24 @@ namespace Follow_Extremist.Gui.GuiElementInfo
         public async void Search()
         {
             loadingForm.Show();
-            SearchItem = textBoxSearch.Text;
-            var dataSource = await dataHelper.SearchAsync(SearchItem);
-            gridControl1.DataSource = dataSource;
-
-            if (dataSource == null)
+            try
             {
-               // MessageCollections.ShowErrorServer();
-            }
-            else
-            {
+                SearchItem = textBoxSearch.Text.Trim();
+                var dataSource = await dataHelper.SearchAsync(SearchItem);
+                allElements = dataSource?.Where(x => x.FollowState == null || x.FollowState.Trim() != "خارج المتابعة").ToList() ?? new List<ElementInfo>();
+                var pageData = paginationControl.GetPageData(allElements, resetToFirstPage: true);
+                gridControl1.DataSource = pageData;
                 SetColumnsTitleElement1();
+                gridControl1.BringToFront();
             }
-            loadingForm.Hide();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء البحث: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private void ExportAsXlsxFile(DataTable dataTableArranged)
@@ -288,6 +346,7 @@ namespace Follow_Extremist.Gui.GuiElementInfo
             if (!UsersRolesManager.GetRole("checkBoxSearch"))
             {
                 buttonSearch.Enabled = false;
+                if (buttonAdvancedSearch != null) buttonAdvancedSearch.Enabled = false;
             }
             if (!UsersRolesManager.GetRole("checkBoxprint"))
             {
@@ -308,68 +367,104 @@ namespace Follow_Extremist.Gui.GuiElementInfo
             var view = gridControl1.MainView as GridView;
             if (view != null)
             {
-                // Check if the auto-numeric column already exists
+                view.OptionsDetail.EnableMasterViewMode = false;
+                view.OptionsDetail.ShowDetailTabs = false;
+                view.OptionsDetail.SmartDetailExpand = false;
+                view.OptionsView.ShowColumnHeaders = true;
+                view.OptionsView.ShowGroupPanel = false;
+                view.ColumnPanelRowHeight = 45;
+                view.Appearance.HeaderPanel.Font = new System.Drawing.Font("Cairo", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+                view.Appearance.HeaderPanel.Options.UseFont = true;
+                view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                view.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                view.Appearance.HeaderPanel.Options.UseTextOptions = true;
+
+                // 1. Hide unwanted columns first
+                HideColumns(view, new string[] {
+                    "NationalId", "MotherName", "Qualification", "Job",
+                    "BirthPlace", "ElementImage", "NationalIdImage", "FollowState",
+                    "ReasonEndFollow", "Phone", "Mobile", "Mobile2", "Mobile3",
+                    "RegulatoryStatus", "FacebookAcount", "FacebookID", "PrisonedOrnot",
+                    "DateFollowNext", "CaseData", "Id",
+                    "ElementAddInfo", "ElementFollowAdd", "ElementCases", "ElementFingerprints", "AttendanceLogs"
+                });
+
+                // 2. Ensure the auto-numeric column exists
                 if (view.Columns["AutoNumericColumn"] == null)
                 {
-                    // Add an auto-numeric column
                     var autoNumericColumn = new DevExpress.XtraGrid.Columns.GridColumn
                     {
                         Name = "AutoNumericColumn",
                         FieldName = "AutoNumericColumn",
                         Caption = "مسلسل",
                         Visible = true,
-                        VisibleIndex = 0,
-                        Width = 100
+                        Width = 80,
+                        UnboundDataType = typeof(int)
                     };
                     view.Columns.Add(autoNumericColumn);
                 }
-                
-                view.Columns["ElementName"].Caption = "اسم العنصر";
-                view.Columns["BirthDate"].Caption = "تاريخ الميلاد";
-                view.Columns["Address"].Caption = "العنوان";
-                view.Columns["Notes"].Caption = "ملاحظات";
-                view.Columns["DateFollowStart"].Caption = "تاريخ بدء المتابعة";
-                view.Columns["FollowDaysCount"].Caption = "عدد ايام المتابعة";
-                view.Columns["DateFollowNow"].Caption = "تاريخ المتابعة القادم";
+                else
+                {
+                    view.Columns["AutoNumericColumn"].Visible = true;
+                    view.Columns["AutoNumericColumn"].Caption = "مسلسل";
+                    view.Columns["AutoNumericColumn"].Width = 80;
+                }
 
-                // Set visibility and order of columns
-                view.Columns["ElementName"].VisibleIndex = 2;
-                view.Columns["BirthDate"].VisibleIndex = 3;
-                view.Columns["Address"].VisibleIndex = 4;
-                view.Columns["Notes"].VisibleIndex = 5;
-                view.Columns["DateFollowStart"].VisibleIndex = 6;
-                view.Columns["FollowDaysCount"].VisibleIndex = 7;
-                view.Columns["DateFollowNow"].VisibleIndex = 8;
+                // 3. Set captions and widths
+                if (view.Columns["ElementName"] != null) { view.Columns["ElementName"].Caption = "اسم العنصر"; view.Columns["ElementName"].Width = 300; }
+                if (view.Columns["BirthDate"] != null) { view.Columns["BirthDate"].Caption = "تاريخ الميلاد"; view.Columns["BirthDate"].Width = 140; }
+                if (view.Columns["Address"] != null) { view.Columns["Address"].Caption = "العنوان"; view.Columns["Address"].Width = 280; }
+                if (view.Columns["Notes"] != null) { view.Columns["Notes"].Caption = "ملاحظات"; view.Columns["Notes"].Width = 260; }
+                if (view.Columns["DateFollowStart"] != null) { view.Columns["DateFollowStart"].Caption = "تاريخ بدء المتابعة"; view.Columns["DateFollowStart"].Width = 140; }
+                if (view.Columns["FollowDaysCount"] != null) { view.Columns["FollowDaysCount"].Caption = "عدد ايام المتابعة"; view.Columns["FollowDaysCount"].Width = 130; }
+                if (view.Columns["DateFollowNow"] != null) { view.Columns["DateFollowNow"].Caption = "تاريخ المتابعة القادم"; view.Columns["DateFollowNow"].Width = 140; }
+                if (view.Columns["ElementWantedStatus"] != null)
+                {
+                    view.Columns["ElementWantedStatus"].Caption = "حالة العنصر";
+                    view.Columns["ElementWantedStatus"].Width = 130;
+                    view.Columns["ElementWantedStatus"].Visible = true;
+                }
 
-                // Hide other columns
-                HideColumns(view, new string[] {
-             "NationalId", "MotherName", "Qualification", "Job",
-            "BirthPlace", "ElementImage", "NationalIdImage", "FollowState",
-            "ReasonEndFollow", "Phone", "Mobile", "Mobile2", "Mobile3",
-            "RegulatoryStatus", "FacebookAcount", "FacebookID", "PrisonedOrnot",
-            "DateFollowNext","CaseData","Id"
-        });
+                // 4. Set column display order (VisibleIndex) strictly in order
+                int vIndex = 0;
+                if (view.Columns["AutoNumericColumn"] != null) view.Columns["AutoNumericColumn"].VisibleIndex = vIndex++;
+                if (view.Columns["ElementName"] != null) view.Columns["ElementName"].VisibleIndex = vIndex++;
+                if (view.Columns["BirthDate"] != null) view.Columns["BirthDate"].VisibleIndex = vIndex++;
+                if (view.Columns["Address"] != null) view.Columns["Address"].VisibleIndex = vIndex++;
+                if (view.Columns["Notes"] != null) view.Columns["Notes"].VisibleIndex = vIndex++;
+                if (view.Columns["DateFollowStart"] != null) view.Columns["DateFollowStart"].VisibleIndex = vIndex++;
+                if (view.Columns["FollowDaysCount"] != null) view.Columns["FollowDaysCount"].VisibleIndex = vIndex++;
+                if (view.Columns["DateFollowNow"] != null) view.Columns["DateFollowNow"].VisibleIndex = vIndex++;
+                if (view.Columns["ElementWantedStatus"] != null) view.Columns["ElementWantedStatus"].VisibleIndex = vIndex++;
 
-                // Set column width
+                // Ensure AutoNumericColumn stays at the first position (0)
+                if (view.Columns["AutoNumericColumn"] != null) view.Columns["AutoNumericColumn"].VisibleIndex = 0;
+
                 view.OptionsView.ColumnAutoWidth = false;
-                view.Columns["ElementName"].Width = 350;
-                view.Columns["BirthDate"].Width = 150;
-                view.Columns["Address"].Width = 300;
-                view.Columns["Notes"].Width = 300;
-                view.Columns["DateFollowStart"].Width = 150;
-                view.Columns["FollowDaysCount"].Width = 150;
-                view.Columns["DateFollowNow"].Width = 150;
-                view.Columns["DateFollowNext"].Width = 150;
-
-                
+                gridControl1.ForceInitialize();
+                view.LayoutChanged();
             }
         }
 
         private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.Name == "AutoNumericColumn")
+            if (e.Column.Name == "AutoNumericColumn" || e.Column.FieldName == "AutoNumericColumn")
             {
-                e.DisplayText = (e.ListSourceRowIndex + 1).ToString();
+                int startIndex = paginationControl != null && !paginationControl.IsAll 
+                    ? (paginationControl.CurrentPage - 1) * paginationControl.PageSize 
+                    : 0;
+                e.DisplayText = (startIndex + e.ListSourceRowIndex + 1).ToString();
+            }
+            else if (e.Column.FieldName == "ElementWantedStatus" || e.Column.Name == "ElementWantedStatus")
+            {
+                if (e.Value is ElementWantedStatus status)
+                {
+                    e.DisplayText = status.IsWanted ? "مطلوب" : "غير مطلوب";
+                }
+                else
+                {
+                    e.DisplayText = "غير مطلوب";
+                }
             }
         }
 
@@ -450,24 +545,8 @@ namespace Follow_Extremist.Gui.GuiElementInfo
         #endregion
 
         #region events
-        private async void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadingForm.Show();
-            var data = await dataHelper.GetAllDataAsync();
-            var dataId = data.Select(x => x.Id).ToArray();
-            int index = comboBoxPageNo.SelectedIndex;
-            int indexNoOfRow = index * Properties.Settings.Default.DataGridViewRowNumber;
-            gridControl1.DataSource = data.Where(x => x.Id >= dataId[indexNoOfRow]).Take(Properties.Settings.Default.DataGridViewRowNumber).ToList();
-
-            if (gridControl1.DataSource == null)
-            {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
-                SetColumnsTitleElement1();
-            }
-            loadingForm.Hide();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -592,11 +671,25 @@ namespace Follow_Extremist.Gui.GuiElementInfo
 
                 if (selectedRowHandle >= 0)
                 {
-                    object value = cardView.GetRowCellValue(selectedRowHandle, cardView.Columns[0]);
-                    if (value != null && int.TryParse(value.ToString(), out int RowId))
+                    int rowId = 0;
+                    if (cardView.GetRow(selectedRowHandle) is ElementInfo element)
                     {
-                        AddElementForm addUsersForm = new AddElementForm(RowId, this, true,false);
+                        rowId = element.Id;
+                    }
+                    else
+                    {
+                        object value = cardView.GetRowCellValue(selectedRowHandle, "Id");
+                        if (value != null) int.TryParse(value.ToString(), out rowId);
+                    }
+
+                    if (rowId > 0)
+                    {
+                        AddElementForm addUsersForm = new AddElementForm(rowId, this, true, false);
                         addUsersForm.Show();
+                    }
+                    else
+                    {
+                        MessageCollections.ShowEmptyDataMessage();
                     }
                 }
                 else
@@ -618,18 +711,30 @@ namespace Follow_Extremist.Gui.GuiElementInfo
             {
                 int selectedRowHandle = cardView.FocusedRowHandle;
 
-                //var existingElementInfo = await dataHelper.FindAsync(selectedRowHandle);
                 if (selectedRowHandle >= 0)
                 {
-                    object value = cardView.GetRowCellValue(selectedRowHandle, cardView.Columns[0]);
-                    object valueelement = cardView.GetRowCellValue(selectedRowHandle, cardView.Columns[1]);
-                    if (value  != null && int.TryParse(value.ToString(), out int RowId))
+                    int RowId = 0;
+                    string elemName = null;
+                    if (cardView.GetRow(selectedRowHandle) is ElementInfo elem)
+                    {
+                        RowId = elem.Id;
+                        elemName = elem.ElementName;
+                    }
+                    else
+                    {
+                        object value = cardView.GetRowCellValue(selectedRowHandle, "Id");
+                        object valueelement = cardView.GetRowCellValue(selectedRowHandle, "ElementName");
+                        if (value != null) int.TryParse(value.ToString(), out RowId);
+                        elemName = valueelement?.ToString();
+                    }
+
+                    if (RowId > 0)
                     {
                         AddElementForm addElementForm = new AddElementForm(0, new ElementInfoControl1(), false,false);
                         elementCases = new ElementCases
                         {
-                            ElementName = valueelement.ToString(),
-                            ElementInfoId = (int)value,
+                            ElementName = elemName,
+                            ElementInfoId = RowId,
                            // ElementDateJail = dateTimePickerjail.Value,
                             CasesData = null,
                             ElementDateRelease = null,
@@ -693,11 +798,24 @@ namespace Follow_Extremist.Gui.GuiElementInfo
 
                 if (selectedRowHandle >= 0)
                 {
-                    object value = cardView.GetRowCellValue(selectedRowHandle, cardView.Columns[0]);
-                    object valueelement = cardView.GetRowCellValue(selectedRowHandle, cardView.Columns[1]);
-                    if (value != null && int.TryParse(value.ToString(), out int RowId))
+                    int RowId = 0;
+                    string elemName = null;
+                    if (cardView.GetRow(selectedRowHandle) is ElementInfo elem)
                     {
-                        elementName = valueelement?.ToString();
+                        RowId = elem.Id;
+                        elemName = elem.ElementName;
+                    }
+                    else
+                    {
+                        object value = cardView.GetRowCellValue(selectedRowHandle, "Id");
+                        object valueelement = cardView.GetRowCellValue(selectedRowHandle, "ElementName");
+                        if (value != null) int.TryParse(value.ToString(), out RowId);
+                        elemName = valueelement?.ToString();
+                    }
+
+                    if (RowId > 0)
+                    {
+                        elementName = elemName;
                         AddCaseElementForm addCaseElementForm = new AddCaseElementForm(RowId, this, elementName);
                         addCaseElementForm.Show();
                         addCaseElementForm.textBoxElement.Text = elementName;
@@ -724,8 +842,18 @@ namespace Follow_Extremist.Gui.GuiElementInfo
                 int selectedRowHandle = gridView.FocusedRowHandle;
                 if (selectedRowHandle>=0)
                 {
-                    object value = gridView.GetRowCellValue(selectedRowHandle, gridView.Columns[0]);
-                    if (value != null && int.TryParse(value.ToString(), out int RowId))
+                    int RowId = 0;
+                    if (gridView.GetRow(selectedRowHandle) is ElementInfo elem)
+                    {
+                        RowId = elem.Id;
+                    }
+                    else
+                    {
+                        object value = gridView.GetRowCellValue(selectedRowHandle, "Id");
+                        if (value != null) int.TryParse(value.ToString(), out RowId);
+                    }
+
+                    if (RowId > 0)
                     {
                         // show form details 
                         ElementInfoShowForm elementInfoShowForm = new ElementInfoShowForm(RowId, this);
@@ -754,8 +882,18 @@ namespace Follow_Extremist.Gui.GuiElementInfo
                 int selectedRowHandle = gridView.FocusedRowHandle;
                 if (selectedRowHandle >= 0)
                 {
-                    object value = gridView.GetRowCellValue(selectedRowHandle, gridView.Columns[0]);
-                    if (value != null && int.TryParse(value.ToString(), out int RowId))
+                    int RowId = 0;
+                    if (gridView.GetRow(selectedRowHandle) is ElementInfo elem)
+                    {
+                        RowId = elem.Id;
+                    }
+                    else
+                    {
+                        object value = gridView.GetRowCellValue(selectedRowHandle, "Id");
+                        if (value != null) int.TryParse(value.ToString(), out RowId);
+                    }
+
+                    if (RowId > 0)
                     {
                         // show form details 
                         ElementFollowHistoryForm elementFollowHistoryForm = new ElementFollowHistoryForm(RowId, this);

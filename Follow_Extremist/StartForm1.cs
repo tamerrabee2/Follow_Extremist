@@ -73,6 +73,18 @@ namespace Follow_Extremist
                         await dB.Database.OpenConnectionAsync();
                         canConnect = true;
                     }
+                    if (canConnect)
+                    {
+                        try
+                        {
+                            labelStatus.Text = "جاري فحص وتحديث قاعدة البيانات...";
+                            await dB.Database.MigrateAsync();
+                        }
+                        catch (Exception migEx)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Migration exception: {migEx.Message}");
+                        }
+                    }
                 }
             }
             catch (Exception ex)

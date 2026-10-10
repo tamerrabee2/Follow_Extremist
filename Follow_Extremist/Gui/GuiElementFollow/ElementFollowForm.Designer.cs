@@ -99,6 +99,8 @@ namespace Follow_Extremist.Gui.GuiElementFollow
             // 
             // comboBoxElement
             // 
+            this.comboBoxElement.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxElement.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBoxElement.FormattingEnabled = true;
             this.comboBoxElement.Location = new System.Drawing.Point(15, 36);
             this.comboBoxElement.Name = "comboBoxElement";

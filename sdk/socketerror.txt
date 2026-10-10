@@ -1,0 +1,16 @@
+sdk返回socketerror说明
+用途：
+在sdk通信过程中，可能出现socket错误（范围为-10004到-11004）。在sdk中增添接口用来返回socket错误。
+
+修改内容：
+在activex层增加接口GetLastError( [out] long* dwErrorCode)，其中参数dwErrorCode用来返回socket错误。
+Commpro层中的handle里加入socketerror变量。csend与cread函数返回socket错误，并赋值给socketerror变量。将socketerror变量返回给上层。
+
+使用方法：
+long errorcode=0;
+myret = mCZKEM.Connect_Net("192.168.0.243",4370);
+mCZKEM.GetConnectStatus(&errorcode);
+在连接过程中socket断开（拔掉网线），GetConnectStatus获取到的errorcode为-10053.
+
+
+

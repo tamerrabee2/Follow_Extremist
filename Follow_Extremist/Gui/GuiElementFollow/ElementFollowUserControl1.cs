@@ -33,15 +33,18 @@ namespace Follow_Extremist.Gui.GuiElementFollow
         private readonly IDataHelper<ElementFollowAdd> dataHelper;
         private readonly IDataHelper<ElementInfo> dataHelperElementInfo;
         private readonly IDataHelper<SystemRecords> dataHelperSystemRecords;
+        private readonly GuiLoading.LoadingForm loadingForm;
         private static ElementFollowUserControl1 elementFollowUserControl1;
         private int RowId;
-        private readonly Gui.GuiLoading.LoadingForm loadingForm;
         private List<int> IdList = new List<int>();
         private string SearchItem;
+        private List<ElementInfo> allElements = new List<ElementInfo>();
+        private GuiCommon.PaginationControl paginationControl;
 
         public ElementFollowUserControl1()
         {
             InitializeComponent();
+            SetupPagination();
             dataHelper = (IDataHelper<ElementFollowAdd>)ConfigurationObjectManager.GetObject("ElementFollowAdd");
             dataHelperElementInfo = (IDataHelper<ElementInfo>)ConfigurationObjectManager.GetObject("ElementInfo");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
@@ -51,16 +54,38 @@ namespace Follow_Extremist.Gui.GuiElementFollow
             gridView1.CustomColumnDisplayText += gridView1_CustomColumnDisplayText;
             buttonSearch.Click += buttonSearch_Click;
         }
+
+        private void SetupPagination()
+        {
+            if (comboBoxPageNo != null)
+            {
+                comboBoxPageNo.Visible = false;
+                this.Controls.Remove(comboBoxPageNo);
+            }
+            paginationControl = new GuiCommon.PaginationControl();
+            paginationControl.Dock = DockStyle.Bottom;
+            paginationControl.PageChanged += (s, e) => BindCurrentPage();
+            this.Controls.Add(paginationControl);
+            paginationControl.BringToFront();
+        }
+
+        public void BindCurrentPage()
+        {
+            var pageData = paginationControl.GetPageData(allElements);
+            gridControl1.DataSource = pageData;
+            SetColumnsTitleElement1();
+            gridControl1.BringToFront();
+        }
         #region lodadData in gridview 
         public async void LoadData()
         {
             loadingForm.Show();
-
             try
             {
-                // Fetch data asynchronously using IDataHelper
                 var data = await dataHelperElementInfo.GetAllDataAsync();
-                gridControl1.DataSource = data.ToList();
+                allElements = data?.Where(x => x.FollowState == null || x.FollowState.Trim() != "خارج المتابعة").ToList() ?? new List<ElementInfo>();
+                var pageData = paginationControl.GetPageData(allElements, resetToFirstPage: true);
+                gridControl1.DataSource = pageData;
 
                 if (gridControl1.DataSource == null)
                 {
@@ -69,14 +94,16 @@ namespace Follow_Extremist.Gui.GuiElementFollow
                 else
                 {
                     SetColumnsTitleElement1();
+                    gridControl1.BringToFront();
                 }
-                loadingForm.Hide();
-                data.Clear();
             }
             catch (Exception ex)
             {
-                // Handle exceptions if needed
                 MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
             }
         }
 
@@ -85,59 +112,36 @@ namespace Follow_Extremist.Gui.GuiElementFollow
             loadingForm.Show();
             try
             {
-                // Format the date as a string to use with the search method
                 SearchItem = dateTime.ToString("yyyy-MM-dd");
                 string search = "مفرج عنه";
-                string followstate = "داخل المتابعة ";
-                // Fetch data asynchronously using IDataHelper
                 var data = (await dataHelperElementInfo.SearchAsync(SearchItem)).Where(x => x.DateFollowNow.Date == dateTime.Date).ToList();
                 var data1 = data.Where(x => x.PrisonedOrnot == search || x.PrisonedOrnot == null).ToList();
-                var data2 = data1.Where(x => x.FollowState == followstate).ToList();
+                allElements = data1.Where(x => x.FollowState == null || x.FollowState.Trim() != "خارج المتابعة").ToList();
 
-                if (data2 == null || data2.Count == 0)
+                if (allElements == null || allElements.Count == 0)
                 {
-                    loadingForm.Hide();
+                    paginationControl.SetTotalRecords(0);
+                    gridControl1.DataSource = new List<ElementInfo>();
                     SetColumnsTitleElement1();
                     MessageBox.Show("لا يوجد بيانات لاظهارها بتاريخ اليوم", "تنويه ", MessageBoxButtons.OK);
                     return;
                 }
-                //Debug.WriteLine($"Fetched {data.Count} records from dataHelperElementInfo.");
 
-                // Clear existing columns
-                var view = gridControl1.MainView as GridView;
-                if (view != null)
-                {
-                    view.Columns.Clear();
-                }
-
-
-
-
-                // Set the binding list as the data source for the grid control
-                gridControl1.DataSource = data2.ToList();
-
-                if (gridControl1.DataSource == null)
-                {
-                    MessageCollections.ShowErrorServer();
-                }
-                else
-                {
-                    SetColumnsTitleElement1();
-                }
-                data2.Clear();
-                data1.Clear();
-                data.Clear();
+                var pageData = paginationControl.GetPageData(allElements, resetToFirstPage: true);
+                gridControl1.DataSource = pageData;
+                SetColumnsTitleElement1();
+                gridControl1.BringToFront();
             }
-            catch
+            catch (Exception ex)
             {
-                // Handle exceptions if needed
-                // MessageBox.Show("حدث خطأ أثناء تحميل البيانات: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"حدث خطأ: {ex.Message}");
             }
             finally
             {
                 loadingForm.Hide();
             }
         }
+
         #region Methods gridview
         private void SetColumnsTitleElement()
         {
@@ -239,6 +243,7 @@ namespace Follow_Extremist.Gui.GuiElementFollow
         private async Task AddOrUpdateDataAsync(List<ElementInfo> SelectedData, DateTime dateTime)
         {
             loadingForm.Show();
+            int addedCount = 0;
             try
             {
                 foreach (var elementinfo in SelectedData)
@@ -246,65 +251,70 @@ namespace Follow_Extremist.Gui.GuiElementFollow
                     var existingElementInfo = await dataHelperElementInfo.FindAsync(elementinfo.Id);
                     if (existingElementInfo != null)
                     {
-                        // Check if DateFollowNow is today's date in ElementInfo
-                        if (existingElementInfo.DateFollowNow.Date == DateTime.Now.Date)
+                        // التحقق من حلول موعد المتابعة: لا يمكن تسجيل متابعة إلا إذا حان موعد متابعة العنصر
+                        if (existingElementInfo.DateFollowNow.Date > DateTime.Now.Date)
                         {
-                            // Now check if there's already a follow record for today's date in ElementFollowAdd
-                            var existingFollowAdd = (await dataHelper.GetAllDataAsync())
-                                                    .FirstOrDefault(x => x.DateFollow == DateTime.Now.Date && x.ElementInfoId == elementinfo.Id);
-                            if (existingFollowAdd != null)
-                            {
-                                MessageBox.Show("تم ادخال المتابعة من قبل");
-                                continue;
-                            }
+                            MessageBox.Show($"لم يحن موعد متابعة العنصر ({existingElementInfo.ElementName}) بعد.\nموعد المتابعة المحدد هو: {existingElementInfo.DateFollowNow:yyyy/MM/dd}", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            continue;
+                        }
 
-                            // If no existing follow record, add a new follow record
-                            var newFollowRecord = new ElementFollowAdd
-                            {
-                                ElementName = elementinfo.ElementName,
-                                DateFollow = DateTime.Now.Date,
-                                ElementInfoId = elementinfo.Id
-                            };
-                            var result = await dataHelper.AddAsync(newFollowRecord);
-                            if (result == 1)
-                            {
-                                // Save system records
-                                SystemRecords systemRecords = new SystemRecords
-                                {
-                                    Title = "اضافة متابعة لعنصر",
-                                    USerName = Properties.Settings.Default.UserName,
-                                    Details = "تمت اضافة متابعة لعنصر" + " " + newFollowRecord.ElementName,
-                                    AddedDate = DateTime.Now
-                                };
-                                await dataHelperSystemRecords.AddAsync(systemRecords);
-                            }
-                            // Update existing element info
-                            existingElementInfo.DateFollowNow = DateTime.Now.Date.AddDays(existingElementInfo.FollowDaysCount);
-                            existingElementInfo.DateFollowNext = DateTime.Now.Date.AddDays((existingElementInfo.FollowDaysCount) * 2);
-                            var result2 = await dataHelperElementInfo.EditAsync(existingElementInfo);
-                            if (result2 == 1)
-                            {
-                                // Save system records
-                                SystemRecords systemRecords = new SystemRecords
-                                {
-                                    Title = "تعديل تاريخ متابعة لعنصر",
-                                    USerName = Properties.Settings.Default.UserName,
-                                    Details = "تمت تعديل تاريخ متابعة لعنصر" + " " + newFollowRecord.ElementName,
-                                    AddedDate = DateTime.Now
-                                };
-                                await dataHelperSystemRecords.AddAsync(systemRecords);
-                            }
-                        }
-                        else
+                        // التحقق من عدم تسجيل المتابعة اليوم مسبقاً في جدول المتابعات
+                        var allFollows = await dataHelper.GetAllDataAsync();
+                        var existingFollowAdd = allFollows?.FirstOrDefault(x => x.DateFollow.Date == DateTime.Now.Date && x.ElementInfoId == elementinfo.Id);
+                        if (existingFollowAdd != null)
                         {
-                            MessageBox.Show("لا يمكن ادخال متابعة لا تساوي تاريخ اليوم");
+                            MessageBox.Show($"تم إدخال متابعة اليوم مسبقاً للعنصر ({existingElementInfo.ElementName})", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            continue;
                         }
+
+                        // إضافة سجل متابعة جديد
+                        var newFollowRecord = new ElementFollowAdd
+                        {
+                            ElementName = existingElementInfo.ElementName,
+                            DateFollow = DateTime.Now.Date,
+                            ElementInfoId = existingElementInfo.Id
+                        };
+                        var result = await dataHelper.AddAsync(newFollowRecord);
+                        if (result == 1)
+                        {
+                            SystemRecords systemRecords = new SystemRecords
+                            {
+                                Title = "اضافة متابعة لعنصر",
+                                USerName = Properties.Settings.Default.UserName,
+                                Details = "تمت اضافة متابعة لعنصر " + newFollowRecord.ElementName,
+                                AddedDate = DateTime.Now
+                            };
+                            await dataHelperSystemRecords.AddAsync(systemRecords);
+                        }
+
+                        // تحديث ميعاد المتابعة القادم في جدول العناصر اتوماتيكياً
+                        int daysInterval = existingElementInfo.FollowDaysCount > 0 ? existingElementInfo.FollowDaysCount : 7;
+                        existingElementInfo.DateFollowNow = DateTime.Now.Date.AddDays(daysInterval);
+                        existingElementInfo.DateFollowNext = DateTime.Now.Date.AddDays(daysInterval * 2);
+                        var result2 = await dataHelperElementInfo.EditAsync(existingElementInfo);
+                        if (result2 == 1)
+                        {
+                            SystemRecords systemRecords = new SystemRecords
+                            {
+                                Title = "تعديل تاريخ متابعة لعنصر",
+                                USerName = Properties.Settings.Default.UserName,
+                                Details = $"تم تعديل ميعاد المتابعة القادم للعنصر {existingElementInfo.ElementName} إلى {existingElementInfo.DateFollowNow:yyyy/MM/dd}",
+                                AddedDate = DateTime.Now
+                            };
+                            await dataHelperSystemRecords.AddAsync(systemRecords);
+                        }
+
+                        addedCount++;
                     }
+                }
+
+                if (addedCount > 0)
+                {
+                    MessageBox.Show($"تم تسجيل المتابعة وتحديث ميعاد المتابعة القادم اتوماتيكياً لعدد ({addedCount}) عنصر بنجاح.", "تمت العملية بنجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
             finally
@@ -416,46 +426,8 @@ namespace Follow_Extremist.Gui.GuiElementFollow
         #endregion
 
         #region events buttons
-        private async void  comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadingForm.Show();
-            try
-            {
-                int index = comboBoxPageNo.SelectedIndex;
-                int indexNoOfRow = index * Properties.Settings.Default.DataGridViewRowNumber;
-                List<ElementInfo> data;
-                if (!string.IsNullOrEmpty(SearchItem)) // Assuming isSearching is a flag indicating if a search is active
-                {
-                    data = await dataHelperElementInfo.SearchAsync(SearchItem);
-                }
-                else
-                {
-                    data = await dataHelperElementInfo.GetAllDataAsync();
-                }
-
-                int noOfPage = (int)Math.Ceiling((double)data.Count / Properties.Settings.Default.DataGridViewRowNumber);
-                // Load data for the current page
-                var pageData = data.Skip(indexNoOfRow).Take(Properties.Settings.Default.DataGridViewRowNumber).ToList();
-                gridControl1.DataSource = pageData;
-                if (gridControl1.DataSource == null || pageData.Count == 0)
-                {
-                    MessageCollections.ShowErrorServer();
-                }
-                else
-                {
-                    SetColumnsTitleElement();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
-            finally
-            {
-                loadingForm.Hide();
-            }
-            
         }
 
         private async void buttonAdd_Click(object sender, EventArgs e)
@@ -466,11 +438,9 @@ namespace Follow_Extremist.Gui.GuiElementFollow
             if (selectedData.Count > 0)
             {
                 await AddOrUpdateDataAsync(selectedData, date);
-                MessageBox.Show($"تم اضافة عدد متابعات بنجاح: {selectedData.Count}");
                 gridControl1.DataSource = null;
                 await LoadDataDate(date);
                 SetColumnsTitleElement1();
-
             }
             else
             {
@@ -646,9 +616,12 @@ namespace Follow_Extremist.Gui.GuiElementFollow
 
         private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.Name == "AutoNumericColumn")
+            if (e.Column.Name == "AutoNumericColumn" || e.Column.FieldName == "AutoNumericColumn")
             {
-                e.DisplayText = (e.ListSourceRowIndex + 1).ToString();
+                int startIndex = paginationControl != null && !paginationControl.IsAll 
+                    ? (paginationControl.CurrentPage - 1) * paginationControl.PageSize 
+                    : 0;
+                e.DisplayText = (startIndex + e.ListSourceRowIndex + 1).ToString();
             }
         }
         private void AddColumn(GridView view, string fieldName, string caption, int visibleIndex)

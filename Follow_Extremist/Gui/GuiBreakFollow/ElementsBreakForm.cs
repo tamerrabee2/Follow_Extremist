@@ -26,10 +26,13 @@ namespace Follow_Extremist.Gui.GuiBreakFollow
         private readonly Gui.GuiLoading.LoadingForm loadingForm;
         private List<int> IdList = new List<int>();
         private string SearchItem;
+        private List<ElementInfoView> allElements = new List<ElementInfoView>();
+        private GuiCommon.PaginationControl paginationControl;
         #endregion
         public ElementsBreakForm()
         {
             InitializeComponent();
+            SetupPagination();
             FormLayoutHelper.ApplyResponsiveLayout(this, startMaximized: true);
             dataHelperElementInfo = (IDataHelper<ElementInfo>)ConfigurationObjectManager.GetObject("ElementInfo");
             dataHelper = (IDataHelper<ElementInfoView>)ConfigurationObjectManager.GetObject("ElementInfoView");
@@ -38,6 +41,21 @@ namespace Follow_Extremist.Gui.GuiBreakFollow
             SetRoles();
             LoadData();
         }
+
+        private void SetupPagination()
+        {
+            paginationControl = new GuiCommon.PaginationControl();
+            paginationControl.Dock = DockStyle.Bottom;
+            paginationControl.PageChanged += (s, e) =>
+            {
+                var pageData = paginationControl.GetPageData(allElements, resetToFirstPage: false);
+                gridControl1.DataSource = pageData;
+                SetColumnsTitleElement1();
+            };
+            this.Controls.Add(paginationControl);
+            paginationControl.BringToFront();
+        }
+
         #region Methods
         private async void LoadData()
         {
@@ -47,8 +65,9 @@ namespace Follow_Extremist.Gui.GuiBreakFollow
             {
                 // Fetch data asynchronously using IDataHelper
                 var data = await dataHelper.GetAllDataAsync();
-
-                gridControl1.DataSource = data.ToList();
+                allElements = data?.ToList() ?? new List<ElementInfoView>();
+                var pageData = paginationControl.GetPageData(allElements, resetToFirstPage: true);
+                gridControl1.DataSource = pageData;
 
                 if (gridControl1.DataSource == null)
                 {
@@ -58,15 +77,16 @@ namespace Follow_Extremist.Gui.GuiBreakFollow
                 {
                     SetColumnsTitleElement1();
                 }
-                loadingForm.Hide();
-                data.Clear();
             }
             catch (Exception ex)
             {
                 // Handle exceptions if needed
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
-
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private async void PrintGridViewData()
@@ -168,9 +188,12 @@ namespace Follow_Extremist.Gui.GuiBreakFollow
         }
         private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
-            if (e.Column.Name == "AutoNumericColumn")
+            if (e.Column.Name == "AutoNumericColumn" || e.Column.FieldName == "AutoNumericColumn")
             {
-                e.DisplayText = (e.ListSourceRowIndex + 1).ToString();
+                int startIndex = paginationControl != null && !paginationControl.IsAll 
+                    ? (paginationControl.CurrentPage - 1) * paginationControl.PageSize 
+                    : 0;
+                e.DisplayText = (startIndex + e.ListSourceRowIndex + 1).ToString();
             }
         }
 
@@ -310,19 +333,31 @@ namespace Follow_Extremist.Gui.GuiBreakFollow
         private async void Search()
         {
             loadingForm.Show();
-            SearchItem = textBoxSearch.Text;
-            var dataSource = await dataHelper.SearchAsync(SearchItem);
-            gridControl1.DataSource = dataSource;
+            try
+            {
+                SearchItem = textBoxSearch.Text.Trim();
+                var dataSource = await dataHelper.SearchAsync(SearchItem);
+                allElements = dataSource?.ToList() ?? new List<ElementInfoView>();
+                var pageData = paginationControl.GetPageData(allElements, resetToFirstPage: true);
+                gridControl1.DataSource = pageData;
 
-            if (dataSource == null)
-            {
-                MessageCollections.ShowErrorServer();
+                if (gridControl1.DataSource == null)
+                {
+                    MessageCollections.ShowErrorServer();
+                }
+                else
+                {
+                    SetColumnsTitleElement1();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                SetColumnsTitleElement1();
+                MessageBox.Show($"حدث خطأ أثناء البحث: {ex.Message}");
             }
-            loadingForm.Hide();
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)

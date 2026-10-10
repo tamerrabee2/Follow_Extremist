@@ -34,7 +34,7 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
             this.buttonSaveAndClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxRelationship = new System.Windows.Forms.ComboBox();
-            this.comboBoxElement = new System.Windows.Forms.ComboBox();
+            this.searchableElementDropDown = new Follow_Extremist.Gui.GuiFingerprint.SearchableElementDropDown();
             this.textBoxAge = new System.Windows.Forms.TextBox();
             this.textBoxNationalID = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -102,7 +102,7 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBoxRelationship);
-            this.groupBox1.Controls.Add(this.comboBoxElement);
+            this.groupBox1.Controls.Add(this.searchableElementDropDown);
             this.groupBox1.Controls.Add(this.textBoxAge);
             this.groupBox1.Controls.Add(this.textBoxNationalID);
             this.groupBox1.Controls.Add(this.textBoxName);
@@ -137,13 +137,18 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
             this.comboBoxRelationship.Size = new System.Drawing.Size(318, 38);
             this.comboBoxRelationship.TabIndex = 4;
             // 
-            // comboBoxElement
+            // searchableElementDropDown
             // 
-            this.comboBoxElement.FormattingEnabled = true;
-            this.comboBoxElement.Location = new System.Drawing.Point(15, 36);
-            this.comboBoxElement.Name = "comboBoxElement";
-            this.comboBoxElement.Size = new System.Drawing.Size(318, 38);
-            this.comboBoxElement.TabIndex = 1;
+            this.searchableElementDropDown.BackColor = System.Drawing.Color.White;
+            this.searchableElementDropDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchableElementDropDown.Font = new System.Drawing.Font("Cairo", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.searchableElementDropDown.Location = new System.Drawing.Point(15, 36);
+            this.searchableElementDropDown.Name = "searchableElementDropDown";
+            this.searchableElementDropDown.Padding = new System.Windows.Forms.Padding(1);
+            this.searchableElementDropDown.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.searchableElementDropDown.SelectedElement = null;
+            this.searchableElementDropDown.Size = new System.Drawing.Size(318, 38);
+            this.searchableElementDropDown.TabIndex = 1;
             // 
             // textBoxAge
             // 
@@ -378,7 +383,7 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.PictureBox pictureBoxElementImage;
         private System.Windows.Forms.ComboBox comboBoxRelationship;
-        private System.Windows.Forms.ComboBox comboBoxElement;
+        private Follow_Extremist.Gui.GuiFingerprint.SearchableElementDropDown searchableElementDropDown;
         private System.Windows.Forms.TextBox textBoxNationalID;
         private System.Windows.Forms.Label label8;
     }

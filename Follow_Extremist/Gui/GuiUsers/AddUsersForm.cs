@@ -1,4 +1,4 @@
-using Follow_Extremist.Gui.GuiUsers;
+﻿using Follow_Extremist.Gui.GuiUsers;
 using Follow_Extremist.Code;
 using Follow_Extremist.Core;
 using Follow_Extremist.Data;
@@ -31,7 +31,6 @@ namespace Follow_Extremist.Gui.GuiUsers
         public AddUsersForm(int Id, UsersUserControl userControl, bool FirstStart)
         {
             InitializeComponent();
-            AppIconHelper.ApplyFormIcon(this);
             dataHelper = (IDataHelper<Users>)ConfigurationObjectManager.GetObject("Users");
             dataHelperUsersRole = (IDataHelper<UsersRoles>)ConfigurationObjectManager.GetObject("UsersRoles");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
@@ -263,6 +262,7 @@ namespace Follow_Extremist.Gui.GuiUsers
             ListOfRoles.Add(checkBoxExplore.Name, checkBoxExplore.Checked);
             ListOfRoles.Add(checkBoxprint.Name, checkBoxprint.Checked);
             ListOfRoles.Add(checkBoxEditFollowDate.Name, checkBoxEditFollowDate.Checked);
+            ListOfRoles.Add(checkBoxAttendanceDisplayOnly.Name, checkBoxAttendanceDisplayOnly.Checked);
         }
 
         private async Task <bool> EditData()
@@ -375,9 +375,9 @@ namespace Follow_Extremist.Gui.GuiUsers
                     checkBoxExport.Checked = ListOfRoles[14];
                     checkBoxSearch.Checked = ListOfRoles[15];
                     checkBoxExplore.Checked = ListOfRoles[16];
-                    checkBoxprint.Checked = ListOfRoles[17];
-                    checkBoxEditFollowDate.Checked = ListOfRoles[18];
-
+                    checkBoxprint.Checked = ListOfRoles.Count > 17 ? ListOfRoles[17] : false;
+                    checkBoxEditFollowDate.Checked = ListOfRoles.Count > 18 ? ListOfRoles[18] : false;
+                    checkBoxAttendanceDisplayOnly.Checked = rolesData.FirstOrDefault(x => x.UserId == ID && x.Key == checkBoxAttendanceDisplayOnly.Name)?.Value ?? (ListOfRoles.Count > 19 ? ListOfRoles[19] : false);
                 }
                 else
                 {

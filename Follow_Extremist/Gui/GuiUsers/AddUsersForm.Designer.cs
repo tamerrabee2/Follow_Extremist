@@ -57,6 +57,7 @@ namespace Follow_Extremist.Gui.GuiUsers
             this.checkBoxUser = new System.Windows.Forms.CheckBox();
             this.checkBoxSetting = new System.Windows.Forms.CheckBox();
             this.checkBoxSystemRecord = new System.Windows.Forms.CheckBox();
+            this.checkBoxAttendanceDisplayOnly = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxAccessElement = new System.Windows.Forms.CheckBox();
@@ -304,6 +305,7 @@ namespace Follow_Extremist.Gui.GuiUsers
             this.flowLayoutPanel1.Controls.Add(this.checkBoxUser);
             this.flowLayoutPanel1.Controls.Add(this.checkBoxSetting);
             this.flowLayoutPanel1.Controls.Add(this.checkBoxSystemRecord);
+            this.flowLayoutPanel1.Controls.Add(this.checkBoxAttendanceDisplayOnly);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 31);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -382,6 +384,18 @@ namespace Follow_Extremist.Gui.GuiUsers
             this.checkBoxSystemRecord.TabIndex = 7;
             this.checkBoxSystemRecord.Text = "سجل النظام";
             this.checkBoxSystemRecord.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxAttendanceDisplayOnly
+            // 
+            this.checkBoxAttendanceDisplayOnly.AutoSize = true;
+            this.checkBoxAttendanceDisplayOnly.Font = new System.Drawing.Font("Cairo", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxAttendanceDisplayOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(132)))), ((int)(((byte)(199)))));
+            this.checkBoxAttendanceDisplayOnly.Location = new System.Drawing.Point(50, 58);
+            this.checkBoxAttendanceDisplayOnly.Name = "checkBoxAttendanceDisplayOnly";
+            this.checkBoxAttendanceDisplayOnly.Size = new System.Drawing.Size(160, 30);
+            this.checkBoxAttendanceDisplayOnly.TabIndex = 8;
+            this.checkBoxAttendanceDisplayOnly.Text = "🖥️ شاشة العرض فقط";
+            this.checkBoxAttendanceDisplayOnly.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -643,5 +657,6 @@ namespace Follow_Extremist.Gui.GuiUsers
         private System.Windows.Forms.CheckBox checkBoxAccessElementFollowbroken;
         private System.Windows.Forms.CheckBox checkBoxprint;
         private System.Windows.Forms.CheckBox checkBoxEditFollowDate;
+        public System.Windows.Forms.CheckBox checkBoxAttendanceDisplayOnly;
     }
 }

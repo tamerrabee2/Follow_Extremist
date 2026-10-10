@@ -1,4 +1,4 @@
-using Follow_Extremist.Code;
+﻿using Follow_Extremist.Code;
 using Follow_Extremist.Core;
 using Follow_Extremist.Data;
 using System;
@@ -28,7 +28,15 @@ namespace Follow_Extremist.Gui.GuiUsers
         public UsersLoginForm()
         {
             InitializeComponent();
-            AppIconHelper.ApplyFormIcon(this);
+            try
+            {
+                string iconPath = System.IO.Path.Combine(Application.StartupPath, "شعار_قطاع_الأمن_الوطني_(مصر).ico");
+                if (System.IO.File.Exists(iconPath))
+                {
+                    this.Icon = new System.Drawing.Icon(iconPath);
+                }
+            }
+            catch { }
             dataHelper = (IDataHelper<Users>)ConfigurationObjectManager.GetObject("Users");
             dataHelperUsersRole = (IDataHelper<UsersRoles>)ConfigurationObjectManager.GetObject("UsersRoles");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
@@ -56,9 +64,18 @@ namespace Follow_Extremist.Gui.GuiUsers
                     // تشغيل النسخ الاحتياطي التلقائي في الخلفية إذا كان مفعلاً لهذا المستخدم اليوم
                     _ = Task.Run(() => AutoBackupService.ExecuteAutoBackupAsync(UserName));
 
-                    Main main = new Main();
-                    main.Show();
-                    Hide();
+                    if (UsersRolesManager.GetRole("checkBoxAttendanceDisplayOnly"))
+                    {
+                        var kiosk = new Gui.GuiFingerprint.AttendanceDisplayKioskForm();
+                        kiosk.Show();
+                        Hide();
+                    }
+                    else
+                    {
+                        Main main = new Main();
+                        main.Show();
+                        Hide();
+                    }
                 }
                 else if (UserLogin == 2)
                 {

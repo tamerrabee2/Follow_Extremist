@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Follow_Extremist.Gui.GuiElementAddlInfo
@@ -22,16 +23,55 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
         private readonly Gui.GuiLoading.LoadingForm loadingForm;
         private List<int> IdList = new List<int>();
         private string SearchItem;
-        
+        private List<ElementAddInfo> allData = new List<ElementAddInfo>();
+        private GuiCommon.PaginationControl paginationControl;
 
         public ElementAddInfoControl()
         {
             InitializeComponent();
+            SetupPagination();
             SetRoles();
             dataHelper = (IDataHelper<ElementAddInfo>)ConfigurationObjectManager.GetObject("ElementAddInfo");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
             loadingForm = new GuiLoading.LoadingForm();
             LoadData();
+        }
+
+        private void SetupPagination()
+        {
+            if (comboBoxPageNo != null)
+            {
+                comboBoxPageNo.Visible = false;
+                this.Controls.Remove(comboBoxPageNo);
+            }
+            paginationControl = new GuiCommon.PaginationControl();
+            paginationControl.Dock = DockStyle.Bottom;
+            paginationControl.PageChanged += (s, e) => BindCurrentPage();
+            this.Controls.Add(paginationControl);
+            paginationControl.BringToFront();
+            dataGridView1.RowPostPaint += DataGridView1_RowPostPaint;
+        }
+
+        private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            int startIndex = paginationControl != null && !paginationControl.IsAll 
+                ? (paginationControl.CurrentPage - 1) * paginationControl.PageSize 
+                : 0;
+            string rowIdx = (startIndex + e.RowIndex + 1).ToString();
+            var centerFormat = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, dataGridView1.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+        }
+
+        private void BindCurrentPage()
+        {
+            var pageData = paginationControl.GetPageData(allData);
+            dataGridView1.DataSource = pageData;
+            SetColumnsTitle();
         }
 
         #region Events
@@ -136,24 +176,8 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
             EditData();
         }
 
-        private async void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadingForm.Show();
-            var data = await dataHelper.GetAllDataAsync();
-            var dataId = data.Select(x => x.Id).ToArray();
-            int index = comboBoxPageNo.SelectedIndex;
-            int indexNoOfRow = index * Properties.Settings.Default.DataGridViewRowNumber;
-            dataGridView1.DataSource = data.Where(x => x.Id >= dataId[indexNoOfRow]).Take(Properties.Settings.Default.DataGridViewRowNumber).ToList();
-
-            if (dataGridView1.DataSource == null)
-            {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
-                SetColumnsTitle();
-            }
-            loadingForm.Hide();
         }
         #endregion
 
@@ -164,60 +188,67 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
             return _ElementInfoControl ?? (new ElementAddInfoControl());
         }
 
-        public async void  LoadData()
+        public async void LoadData()
         {
             loadingForm.Show();
-            var data = await dataHelper.GetAllDataAsync();
-            dataGridView1.DataSource = data.Take(Properties.Settings.Default.DataGridViewRowNumber).ToList();
-
-            // Add No of page into combo box
-            comboBoxPageNo.Items.Clear();
-            double value = (Convert.ToDouble(data.Count) /Convert.ToDouble (Properties.Settings.Default.DataGridViewRowNumber));
-            int NoOfPage =(int) Math.Round(value, MidpointRounding.AwayFromZero);
-            for (int i = 0; i <NoOfPage;i++)
+            try
             {
-                comboBoxPageNo.Items.Add(i);
-            }
-            if (dataGridView1.DataSource == null)
-            {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
+                var data = await dataHelper.GetAllDataAsync();
+                allData = data ?? new List<ElementAddInfo>();
+                var pageData = paginationControl.GetPageData(allData, resetToFirstPage: true);
+                dataGridView1.DataSource = pageData;
                 SetColumnsTitle();
             }
-            loadingForm.Hide();
-            data.Clear();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء تحميل البيانات: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private void SetColumnsTitle()
         {
+            if (dataGridView1.Columns == null || dataGridView1.Columns.Count == 0) return;
 
-            dataGridView1.Columns[0].HeaderText = "المعرف";
-            dataGridView1.Columns[1].HeaderText = "الاسم";
-            dataGridView1.Columns[2].HeaderText = "اسم العنصر";
-            dataGridView1.Columns[3].HeaderText = "الرقم القومي";
-            dataGridView1.Columns[4].HeaderText = "صلة القرابة";
-            dataGridView1.Columns[5].HeaderText = "السن";
-            dataGridView1.Columns[6].HeaderText = "صورة";
-            dataGridView1.Columns[7].HeaderText = "صورة الرقم القومي";
+            if (dataGridView1.Columns.Contains("Id"))
+                dataGridView1.Columns["Id"].HeaderText = "المعرف";
 
-            //hide
-            dataGridView1.Columns[8].Visible = false;
-            dataGridView1.Columns[9].Visible = false;
+            if (dataGridView1.Columns.Contains("NameRelationElement"))
+                dataGridView1.Columns["NameRelationElement"].HeaderText = "الاسم";
 
-            if (dataGridView1.Columns != null)
+            if (dataGridView1.Columns.Contains("ElementName"))
+                dataGridView1.Columns["ElementName"].HeaderText = "اسم العنصر";
+
+            if (dataGridView1.Columns.Contains("ElementRelationNationalID"))
+                dataGridView1.Columns["ElementRelationNationalID"].HeaderText = "الرقم القومي";
+
+            if (dataGridView1.Columns.Contains("Relationship"))
+                dataGridView1.Columns["Relationship"].HeaderText = "صلة القرابة";
+
+            if (dataGridView1.Columns.Contains("Age"))
+                dataGridView1.Columns["Age"].HeaderText = "السن";
+
+            if (dataGridView1.Columns.Contains("ElemmentRelationImage"))
+                dataGridView1.Columns["ElemmentRelationImage"].HeaderText = "صورة";
+
+            if (dataGridView1.Columns.Contains("ElementRelationNationalIDImage"))
+                dataGridView1.Columns["ElementRelationNationalIDImage"].HeaderText = "صورة الرقم القومي";
+
+            if (dataGridView1.Columns.Contains("ElementInfoId"))
+                dataGridView1.Columns["ElementInfoId"].Visible = false;
+
+            if (dataGridView1.Columns.Contains("ElementInfo"))
+                dataGridView1.Columns["ElementInfo"].Visible = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                if (dataGridView1.Columns != null && dataGridView1.Columns.Count>0)
+                if (column != null && column.Visible)
                 {
-                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-                    foreach (DataGridViewColumn column in dataGridView1.Columns)
-                    {
-                        if (column != null)
-                        {
-                            column.Width = 200;
-                        }
-                    }
+                    column.Width = 200;
                 }
             }
         }
@@ -251,17 +282,23 @@ namespace Follow_Extremist.Gui.GuiElementAddlInfo
         public async void Search()
         {
             loadingForm.Show();
-            SearchItem = textBoxSearch.Text;
-            dataGridView1.DataSource = await dataHelper.SearchAsync(SearchItem);
-            if (dataGridView1.DataSource == null)
+            try
             {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
+                SearchItem = textBoxSearch.Text.Trim();
+                var data = await dataHelper.SearchAsync(SearchItem);
+                allData = data ?? new List<ElementAddInfo>();
+                var pageData = paginationControl.GetPageData(allData, resetToFirstPage: true);
+                dataGridView1.DataSource = pageData;
                 SetColumnsTitle();
             }
-            loadingForm.Hide();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء البحث: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private DataTable SetDataTableColumns(DataTable dataTable)

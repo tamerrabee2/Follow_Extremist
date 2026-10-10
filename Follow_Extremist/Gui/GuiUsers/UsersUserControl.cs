@@ -8,6 +8,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Follow_Extremist.Gui.GuiUsers
@@ -25,10 +26,13 @@ namespace Follow_Extremist.Gui.GuiUsers
         private List<int> IdList = new List<int>();
         private string SearchItem;
         private double Amount;
+        private List<Users> allUsers = new List<Users>();
+        private GuiCommon.PaginationControl paginationControl;
 
         public UsersUserControl()
         {
             InitializeComponent();
+            SetupPagination();
             SetRoles();
             dataHelper = (IDataHelper<Users>)ConfigurationObjectManager.GetObject("Users");
             dataHelperSystemRecords = (IDataHelper<SystemRecords>)ConfigurationObjectManager.GetObject("SystemRecords");
@@ -36,6 +40,43 @@ namespace Follow_Extremist.Gui.GuiUsers
             //dataHelperOutcome = (IDataHelper<Outcome>)ConfigurationObjectManager.GetObject("Outcome");
             loadingForm = new GuiLoading.LoadingForm();
             LoadData();
+        }
+
+        private void SetupPagination()
+        {
+            if (comboBoxPageNo != null)
+            {
+                comboBoxPageNo.Visible = false;
+                this.Controls.Remove(comboBoxPageNo);
+            }
+            paginationControl = new GuiCommon.PaginationControl();
+            paginationControl.Dock = DockStyle.Bottom;
+            paginationControl.PageChanged += (s, e) => BindCurrentPage();
+            this.Controls.Add(paginationControl);
+            paginationControl.BringToFront();
+            dataGridView1.RowPostPaint += DataGridView1_RowPostPaint;
+        }
+
+        private void DataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            int startIndex = paginationControl != null && !paginationControl.IsAll 
+                ? (paginationControl.CurrentPage - 1) * paginationControl.PageSize 
+                : 0;
+            string rowIdx = (startIndex + e.RowIndex + 1).ToString();
+            var centerFormat = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, dataGridView1.RowHeadersWidth, e.RowBounds.Height);
+            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
+        }
+
+        private void BindCurrentPage()
+        {
+            var pageData = paginationControl.GetPageData(allUsers);
+            dataGridView1.DataSource = pageData;
+            SetColumnsTitle();
         }
 
         #region Events
@@ -140,24 +181,8 @@ namespace Follow_Extremist.Gui.GuiUsers
             EditData();
         }
 
-        private async void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxPageNo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadingForm.Show();
-            var data = await dataHelper.GetAllDataAsync();
-            var dataId = data.Select(x => x.Id).ToArray();
-            int index = comboBoxPageNo.SelectedIndex;
-            int indexNoOfRow = index * Properties.Settings.Default.DataGridViewRowNumber;
-            dataGridView1.DataSource = data.Where(x => x.Id >= dataId[indexNoOfRow]).Take(Properties.Settings.Default.DataGridViewRowNumber).ToList();
-
-            if (dataGridView1.DataSource == null)
-            {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
-                SetColumnsTitle();
-            }
-            loadingForm.Hide();
         }
         #endregion
 
@@ -168,43 +193,54 @@ namespace Follow_Extremist.Gui.GuiUsers
             return _UsersUserControl ?? (new UsersUserControl());
         }
 
-        public async void  LoadData()
+        public async void LoadData()
         {
             loadingForm.Show();
-            var data = await dataHelper.GetAllDataAsync();
-            dataGridView1.DataSource = data.Take(Properties.Settings.Default.DataGridViewRowNumber).ToList();
-
-            // Add No of page into combo box
-            comboBoxPageNo.Items.Clear();
-            double value = (Convert.ToDouble(data.Count) /Convert.ToDouble (Properties.Settings.Default.DataGridViewRowNumber));
-            int NoOfPage =(int) Math.Round(value, MidpointRounding.AwayFromZero);
-            for (int i = 0; i <NoOfPage;i++)
+            try
             {
-                comboBoxPageNo.Items.Add(i);
-            }
-            if (dataGridView1.DataSource == null)
-            {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
+                var data = await dataHelper.GetAllDataAsync();
+                allUsers = data ?? new List<Users>();
+                var pageData = paginationControl.GetPageData(allUsers, resetToFirstPage: true);
+                dataGridView1.DataSource = pageData;
                 SetColumnsTitle();
             }
-            loadingForm.Hide();
-            data.Clear();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء تحميل المستخدمين: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private void SetColumnsTitle()
         {
-            dataGridView1.Columns[0].HeaderText = "المعرف";
-            dataGridView1.Columns[1].HeaderText = "الاسم";
-            dataGridView1.Columns[2].HeaderText = "اسم المستخدم";
-            dataGridView1.Columns[3].HeaderText = "كلمة السر";
-            dataGridView1.Columns[4].HeaderText = "الايميل";
-            dataGridView1.Columns[5].HeaderText = "رقم الهاتف";
-            dataGridView1.Columns[6].HeaderText = "تاريخ الاضافة";
-            // Set the CellFormatting event handler
-            dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
+            if (dataGridView1.Columns == null || dataGridView1.Columns.Count == 0) return;
+
+            if (dataGridView1.Columns.Contains("Id"))
+                dataGridView1.Columns["Id"].HeaderText = "المعرف";
+
+            if (dataGridView1.Columns.Contains("Name"))
+                dataGridView1.Columns["Name"].HeaderText = "الاسم";
+
+            if (dataGridView1.Columns.Contains("UserName"))
+                dataGridView1.Columns["UserName"].HeaderText = "اسم المستخدم";
+
+            if (dataGridView1.Columns.Contains("Password"))
+                dataGridView1.Columns["Password"].HeaderText = "كلمة السر";
+
+            if (dataGridView1.Columns.Contains("Email"))
+                dataGridView1.Columns["Email"].HeaderText = "الايميل";
+
+            if (dataGridView1.Columns.Contains("Phone"))
+                dataGridView1.Columns["Phone"].HeaderText = "رقم الهاتف";
+
+            if (dataGridView1.Columns.Contains("AddedDate"))
+                dataGridView1.Columns["AddedDate"].HeaderText = "تاريخ الاضافة";
+
+            dataGridView1.CellFormatting -= dataGridView1_CellFormatting;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
         }
 
         private void EditData()
@@ -236,17 +272,23 @@ namespace Follow_Extremist.Gui.GuiUsers
         public async void Search()
         {
             loadingForm.Show();
-            SearchItem = textBoxSearch.Text;
-            dataGridView1.DataSource = await dataHelper.SearchAsync(SearchItem);
-            if (dataGridView1.DataSource == null)
+            try
             {
-                MessageCollections.ShowErrorServer();
-            }
-            else
-            {
+                SearchItem = textBoxSearch.Text.Trim();
+                var data = await dataHelper.SearchAsync(SearchItem);
+                allUsers = data ?? new List<Users>();
+                var pageData = paginationControl.GetPageData(allUsers, resetToFirstPage: true);
+                dataGridView1.DataSource = pageData;
                 SetColumnsTitle();
             }
-            loadingForm.Hide();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"حدث خطأ أثناء البحث: {ex.Message}");
+            }
+            finally
+            {
+                loadingForm.Hide();
+            }
         }
 
         private DataTable SetDataTableColumns(DataTable dataTable)

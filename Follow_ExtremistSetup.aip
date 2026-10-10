@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="23.8" version="23.8" Modules="professional" RootPath="." Language="en" Id="{BB391579-AB4D-4FEB-A258-3D9CF64F6738}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="Manufacturer" Value="FollowSystem"/>
+    <ROW Property="ProductCode" Value="1033:{04BAD1D4-2324-4F39-A9FA-E44C1D3C631D} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Follow_Extremist"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Options="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{55E6F526-83DA-43EC-9C20-EF71593DD6BB}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60Display" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1" DirectoryOptions="3"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="cs_Dir" Directory_Parent="APPDIR" DefaultDir="cs" DirectoryOptions="3"/>
+    <ROW Directory="de_Dir" Directory_Parent="APPDIR" DefaultDir="de" DirectoryOptions="3"/>
+    <ROW Directory="es_Dir" Directory_Parent="APPDIR" DefaultDir="es" DirectoryOptions="3"/>
+    <ROW Directory="fr_Dir" Directory_Parent="APPDIR" DefaultDir="fr" DirectoryOptions="3"/>
+    <ROW Directory="it_Dir" Directory_Parent="APPDIR" DefaultDir="it" DirectoryOptions="3"/>
+    <ROW Directory="ja_Dir" Directory_Parent="APPDIR" DefaultDir="ja" DirectoryOptions="3"/>
+    <ROW Directory="ko_Dir" Directory_Parent="APPDIR" DefaultDir="ko" DirectoryOptions="3"/>
+    <ROW Directory="lib_1_Dir" Directory_Parent="win_Dir" DefaultDir="lib" DirectoryOptions="3"/>
+    <ROW Directory="lib_Dir" Directory_Parent="unix_Dir" DefaultDir="lib" DirectoryOptions="3"/>
+    <ROW Directory="native_1_Dir" Directory_Parent="winarm64_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_2_Dir" Directory_Parent="winx64_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_3_Dir" Directory_Parent="winx86_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="native_Dir" Directory_Parent="winarm_Dir" DefaultDir="native" DirectoryOptions="3"/>
+    <ROW Directory="net6.0_1_Dir" Directory_Parent="lib_1_Dir" DefaultDir="net6.0" DirectoryOptions="3"/>
+    <ROW Directory="net6.0_Dir" Directory_Parent="lib_Dir" DefaultDir="net6.0" DirectoryOptions="3"/>
+    <ROW Directory="net8.0_Dir" Directory_Parent="lib_1_Dir" DefaultDir="net8.0" DirectoryOptions="3"/>
+    <ROW Directory="netcoreapp2.1_1_Dir" Directory_Parent="lib_1_Dir" DefaultDir="NETCOR~1.1|netcoreapp2.1" DirectoryOptions="3"/>
+    <ROW Directory="netcoreapp2.1_Dir" Directory_Parent="lib_Dir" DefaultDir="NETCOR~1.1|netcoreapp2.1" DirectoryOptions="3"/>
+    <ROW Directory="pl_Dir" Directory_Parent="APPDIR" DefaultDir="pl" DirectoryOptions="3"/>
+    <ROW Directory="ptBR_Dir" Directory_Parent="APPDIR" DefaultDir="pt-BR" DirectoryOptions="3"/>
+    <ROW Directory="ru_Dir" Directory_Parent="APPDIR" DefaultDir="ru" DirectoryOptions="3"/>
+    <ROW Directory="runtimes_Dir" Directory_Parent="APPDIR" DefaultDir="runtimes" DirectoryOptions="3"/>
+    <ROW Directory="sdk_Dir" Directory_Parent="APPDIR" DefaultDir="sdk" DirectoryOptions="3"/>
+    <ROW Directory="tr_Dir" Directory_Parent="APPDIR" DefaultDir="tr" DirectoryOptions="3"/>
+    <ROW Directory="unix_Dir" Directory_Parent="runtimes_Dir" DefaultDir="unix" DirectoryOptions="3"/>
+    <ROW Directory="win_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win" DirectoryOptions="3"/>
+    <ROW Directory="winarm64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="WIN-AR~1|win-arm64" DirectoryOptions="3"/>
+    <ROW Directory="winarm_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-arm" DirectoryOptions="3"/>
+    <ROW Directory="winx64_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x64" DirectoryOptions="3"/>
+    <ROW Directory="winx86_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win-x86" DirectoryOptions="3"/>
+    <ROW Directory="zhHans_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hans" DirectoryOptions="3"/>
+    <ROW Directory="zhHant_Dir" Directory_Parent="APPDIR" DefaultDir="zh-Hant" DirectoryOptions="3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SideBySideGuidComponent">
+    <ROW Component="APPDIR" Value="{92E57BA9-FEB9-4713-816F-3AE6BCF20CA1}"/>
+    <ROW Component="Azure.Core.dll" Value="{63FBB6DB-A85D-4AA3-A078-8E1F870F4431}"/>
+    <ROW Component="Azure.Identity.dll" Value="{C9E62D33-9F02-4038-ACB0-185A4FB1F63F}"/>
+    <ROW Component="ClosedXML.Extensions.WebApi.dll" Value="{BEB35CD9-E527-4CFD-8CF9-BC745BF48896}"/>
+    <ROW Component="ClosedXML.dll" Value="{DA170D1A-7837-437E-A154-D80294292B07}"/>
+    <ROW Component="Delete_SDK.bat" Value="{F9C4F3A9-171B-4448-B21B-D67A20C58667}"/>
+    <ROW Component="DevExpress.Charts.v25.1.Core.dll" Value="{099D6FC6-4F14-41D0-B8E6-C56A9845C770}"/>
+    <ROW Component="DevExpress.CodeParser.v25.1.dll" Value="{45E96B56-D9C1-4E2F-A80E-840BA44BD8A7}"/>
+    <ROW Component="DevExpress.Data.Desktop.v25.1.dll" Value="{ABCBD717-8BCC-4526-BB5B-12782FD58674}"/>
+    <ROW Component="DevExpress.Data.v25.1.dll" Value="{D182EB78-35D4-4167-AA6A-489FF41A33A0}"/>
+    <ROW Component="DevExpress.DataAccess.v25.1.UI.dll" Value="{99DC6D7B-3AFD-4B08-A194-95A32487D34C}"/>
+    <ROW Component="DevExpress.DataAccess.v25.1.dll" Value="{D8AA8C01-7BBA-4990-AE51-175807819502}"/>
+    <ROW Component="DevExpress.DataVisualization.v25.1.Core.dll" Value="{5C5461ED-C63E-4D63-B0FC-71E1128BC1D7}"/>
+    <ROW Component="DevExpress.Diagram.v25.1.Core.dll" Value="{5A90D6D5-37E3-40D6-B1C4-697D869D5B43}"/>
+    <ROW Component="DevExpress.Dialogs.v25.1.Core.dll" Value="{F0CE83D8-9EB1-409A-A624-754827C4B4ED}"/>
+    <ROW Component="DevExpress.Drawing.v25.1.dll" Value="{B5601AB2-6158-4988-AF0A-7206E799C15E}"/>
+    <ROW Component="DevExpress.Images.v25.1.dll" Value="{C0B9AC03-DF85-487D-B217-75BBBB2D5008}"/>
+    <ROW Component="DevExpress.Map.v25.1.Core.dll" Value="{9FF997C3-786F-43AF-A192-6007249CD151}"/>
+    <ROW Component="DevExpress.Mvvm.v25.1.dll" Value="{504AE812-8EBC-4467-955B-E32D447CE25F}"/>
+    <ROW Component="DevExpress.Office.v25.1.Core.dll" Value="{42782EA0-2CCD-4F9D-B2F8-3CCEEAF714AF}"/>
+    <ROW Component="DevExpress.Pdf.v25.1.Core.dll" Value="{0E644AFE-449B-498C-87E8-6CEDB5868F7E}"/>
+    <ROW Component="DevExpress.Pdf.v25.1.Drawing.dll" Value="{05A2D8F5-1312-4332-9DD6-81141C5AC141}"/>
+    <ROW Component="DevExpress.PivotGrid.v25.1.Core.dll" Value="{E5166D0B-112A-4E20-A178-39481CBC5F08}"/>
+    <ROW Component="DevExpress.Printing.v25.1.Core.dll" Value="{4E4EE136-4138-4306-8BFD-8788C180E8DF}"/>
+    <ROW Component="DevExpress.RichEdit.v25.1.Core.dll" Value="{5A49D8D1-DC5C-4A6A-ACAB-480C28225BD6}"/>
+    <ROW Component="DevExpress.RichEdit.v25.1.Export.dll" Value="{50729499-37FD-40A0-BF6A-917FD167ABF8}"/>
+    <ROW Component="DevExpress.Sparkline.v25.1.Core.dll" Value="{7E0BFD17-13C2-46CC-9DE2-98C3B7742E32}"/>
+    <ROW Component="DevExpress.SpellChecker.v25.1.Core.dll" Value="{961940ED-E49D-46BA-90D9-189A975D6859}"/>
+    <ROW Component="DevExpress.Spreadsheet.v25.1.Core.dll" Value="{A2632B83-CC53-41A9-B914-EEE3B7075A48}"/>
+    <ROW Component="DevExpress.TreeMap.v25.1.Core.dll" Value="{A40CD985-3680-4CD4-B5A3-F71B6738FD55}"/>
+    <ROW Component="DevExpress.Utils.v25.1.UI.dll" Value="{5B6E50CB-76C4-4999-A347-214E0201CAD4}"/>
+    <ROW Component="DevExpress.Utils.v25.1.dll" Value="{0A65A95A-6C2F-4780-96B9-FA07C374731C}"/>
+    <ROW Component="DevExpress.Xpo.v25.1.dll" Value="{56F4508D-3918-4E18-8618-40D0EA877C32}"/>
+    <ROW Component="DevExpress.XtraBars.v25.1.dll" Value="{727F8C07-844D-473D-8854-AB64C84905D8}"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.Extensions.dll" Value="{7CF955EE-71AD-4162-B195-9628C36BE3B2}"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.UI.dll" Value="{5CDD253E-72CE-499E-9EBB-C80B3C8D8146}"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.Wizard.dll" Value="{087AB407-F8D0-45BD-8990-3CB21017B79B}"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.dll" Value="{240BEE6A-934F-4F5F-BC7A-F4122DF4EB80}"/>
+    <ROW Component="DevExpress.XtraDiagram.v25.1.dll" Value="{B4CB5204-245C-4CB9-BFCB-429412EDFDF9}"/>
+    <ROW Component="DevExpress.XtraDialogs.v25.1.dll" Value="{7302DD10-2603-438C-B4D5-0776CE645D54}"/>
+    <ROW Component="DevExpress.XtraEditors.v25.1.dll" Value="{285C1122-8FD2-428C-B343-AD1625985B47}"/>
+    <ROW Component="DevExpress.XtraGantt.v25.1.dll" Value="{B834E485-D12F-47B9-AF26-B3A6C63D9665}"/>
+    <ROW Component="DevExpress.XtraGauges.v25.1.Core.dll" Value="{0631D0D0-BD9C-4E87-844A-F0E2A84AED38}"/>
+    <ROW Component="DevExpress.XtraGauges.v25.1.Presets.dll" Value="{091321E5-0DC0-4001-A9A3-409BFC80DFB2}"/>
+    <ROW Component="DevExpress.XtraGauges.v25.1.Win.dll" Value="{8CE9F047-5A99-40A7-93DF-A79E86C4DCA3}"/>
+    <ROW Component="DevExpress.XtraGrid.v25.1.dll" Value="{DECCFA58-A71C-4A55-82DE-A30ECEBF44B7}"/>
+    <ROW Component="DevExpress.XtraLayout.v25.1.dll" Value="{C2C1E923-494B-4D24-A612-5749B1E15274}"/>
+    <ROW Component="DevExpress.XtraMap.v25.1.dll" Value="{9C94EF54-E918-429A-AE92-4D6CCE996D84}"/>
+    <ROW Component="DevExpress.XtraNavBar.v25.1.dll" Value="{D771E224-6F4F-4E80-B7DC-3B0F5DB1712D}"/>
+    <ROW Component="DevExpress.XtraPdfViewer.v25.1.dll" Value="{C4B66A10-C73A-4D36-A6F0-782DA4CCFF92}"/>
+    <ROW Component="DevExpress.XtraPivotGrid.v25.1.dll" Value="{957CC6DE-01A9-4244-93F7-639469688C09}"/>
+    <ROW Component="DevExpress.XtraPrinting.v25.1.dll" Value="{900FB4AF-3134-4220-B019-A947B6A1604B}"/>
+    <ROW Component="DevExpress.XtraReports.v25.1.Extensions.dll" Value="{0D57B85D-9B7E-4667-B437-11A5C5D0F832}"/>
+    <ROW Component="DevExpress.XtraReports.v25.1.dll" Value="{4E96BA3D-6577-4F40-8030-35759EE2DED7}"/>
+    <ROW Component="DevExpress.XtraRichEdit.v25.1.dll" Value="{789B2D99-625E-4034-8D61-1007CDFDD830}"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Core.Desktop.dll" Value="{4FF4616D-111F-4339-AFCC-EF97E0465775}"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Core.dll" Value="{D6FA0228-A871-4C33-A5EF-02BFB258CB5E}"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Extensions.dll" Value="{722DC313-A8DB-4B8B-92CC-646014CD288D}"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Rep_1_orting.Extensions.dll" Value="{E0A41C17-2219-457C-8E0E-6C2ACBDAE500}"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Reporting.dll" Value="{B1F2FC9C-00BF-4731-AA7B-E8F04E0959B3}"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.dll" Value="{1679BE60-8260-4DE8-A5D6-297C718152EC}"/>
+    <ROW Component="DevExpress.XtraSpellChecker.v25.1.dll" Value="{E0DBFE9A-1EEF-410A-BB48-E22FAB21CC43}"/>
+    <ROW Component="DevExpress.XtraSpreadsheet.v25.1.dll" Value="{31EF3A9C-7525-4974-B845-4EF005CE4077}"/>
+    <ROW Component="DevExpress.XtraTreeList.v25.1.dll" Value="{7A038B3C-F193-4E7D-820B-943B8C8A4368}"/>
+    <ROW Component="DevExpress.XtraTreeMap.v25.1.UI.dll" Value="{335693B7-FA28-470D-84BB-AEA3D7E1618D}"/>
+    <ROW Component="DevExpress.XtraTreeMap.v25.1.dll" Value="{73AF4C6B-C089-4980-B5E2-6202AB130918}"/>
+    <ROW Component="DevExpress.XtraVerticalGrid.v25.1.dll" Value="{71A79FB1-B97E-43F6-8E7C-1006ACECA3E6}"/>
+    <ROW Component="DevExpress.XtraWizard.v25.1.dll" Value="{AFD3A68E-DDD6-4FE6-8997-E3FAD9909508}"/>
+    <ROW Component="DocumentFormat.OpenXml.dll" Value="{040A4228-4EF7-4F78-B8C8-57A8282EF0CD}"/>
+    <ROW Component="ExcelNumberFormat.dll" Value="{D8778AA0-E3F5-4F0A-A290-E434D2248AB9}"/>
+    <ROW Component="FastMember.dll" Value="{98087CDE-0091-40A5-81BE-638F29BE42BD}"/>
+    <ROW Component="Follow_Extremist.Core.dll" Value="{F556D74A-7C65-49F0-A506-E27923EB125D}"/>
+    <ROW Component="Follow_Extremist.Data.dll" Value="{372CECC6-4473-43F7-B87F-56C98E2E1E15}"/>
+    <ROW Component="Follow_Extremist.deps.json" Value="{92FC8CA3-756A-4F4A-999C-1B8A867E61F9}"/>
+    <ROW Component="Follow_Extremist.dll" Value="{5EF1EEE5-F421-41E6-9088-36A3B5A838B1}"/>
+    <ROW Component="Follow_Extremist.exe" Value="{C7AD9136-D27D-4E74-8299-B25DD27846D2}"/>
+    <ROW Component="IOTCAPIs.dll" Value="{FD0B48A8-1123-49C4-9675-1D886FDEDC58}"/>
+    <ROW Component="IOTCAPIs.dll_1" Value="{7862CB10-0F14-48CF-A6F3-53525B57450B}"/>
+    <ROW Component="Microsoft.Bcl.AsyncInterfaces.dll" Value="{0909F55C-CD43-49CF-B3D1-36F344C9A65F}"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll" Value="{B23CA4A8-F1B1-46F4-91DB-AA0EE055FD03}"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll_1" Value="{03E8769F-DD50-4C00-BE5A-8A1A3CD85333}"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll_2" Value="{32D2CB56-D4AF-4C82-BA04-D7F5F2A7A814}"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll_3" Value="{F3497080-7B10-4731-989E-2D689A81B7E4}"/>
+    <ROW Component="Microsoft.Data.SqlClient.dll" Value="{EEBF91B0-8252-4D8A-AC2D-5BA4BCE4B1F8}"/>
+    <ROW Component="Microsoft.Data.SqlClient.dll_1" Value="{A173FD2A-ADD5-4CAB-8E05-259A5EA23E99}"/>
+    <ROW Component="Microsoft.Data.SqlClient.dll_2" Value="{EAC0A3C0-448E-46F7-A16A-77BC1D80DA7B}"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.Abstractions.dll" Value="{0742F518-5DAB-4DC0-A961-5164C8BCC8BE}"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.Relational.dll" Value="{4DF65007-DCA8-489D-BDD7-3C06FDDAE5E2}"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.SqlServer.dll" Value="{43D2AD8B-2A17-44AD-927B-160BC344A492}"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.dll" Value="{8150E007-6F0E-43E9-9B2F-CDB9F3F18A9A}"/>
+    <ROW Component="Microsoft.Extensions.Caching.Abstractions.dll" Value="{90FED321-2B0D-4283-919F-361291EF0B31}"/>
+    <ROW Component="Microsoft.Extensions.Caching.Memory.dll" Value="{BC2FE6C1-B131-44DB-93B5-3EE1EC7A33F4}"/>
+    <ROW Component="Microsoft.Extensions.Configuration.Abstractions.dll" Value="{044450E1-B848-4D9B-A15E-AB18FB181A0B}"/>
+    <ROW Component="Microsoft.Extensions.DependencyInj_1_ection.dll" Value="{85070AFA-7B8B-46D2-B311-936F610EDB23}"/>
+    <ROW Component="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Value="{782967A2-89CF-4F94-89E2-9D1D9DF35755}"/>
+    <ROW Component="Microsoft.Extensions.Logging.Abstractions.dll" Value="{D3723802-C019-4B76-A096-75E4793AC510}"/>
+    <ROW Component="Microsoft.Extensions.Logging.dll" Value="{05038EFA-29B1-4C05-A154-25CBDEAAB788}"/>
+    <ROW Component="Microsoft.Extensions.ObjectPool.dll" Value="{A8B0EA9C-78CA-436D-BF47-16C6EB768175}"/>
+    <ROW Component="Microsoft.Extensions.Options.dll" Value="{4BE6FF1C-7C40-49EB-8DF8-394F14A2A67E}"/>
+    <ROW Component="Microsoft.Extensions.Primitives.dll" Value="{EB783857-C5FD-4EF6-BC2F-325969D18632}"/>
+    <ROW Component="Microsoft.Identity.Client.Extensions.Msal.dll" Value="{A2BAE2F7-61B0-40D4-BE4F-82C47AE2A203}"/>
+    <ROW Component="Microsoft.Identity.Client.dll" Value="{9B52B18D-95A9-400D-B8E6-8022AA90DCFF}"/>
+    <ROW Component="Microsoft.IdentityModel.Abstractions.dll" Value="{8134780E-832E-4B6A-BAD6-22A8F61C5BBF}"/>
+    <ROW Component="Microsoft.IdentityModel.JsonWebTokens.dll" Value="{CD425FE0-97F5-4726-BEA4-73BE61FD28E9}"/>
+    <ROW Component="Microsoft.IdentityModel.Logging.dll" Value="{E02E89EA-9FF2-4F70-96AC-119FC87536CE}"/>
+    <ROW Component="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" Value="{8AEFAC87-2A51-4720-860B-07252CFFA3A1}"/>
+    <ROW Component="Microsoft.IdentityModel.Protocols.dll" Value="{76E2587A-7C88-48BC-8135-A113D52FD7CA}"/>
+    <ROW Component="Microsoft.IdentityModel.Tokens.dll" Value="{4A617DDF-BAF7-4CA0-B9C4-0EC7294A38B5}"/>
+    <ROW Component="Microsoft.SqlServer.Server.dll" Value="{405F2BE1-F06B-4AFC-8ADF-0991D55AF995}"/>
+    <ROW Component="ProductInformation" Value="{1D7C3EA6-5FB0-4F06-A20C-838F1F4BAF81}"/>
+    <ROW Component="RDTAPIs.dll" Value="{04BEA49A-3B78-490C-B950-30695F3C73FB}"/>
+    <ROW Component="RDTAPIs.dll_1" Value="{316A5475-E758-4149-B701-88D7381B751A}"/>
+    <ROW Component="Register_SDK_x86.bat" Value="{611E2C6B-876E-4880-A193-3D92B9F5353F}"/>
+    <ROW Component="SHORTCUTDIR" Value="{61559F25-3945-4D50-8C1C-51DB83CD9064}"/>
+    <ROW Component="System.ClientModel.dll" Value="{5B8FD057-B083-4282-A3A0-66839D06E4A1}"/>
+    <ROW Component="System.Data.OleDb.dll" Value="{A489F66A-00CF-47AB-8E6D-A4DEA51984E4}"/>
+    <ROW Component="System.Data.OleDb.dll_1" Value="{FB8C2219-366E-4384-9C2C-A961D05CDE08}"/>
+    <ROW Component="System.Data.SqlClient.dll" Value="{32CC6346-3EF4-4FF9-A85C-FFD7BBE2AA9C}"/>
+    <ROW Component="System.Data.SqlClient.dll_1" Value="{4A13233A-03FA-47DA-8D71-C39E5942CA48}"/>
+    <ROW Component="System.Data.SqlClient.dll_2" Value="{665E2CC4-96D0-4FCA-BD9C-FA0C7D14FA0A}"/>
+    <ROW Component="System.IdentityModel.Tokens.Jwt.dll" Value="{367B0E63-186D-4EF5-8189-51EB1B983CB1}"/>
+    <ROW Component="System.Memory.Data.dll" Value="{697A6521-57CF-49DC-94DB-7B32CA8CC774}"/>
+    <ROW Component="System.Runtime.Caching.dll" Value="{C7E9FE00-5E55-4D33-9B73-66345AA9835F}"/>
+    <ROW Component="System.Runtime.Caching.dll_1" Value="{02017169-F320-4D95-90F9-FC3A13F93F95}"/>
+    <ROW Component="System.ServiceModel.Duplex.dll" Value="{C7C01A84-74A3-4847-8892-D9E30770DCA5}"/>
+    <ROW Component="System.ServiceModel.Http.dll" Value="{89714917-111B-4CC2-814D-77F2E57A1887}"/>
+    <ROW Component="System.ServiceModel.Http.resources.dll" Value="{D73BCAB9-D48F-4313-AAF7-0CDC3D5AACB7}"/>
+    <ROW Component="System.ServiceModel.Http.resources.dll_1" Value="{A6885404-DB7B-41B6-B93C-E4B8D7A20BCA}"/>
+    <ROW Component="System.ServiceModel.Http.resources_10_.dll" Value="{4FDCD801-0D26-474D-B0E7-1FB52D976F74}"/>
+    <ROW Component="System.ServiceModel.Http.resources_11_.dll" Value="{6151FC7A-72B1-46B1-9098-5489E7D426F0}"/>
+    <ROW Component="System.ServiceModel.Http.resources_12_.dll" Value="{C95DFC24-F7AD-4E3E-A34C-623219323249}"/>
+    <ROW Component="System.ServiceModel.Http.resources_13_.dll" Value="{A8819C9D-EB15-431E-AE27-02206D86BF1B}"/>
+    <ROW Component="System.ServiceModel.Http.resources_14_.dll" Value="{3DE5B411-1EE8-4470-8F06-D0926DD6D31A}"/>
+    <ROW Component="System.ServiceModel.Http.resources_15_.dll" Value="{E0D0ACA2-56FF-4798-9155-C6B1FD128C1C}"/>
+    <ROW Component="System.ServiceModel.Http.resources_16_.dll" Value="{6FF1FE83-2D18-443F-AC29-E7923DE0C5F2}"/>
+    <ROW Component="System.ServiceModel.Http.resources_17_.dll" Value="{190AF557-4A7A-4265-AF66-17E04F5C3C17}"/>
+    <ROW Component="System.ServiceModel.Http.resources_18_.dll" Value="{3D43ACB8-F190-4AC7-943D-87356487D7A7}"/>
+    <ROW Component="System.ServiceModel.Http.resources_19_.dll" Value="{2D975C6B-75B4-4D78-95D0-5C9A4B39E41C}"/>
+    <ROW Component="System.ServiceModel.Http.resources_20_.dll" Value="{D7244C06-79EF-4B44-902D-BAC291018DD8}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase.dll" Value="{E6A52C60-7A43-4D90-87E7-0666CE6036F9}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase.resources.dll" Value="{5281CAA5-62EC-455C-8B1D-ACD8037A2461}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_10_.resources.dll" Value="{8FDEEE18-AA09-456D-800A-A4DB2618161E}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_11_.resources.dll" Value="{068E1E33-7D5C-4B84-9509-94A6EEFDC814}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_12_.resources.dll" Value="{A3B4E6C3-1426-458B-9C45-EAC172929632}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_1_.resources.dll" Value="{80B01261-C3A9-4229-9B1F-AEC9AE0051A3}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_2_.resources.dll" Value="{E44865AF-34CA-4798-89BB-91F53A3C4BF3}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_3_.resources.dll" Value="{8C62110B-1F6D-4AEF-966C-2F986504BB8D}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_4_.resources.dll" Value="{BF8C26EC-7F7F-4F5B-8650-1010891E501A}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_5_.resources.dll" Value="{1AE5A6C2-4E62-4F54-B1AD-F8D672300978}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_6_.resources.dll" Value="{C4CF5EDE-631C-465C-97D8-8D1EC3639567}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_7_.resources.dll" Value="{1719D775-F18C-4B50-838A-28D7EA96707F}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_8_.resources.dll" Value="{0507B89A-9810-4F1A-A6D0-6F2B208A7043}"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_9_.resources.dll" Value="{28DFA90C-4B94-488A-AE13-05CD70689F20}"/>
+    <ROW Component="System.ServiceModel.NetTcp.dll" Value="{1D99629E-DF36-48CE-A346-91EAC1653A9C}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_10_es.dll" Value="{3095B65A-4B5D-47F5-905E-ADCC76D993B9}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_11_es.dll" Value="{F03DCB96-514F-4D4A-A223-564017C15B21}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_12_es.dll" Value="{4A8505BC-5D4A-4D3A-9394-CBA32D5401C5}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_1_es.dll" Value="{2ABB1919-AF25-4BA5-BFFC-861B48A369DE}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_2_es.dll" Value="{9BE8F673-4B9F-4964-8ABD-D1C09F98AD29}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_3_es.dll" Value="{2E32A691-8AC6-49FF-B104-B583133D1B62}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_4_es.dll" Value="{BD1557D5-5827-4F60-8310-0FB131185936}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_5_es.dll" Value="{067759F3-8142-40F0-ACDF-3B2D8EEE0EF1}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_6_es.dll" Value="{0B9C0976-10C1-4D87-9BB1-158F23BEA026}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_7_es.dll" Value="{8EE77689-4FB3-4DCA-8EC6-29C8C7C64A0B}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_8_es.dll" Value="{03DA459A-D0B2-403A-A72B-CE90E2814690}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_9_es.dll" Value="{25C176D9-7103-44D5-85EA-287649350DBB}"/>
+    <ROW Component="System.ServiceModel.NetTcp.resources.dll" Value="{9D8A649D-A157-4374-AD98-27AEE4154763}"/>
+    <ROW Component="System.ServiceModel.Primitives.dll" Value="{B29DCBB9-338F-473A-ADF2-25BB65367C45}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_10_ources.dll" Value="{D40191AC-4381-4E9A-9478-E04FF89019F9}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_11_ources.dll" Value="{6E290FF1-5951-4155-8F07-723B17EAC6B7}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_12_ources.dll" Value="{9684CE3E-9463-40D8-B4D4-AEDF8C8D19CC}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_1_ources.dll" Value="{B8393D2A-E02B-49ED-815F-595AEE2AE34A}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_2_ources.dll" Value="{64D70A67-26D3-4112-B7EA-26F24685A71D}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_3_ources.dll" Value="{90A7C125-8A2D-4E6A-A026-8F1F5FCE1162}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_4_ources.dll" Value="{9E1153EE-7FA7-4720-8B7C-13C8EAC751D8}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_5_ources.dll" Value="{A9F00906-FF42-4BE2-8E5E-0CFC1C3FB312}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_6_ources.dll" Value="{E42E605D-D17A-445D-88E7-929163D8E4D9}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_7_ources.dll" Value="{B1773429-C694-4182-9BA2-2E9256713E96}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_8_ources.dll" Value="{BE99C764-0D84-4719-A3D7-498830BD6F1F}"/>
+    <ROW Component="System.ServiceModel.Primitives.res_9_ources.dll" Value="{1E80B93B-E26D-4261-B03E-89F97CF23330}"/>
+    <ROW Component="System.ServiceModel.Primitives.resources.dll" Value="{20329C0F-CF74-4245-BEC0-C84A694DCDC5}"/>
+    <ROW Component="System.ServiceModel.Security.dll" Value="{E963A9B1-F342-40E7-A5D5-BFA4AF5A1D28}"/>
+    <ROW Component="System.ServiceModel.dll" Value="{A0F74357-99A3-4508-9603-ED217D7FF040}"/>
+    <ROW Component="commpro.dll" Value="{1FA9991B-A43E-40AA-90AC-FD90161355B9}"/>
+    <ROW Component="commpro.dll_1" Value="{C4CDC779-A4CA-43CC-9185-1C5B25B1D58C}"/>
+    <ROW Component="comms.dll" Value="{4CBB0CED-CEBD-4359-8CDE-23507AE0056D}"/>
+    <ROW Component="comms.dll_1" Value="{5B760EFA-9756-4762-A5AD-A0CED13DFF1A}"/>
+    <ROW Component="libzklog.dll" Value="{5C11D766-BACB-4122-A469-DB68B50A8ADD}"/>
+    <ROW Component="libzklog.dll_1" Value="{46AE888E-59C1-4C54-A101-250BB632B7D3}"/>
+    <ROW Component="p4p.dll" Value="{B38D35D2-6B58-4963-8DC5-4959146F351D}"/>
+    <ROW Component="p4p.dll_1" Value="{EEA9EE05-B3D7-4803-966B-9045819B82A3}"/>
+    <ROW Component="p4pcomm.dll" Value="{56FB61DC-8FD1-4168-8093-CC02AF90030B}"/>
+    <ROW Component="p4pcomm.dll_1" Value="{150A1F04-469D-42CE-BF28-E38A685E57F6}"/>
+    <ROW Component="plcommpro.dll" Value="{D8AE341E-ED06-457C-A8FC-9480FCFF73DC}"/>
+    <ROW Component="plcommpro.dll_1" Value="{6014004A-8E77-40BD-A992-07CC2AF6DB2C}"/>
+    <ROW Component="plcomms.dll" Value="{59928143-3F4F-4B04-AFA8-FEE7A04BCCF5}"/>
+    <ROW Component="plcomms.dll_1" Value="{34A25C2E-4F63-4A2C-BC0E-CD2C9F1F3148}"/>
+    <ROW Component="plrscagent.dll" Value="{26DFC526-E2DB-4451-B8AA-7205ECBBD6D7}"/>
+    <ROW Component="plrscagent.dll_1" Value="{8795A7AD-5D50-422F-BF02-8DFB81153329}"/>
+    <ROW Component="plrscomm.dll" Value="{32039B17-4B06-47D2-AF06-342C776CFC93}"/>
+    <ROW Component="plrscomm.dll_1" Value="{F4E9EADA-D317-4EB3-A0A4-1154331D1A86}"/>
+    <ROW Component="pltcpcomm.dll" Value="{81D505CF-017B-4263-90E6-876515C1CCAB}"/>
+    <ROW Component="pltcpcomm.dll_1" Value="{F4BE36C8-4F66-4230-8967-E88FE649D564}"/>
+    <ROW Component="plusbcomm.dll" Value="{6FF90EE2-928D-4BE7-B260-9AE80AB534B1}"/>
+    <ROW Component="plusbcomm.dll_1" Value="{C197CAC9-2AB1-4181-A663-22DA97BEE787}"/>
+    <ROW Component="rscagent.dll" Value="{A230BEE9-C422-483D-93EA-F5F6803CDA73}"/>
+    <ROW Component="rscagent.dll_1" Value="{B5B3D3F4-2DD0-454E-8A6B-8D6B936FD6F6}"/>
+    <ROW Component="rscomm.dll" Value="{C2071849-9004-438E-8587-948B32421C31}"/>
+    <ROW Component="rscomm.dll_1" Value="{CCA2D2EC-AF21-432E-A009-A32A2F6E5F91}"/>
+    <ROW Component="sni.dll" Value="{9664BEE4-7330-40FC-B3DE-A0633B03F29A}"/>
+    <ROW Component="sni.dll_1" Value="{D00E83DB-3A3C-4985-9CED-C93999750025}"/>
+    <ROW Component="sni.dll_2" Value="{327515A7-A441-4B6F-8255-1718632ADBF1}"/>
+    <ROW Component="tcpcomm.dll" Value="{9A863230-C909-44B1-A7C1-AFD84C506C3F}"/>
+    <ROW Component="tcpcomm.dll_1" Value="{08F92CF5-EFCF-4814-9BCB-8A6019CD3377}"/>
+    <ROW Component="usbcomm.dll" Value="{09CF4C5E-C8C1-49BA-82FF-33AA876CED47}"/>
+    <ROW Component="usbcomm.dll_1" Value="{3597694D-7D59-4D00-8895-610C71A9838F}"/>
+    <ROW Component="usbstd.dll" Value="{B42D69B8-DD40-46A2-A267-4EC53AA06367}"/>
+    <ROW Component="usbstd.dll_1" Value="{1032E380-F245-47E6-8DB3-A80E8AD29898}"/>
+    <ROW Component="zkemkeeper.dll" Value="{5116714E-F5DB-4A20-A4B4-9892547BD776}"/>
+    <ROW Component="zkemkeeper.dll_1" Value="{799A6334-962D-485F-9A63-55F105221A59}"/>
+    <ROW Component="zkemsdk.dll" Value="{6765371A-8433-4425-9F3F-DBF37A46F0F3}"/>
+    <ROW Component="zkemsdk.dll_1" Value="{88B9CE9F-54CC-4EB5-9DC7-9348CD170A4B}"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="APPDIR" ComponentId="{92E57BA9-FEB9-4713-816F-3AE6BCF20CA1}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="Azure.Core.dll" ComponentId="{63FBB6DB-A85D-4AA3-A078-8E1F870F4431}" Directory_="APPDIR" Attributes="0" KeyPath="Azure.Core.dll"/>
+    <ROW Component="Azure.Identity.dll" ComponentId="{C9E62D33-9F02-4038-ACB0-185A4FB1F63F}" Directory_="APPDIR" Attributes="0" KeyPath="Azure.Identity.dll"/>
+    <ROW Component="ClosedXML.Extensions.WebApi.dll" ComponentId="{BEB35CD9-E527-4CFD-8CF9-BC745BF48896}" Directory_="APPDIR" Attributes="0" KeyPath="ClosedXML.Extensions.WebApi.dll"/>
+    <ROW Component="ClosedXML.dll" ComponentId="{DA170D1A-7837-437E-A154-D80294292B07}" Directory_="APPDIR" Attributes="0" KeyPath="ClosedXML.dll"/>
+    <ROW Component="Delete_SDK.bat" ComponentId="{F9C4F3A9-171B-4448-B21B-D67A20C58667}" Directory_="sdk_Dir" Attributes="0" KeyPath="Delete_SDK.bat" Type="0"/>
+    <ROW Component="DevExpress.Charts.v25.1.Core.dll" ComponentId="{099D6FC6-4F14-41D0-B8E6-C56A9845C770}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Charts.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.CodeParser.v25.1.dll" ComponentId="{45E96B56-D9C1-4E2F-A80E-840BA44BD8A7}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.CodeParser.v25.1.dll"/>
+    <ROW Component="DevExpress.Data.Desktop.v25.1.dll" ComponentId="{ABCBD717-8BCC-4526-BB5B-12782FD58674}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Data.Desktop.v25.1.dll"/>
+    <ROW Component="DevExpress.Data.v25.1.dll" ComponentId="{D182EB78-35D4-4167-AA6A-489FF41A33A0}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Data.v25.1.dll"/>
+    <ROW Component="DevExpress.DataAccess.v25.1.UI.dll" ComponentId="{99DC6D7B-3AFD-4B08-A194-95A32487D34C}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.DataAccess.v25.1.UI.dll"/>
+    <ROW Component="DevExpress.DataAccess.v25.1.dll" ComponentId="{D8AA8C01-7BBA-4990-AE51-175807819502}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.DataAccess.v25.1.dll"/>
+    <ROW Component="DevExpress.DataVisualization.v25.1.Core.dll" ComponentId="{5C5461ED-C63E-4D63-B0FC-71E1128BC1D7}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.DataVisualization.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Diagram.v25.1.Core.dll" ComponentId="{5A90D6D5-37E3-40D6-B1C4-697D869D5B43}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Diagram.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Dialogs.v25.1.Core.dll" ComponentId="{F0CE83D8-9EB1-409A-A624-754827C4B4ED}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Dialogs.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Drawing.v25.1.dll" ComponentId="{B5601AB2-6158-4988-AF0A-7206E799C15E}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Drawing.v25.1.dll"/>
+    <ROW Component="DevExpress.Images.v25.1.dll" ComponentId="{C0B9AC03-DF85-487D-B217-75BBBB2D5008}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Images.v25.1.dll"/>
+    <ROW Component="DevExpress.Map.v25.1.Core.dll" ComponentId="{9FF997C3-786F-43AF-A192-6007249CD151}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Map.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Mvvm.v25.1.dll" ComponentId="{504AE812-8EBC-4467-955B-E32D447CE25F}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Mvvm.v25.1.dll"/>
+    <ROW Component="DevExpress.Office.v25.1.Core.dll" ComponentId="{42782EA0-2CCD-4F9D-B2F8-3CCEEAF714AF}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Office.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Pdf.v25.1.Core.dll" ComponentId="{0E644AFE-449B-498C-87E8-6CEDB5868F7E}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Pdf.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Pdf.v25.1.Drawing.dll" ComponentId="{05A2D8F5-1312-4332-9DD6-81141C5AC141}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Pdf.v25.1.Drawing.dll"/>
+    <ROW Component="DevExpress.PivotGrid.v25.1.Core.dll" ComponentId="{E5166D0B-112A-4E20-A178-39481CBC5F08}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.PivotGrid.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Printing.v25.1.Core.dll" ComponentId="{4E4EE136-4138-4306-8BFD-8788C180E8DF}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Printing.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.RichEdit.v25.1.Core.dll" ComponentId="{5A49D8D1-DC5C-4A6A-ACAB-480C28225BD6}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.RichEdit.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.RichEdit.v25.1.Export.dll" ComponentId="{50729499-37FD-40A0-BF6A-917FD167ABF8}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.RichEdit.v25.1.Export.dll"/>
+    <ROW Component="DevExpress.Sparkline.v25.1.Core.dll" ComponentId="{7E0BFD17-13C2-46CC-9DE2-98C3B7742E32}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Sparkline.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.SpellChecker.v25.1.Core.dll" ComponentId="{961940ED-E49D-46BA-90D9-189A975D6859}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.SpellChecker.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Spreadsheet.v25.1.Core.dll" ComponentId="{A2632B83-CC53-41A9-B914-EEE3B7075A48}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Spreadsheet.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.TreeMap.v25.1.Core.dll" ComponentId="{A40CD985-3680-4CD4-B5A3-F71B6738FD55}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.TreeMap.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.Utils.v25.1.UI.dll" ComponentId="{5B6E50CB-76C4-4999-A347-214E0201CAD4}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Utils.v25.1.UI.dll"/>
+    <ROW Component="DevExpress.Utils.v25.1.dll" ComponentId="{0A65A95A-6C2F-4780-96B9-FA07C374731C}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Utils.v25.1.dll"/>
+    <ROW Component="DevExpress.Xpo.v25.1.dll" ComponentId="{56F4508D-3918-4E18-8618-40D0EA877C32}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Xpo.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraBars.v25.1.dll" ComponentId="{727F8C07-844D-473D-8854-AB64C84905D8}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraBars.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.Extensions.dll" ComponentId="{7CF955EE-71AD-4162-B195-9628C36BE3B2}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraCharts.v25.1.Extensions.dll"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.UI.dll" ComponentId="{5CDD253E-72CE-499E-9EBB-C80B3C8D8146}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraCharts.v25.1.UI.dll"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.Wizard.dll" ComponentId="{087AB407-F8D0-45BD-8990-3CB21017B79B}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraCharts.v25.1.Wizard.dll"/>
+    <ROW Component="DevExpress.XtraCharts.v25.1.dll" ComponentId="{240BEE6A-934F-4F5F-BC7A-F4122DF4EB80}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraCharts.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraDiagram.v25.1.dll" ComponentId="{B4CB5204-245C-4CB9-BFCB-429412EDFDF9}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraDiagram.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraDialogs.v25.1.dll" ComponentId="{7302DD10-2603-438C-B4D5-0776CE645D54}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraDialogs.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraEditors.v25.1.dll" ComponentId="{285C1122-8FD2-428C-B343-AD1625985B47}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraEditors.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraGantt.v25.1.dll" ComponentId="{B834E485-D12F-47B9-AF26-B3A6C63D9665}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraGantt.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraGauges.v25.1.Core.dll" ComponentId="{0631D0D0-BD9C-4E87-844A-F0E2A84AED38}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraGauges.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.XtraGauges.v25.1.Presets.dll" ComponentId="{091321E5-0DC0-4001-A9A3-409BFC80DFB2}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraGauges.v25.1.Presets.dll"/>
+    <ROW Component="DevExpress.XtraGauges.v25.1.Win.dll" ComponentId="{8CE9F047-5A99-40A7-93DF-A79E86C4DCA3}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraGauges.v25.1.Win.dll"/>
+    <ROW Component="DevExpress.XtraGrid.v25.1.dll" ComponentId="{DECCFA58-A71C-4A55-82DE-A30ECEBF44B7}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraGrid.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraLayout.v25.1.dll" ComponentId="{C2C1E923-494B-4D24-A612-5749B1E15274}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraLayout.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraMap.v25.1.dll" ComponentId="{9C94EF54-E918-429A-AE92-4D6CCE996D84}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraMap.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraNavBar.v25.1.dll" ComponentId="{D771E224-6F4F-4E80-B7DC-3B0F5DB1712D}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraNavBar.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraPdfViewer.v25.1.dll" ComponentId="{C4B66A10-C73A-4D36-A6F0-782DA4CCFF92}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraPdfViewer.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraPivotGrid.v25.1.dll" ComponentId="{957CC6DE-01A9-4244-93F7-639469688C09}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraPivotGrid.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraPrinting.v25.1.dll" ComponentId="{900FB4AF-3134-4220-B019-A947B6A1604B}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraPrinting.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraReports.v25.1.Extensions.dll" ComponentId="{0D57B85D-9B7E-4667-B437-11A5C5D0F832}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraReports.v25.1.Extensions.dll"/>
+    <ROW Component="DevExpress.XtraReports.v25.1.dll" ComponentId="{4E96BA3D-6577-4F40-8030-35759EE2DED7}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraReports.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraRichEdit.v25.1.dll" ComponentId="{789B2D99-625E-4034-8D61-1007CDFDD830}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraRichEdit.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Core.Desktop.dll" ComponentId="{4FF4616D-111F-4339-AFCC-EF97E0465775}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraScheduler.v25.1.Core.Desktop.dll"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Core.dll" ComponentId="{D6FA0228-A871-4C33-A5EF-02BFB258CB5E}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraScheduler.v25.1.Core.dll"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Extensions.dll" ComponentId="{722DC313-A8DB-4B8B-92CC-646014CD288D}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraScheduler.v25.1.Extensions.dll"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Rep_1_orting.Extensions.dll" ComponentId="{E0A41C17-2219-457C-8E0E-6C2ACBDAE500}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraScheduler.v25.1.Reporting.Extensions.dll"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.Reporting.dll" ComponentId="{B1F2FC9C-00BF-4731-AA7B-E8F04E0959B3}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraScheduler.v25.1.Reporting.dll"/>
+    <ROW Component="DevExpress.XtraScheduler.v25.1.dll" ComponentId="{1679BE60-8260-4DE8-A5D6-297C718152EC}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraScheduler.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraSpellChecker.v25.1.dll" ComponentId="{E0DBFE9A-1EEF-410A-BB48-E22FAB21CC43}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraSpellChecker.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraSpreadsheet.v25.1.dll" ComponentId="{31EF3A9C-7525-4974-B845-4EF005CE4077}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraSpreadsheet.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraTreeList.v25.1.dll" ComponentId="{7A038B3C-F193-4E7D-820B-943B8C8A4368}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraTreeList.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraTreeMap.v25.1.UI.dll" ComponentId="{335693B7-FA28-470D-84BB-AEA3D7E1618D}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraTreeMap.v25.1.UI.dll"/>
+    <ROW Component="DevExpress.XtraTreeMap.v25.1.dll" ComponentId="{73AF4C6B-C089-4980-B5E2-6202AB130918}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraTreeMap.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraVerticalGrid.v25.1.dll" ComponentId="{71A79FB1-B97E-43F6-8E7C-1006ACECA3E6}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraVerticalGrid.v25.1.dll"/>
+    <ROW Component="DevExpress.XtraWizard.v25.1.dll" ComponentId="{AFD3A68E-DDD6-4FE6-8997-E3FAD9909508}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraWizard.v25.1.dll"/>
+    <ROW Component="DocumentFormat.OpenXml.dll" ComponentId="{040A4228-4EF7-4F78-B8C8-57A8282EF0CD}" Directory_="APPDIR" Attributes="0" KeyPath="DocumentFormat.OpenXml.dll"/>
+    <ROW Component="ExcelNumberFormat.dll" ComponentId="{D8778AA0-E3F5-4F0A-A290-E434D2248AB9}" Directory_="APPDIR" Attributes="0" KeyPath="ExcelNumberFormat.dll"/>
+    <ROW Component="FastMember.dll" ComponentId="{98087CDE-0091-40A5-81BE-638F29BE42BD}" Directory_="APPDIR" Attributes="0" KeyPath="FastMember.dll"/>
+    <ROW Component="Follow_Extremist.Core.dll" ComponentId="{F556D74A-7C65-49F0-A506-E27923EB125D}" Directory_="APPDIR" Attributes="0" KeyPath="Follow_Extremist.Core.dll"/>
+    <ROW Component="Follow_Extremist.Data.dll" ComponentId="{372CECC6-4473-43F7-B87F-56C98E2E1E15}" Directory_="APPDIR" Attributes="0" KeyPath="Follow_Extremist.Data.dll"/>
+    <ROW Component="Follow_Extremist.deps.json" ComponentId="{92FC8CA3-756A-4F4A-999C-1B8A867E61F9}" Directory_="APPDIR" Attributes="0" KeyPath="Follow_Extremist.deps.json" Type="0"/>
+    <ROW Component="Follow_Extremist.dll" ComponentId="{5EF1EEE5-F421-41E6-9088-36A3B5A838B1}" Directory_="APPDIR" Attributes="0" KeyPath="Follow_Extremist.dll"/>
+    <ROW Component="Follow_Extremist.exe" ComponentId="{C7AD9136-D27D-4E74-8299-B25DD27846D2}" Directory_="APPDIR" Attributes="0" KeyPath="Follow_Extremist.exe"/>
+    <ROW Component="IOTCAPIs.dll" ComponentId="{FD0B48A8-1123-49C4-9675-1D886FDEDC58}" Directory_="APPDIR" Attributes="0" KeyPath="IOTCAPIs.dll"/>
+    <ROW Component="IOTCAPIs.dll_1" ComponentId="{7862CB10-0F14-48CF-A6F3-53525B57450B}" Directory_="sdk_Dir" Attributes="0" KeyPath="IOTCAPIs.dll_1"/>
+    <ROW Component="Microsoft.Bcl.AsyncInterfaces.dll" ComponentId="{0909F55C-CD43-49CF-B3D1-36F344C9A65F}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Bcl.AsyncInterfaces.dll"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll" ComponentId="{B23CA4A8-F1B1-46F4-91DB-AA0EE055FD03}" Directory_="native_Dir" Attributes="0" KeyPath="Microsoft.Data.SqlClient.SNI.dll"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll_1" ComponentId="{03E8769F-DD50-4C00-BE5A-8A1A3CD85333}" Directory_="native_1_Dir" Attributes="256" KeyPath="Microsoft.Data.SqlClient.SNI.dll_1"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll_2" ComponentId="{32D2CB56-D4AF-4C82-BA04-D7F5F2A7A814}" Directory_="native_2_Dir" Attributes="256" KeyPath="Microsoft.Data.SqlClient.SNI.dll_2"/>
+    <ROW Component="Microsoft.Data.SqlClient.SNI.dll_3" ComponentId="{F3497080-7B10-4731-989E-2D689A81B7E4}" Directory_="native_3_Dir" Attributes="0" KeyPath="Microsoft.Data.SqlClient.SNI.dll_3"/>
+    <ROW Component="Microsoft.Data.SqlClient.dll" ComponentId="{EEBF91B0-8252-4D8A-AC2D-5BA4BCE4B1F8}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Data.SqlClient.dll"/>
+    <ROW Component="Microsoft.Data.SqlClient.dll_1" ComponentId="{A173FD2A-ADD5-4CAB-8E05-259A5EA23E99}" Directory_="net6.0_Dir" Attributes="0" KeyPath="Microsoft.Data.SqlClient.dll_1"/>
+    <ROW Component="Microsoft.Data.SqlClient.dll_2" ComponentId="{EAC0A3C0-448E-46F7-A16A-77BC1D80DA7B}" Directory_="net6.0_1_Dir" Attributes="0" KeyPath="Microsoft.Data.SqlClient.dll_2"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.Abstractions.dll" ComponentId="{0742F518-5DAB-4DC0-A961-5164C8BCC8BE}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.EntityFrameworkCore.Abstractions.dll"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.Relational.dll" ComponentId="{4DF65007-DCA8-489D-BDD7-3C06FDDAE5E2}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.EntityFrameworkCore.Relational.dll"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.SqlServer.dll" ComponentId="{43D2AD8B-2A17-44AD-927B-160BC344A492}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.EntityFrameworkCore.SqlServer.dll"/>
+    <ROW Component="Microsoft.EntityFrameworkCore.dll" ComponentId="{8150E007-6F0E-43E9-9B2F-CDB9F3F18A9A}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.EntityFrameworkCore.dll"/>
+    <ROW Component="Microsoft.Extensions.Caching.Abstractions.dll" ComponentId="{90FED321-2B0D-4283-919F-361291EF0B31}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Caching.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.Caching.Memory.dll" ComponentId="{BC2FE6C1-B131-44DB-93B5-3EE1EC7A33F4}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Caching.Memory.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.Abstractions.dll" ComponentId="{044450E1-B848-4D9B-A15E-AB18FB181A0B}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.DependencyInj_1_ection.dll" ComponentId="{85070AFA-7B8B-46D2-B311-936F610EDB23}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.DependencyInjection.dll"/>
+    <ROW Component="Microsoft.Extensions.DependencyInjection.Abstractions.dll" ComponentId="{782967A2-89CF-4F94-89E2-9D1D9DF35755}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.Abstractions.dll" ComponentId="{D3723802-C019-4B76-A096-75E4793AC510}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.dll" ComponentId="{05038EFA-29B1-4C05-A154-25CBDEAAB788}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Logging.dll"/>
+    <ROW Component="Microsoft.Extensions.ObjectPool.dll" ComponentId="{A8B0EA9C-78CA-436D-BF47-16C6EB768175}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.ObjectPool.dll"/>
+    <ROW Component="Microsoft.Extensions.Options.dll" ComponentId="{4BE6FF1C-7C40-49EB-8DF8-394F14A2A67E}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Options.dll"/>
+    <ROW Component="Microsoft.Extensions.Primitives.dll" ComponentId="{EB783857-C5FD-4EF6-BC2F-325969D18632}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Extensions.Primitives.dll"/>
+    <ROW Component="Microsoft.Identity.Client.Extensions.Msal.dll" ComponentId="{A2BAE2F7-61B0-40D4-BE4F-82C47AE2A203}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Identity.Client.Extensions.Msal.dll"/>
+    <ROW Component="Microsoft.Identity.Client.dll" ComponentId="{9B52B18D-95A9-400D-B8E6-8022AA90DCFF}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Identity.Client.dll"/>
+    <ROW Component="Microsoft.IdentityModel.Abstractions.dll" ComponentId="{8134780E-832E-4B6A-BAD6-22A8F61C5BBF}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.IdentityModel.Abstractions.dll"/>
+    <ROW Component="Microsoft.IdentityModel.JsonWebTokens.dll" ComponentId="{CD425FE0-97F5-4726-BEA4-73BE61FD28E9}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.IdentityModel.JsonWebTokens.dll"/>
+    <ROW Component="Microsoft.IdentityModel.Logging.dll" ComponentId="{E02E89EA-9FF2-4F70-96AC-119FC87536CE}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.IdentityModel.Logging.dll"/>
+    <ROW Component="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" ComponentId="{8AEFAC87-2A51-4720-860B-07252CFFA3A1}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"/>
+    <ROW Component="Microsoft.IdentityModel.Protocols.dll" ComponentId="{76E2587A-7C88-48BC-8135-A113D52FD7CA}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.IdentityModel.Protocols.dll"/>
+    <ROW Component="Microsoft.IdentityModel.Tokens.dll" ComponentId="{4A617DDF-BAF7-4CA0-B9C4-0EC7294A38B5}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.IdentityModel.Tokens.dll"/>
+    <ROW Component="Microsoft.SqlServer.Server.dll" ComponentId="{405F2BE1-F06B-4AFC-8ADF-0991D55AF995}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.SqlServer.Server.dll"/>
+    <ROW Component="ProductInformation" ComponentId="{1D7C3EA6-5FB0-4F06-A20C-838F1F4BAF81}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="RDTAPIs.dll" ComponentId="{04BEA49A-3B78-490C-B950-30695F3C73FB}" Directory_="APPDIR" Attributes="0" KeyPath="RDTAPIs.dll"/>
+    <ROW Component="RDTAPIs.dll_1" ComponentId="{316A5475-E758-4149-B701-88D7381B751A}" Directory_="sdk_Dir" Attributes="0" KeyPath="RDTAPIs.dll_1"/>
+    <ROW Component="Register_SDK_x86.bat" ComponentId="{611E2C6B-876E-4880-A193-3D92B9F5353F}" Directory_="sdk_Dir" Attributes="0" KeyPath="Register_SDK_x86.bat"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{61559F25-3945-4D50-8C1C-51DB83CD9064}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="System.ClientModel.dll" ComponentId="{5B8FD057-B083-4282-A3A0-66839D06E4A1}" Directory_="APPDIR" Attributes="0" KeyPath="System.ClientModel.dll"/>
+    <ROW Component="System.Data.OleDb.dll" ComponentId="{A489F66A-00CF-47AB-8E6D-A4DEA51984E4}" Directory_="net8.0_Dir" Attributes="0" KeyPath="System.Data.OleDb.dll"/>
+    <ROW Component="System.Data.OleDb.dll_1" ComponentId="{FB8C2219-366E-4384-9C2C-A961D05CDE08}" Directory_="APPDIR" Attributes="0" KeyPath="System.Data.OleDb.dll_1"/>
+    <ROW Component="System.Data.SqlClient.dll" ComponentId="{32CC6346-3EF4-4FF9-A85C-FFD7BBE2AA9C}" Directory_="netcoreapp2.1_Dir" Attributes="0" KeyPath="System.Data.SqlClient.dll"/>
+    <ROW Component="System.Data.SqlClient.dll_1" ComponentId="{4A13233A-03FA-47DA-8D71-C39E5942CA48}" Directory_="netcoreapp2.1_1_Dir" Attributes="0" KeyPath="System.Data.SqlClient.dll_1"/>
+    <ROW Component="System.Data.SqlClient.dll_2" ComponentId="{665E2CC4-96D0-4FCA-BD9C-FA0C7D14FA0A}" Directory_="APPDIR" Attributes="0" KeyPath="System.Data.SqlClient.dll_2"/>
+    <ROW Component="System.IdentityModel.Tokens.Jwt.dll" ComponentId="{367B0E63-186D-4EF5-8189-51EB1B983CB1}" Directory_="APPDIR" Attributes="0" KeyPath="System.IdentityModel.Tokens.Jwt.dll"/>
+    <ROW Component="System.Memory.Data.dll" ComponentId="{697A6521-57CF-49DC-94DB-7B32CA8CC774}" Directory_="APPDIR" Attributes="0" KeyPath="System.Memory.Data.dll"/>
+    <ROW Component="System.Runtime.Caching.dll" ComponentId="{C7E9FE00-5E55-4D33-9B73-66345AA9835F}" Directory_="net6.0_1_Dir" Attributes="0" KeyPath="System.Runtime.Caching.dll"/>
+    <ROW Component="System.Runtime.Caching.dll_1" ComponentId="{02017169-F320-4D95-90F9-FC3A13F93F95}" Directory_="APPDIR" Attributes="0" KeyPath="System.Runtime.Caching.dll_1"/>
+    <ROW Component="System.ServiceModel.Duplex.dll" ComponentId="{C7C01A84-74A3-4847-8892-D9E30770DCA5}" Directory_="APPDIR" Attributes="0" KeyPath="System.ServiceModel.Duplex.dll"/>
+    <ROW Component="System.ServiceModel.Http.dll" ComponentId="{89714917-111B-4CC2-814D-77F2E57A1887}" Directory_="APPDIR" Attributes="0" KeyPath="System.ServiceModel.Http.dll"/>
+    <ROW Component="System.ServiceModel.Http.resources.dll" ComponentId="{D73BCAB9-D48F-4313-AAF7-0CDC3D5AACB7}" Directory_="cs_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll"/>
+    <ROW Component="System.ServiceModel.Http.resources.dll_1" ComponentId="{A6885404-DB7B-41B6-B93C-E4B8D7A20BCA}" Directory_="de_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_1"/>
+    <ROW Component="System.ServiceModel.Http.resources_10_.dll" ComponentId="{4FDCD801-0D26-474D-B0E7-1FB52D976F74}" Directory_="es_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_2"/>
+    <ROW Component="System.ServiceModel.Http.resources_11_.dll" ComponentId="{6151FC7A-72B1-46B1-9098-5489E7D426F0}" Directory_="fr_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_3"/>
+    <ROW Component="System.ServiceModel.Http.resources_12_.dll" ComponentId="{C95DFC24-F7AD-4E3E-A34C-623219323249}" Directory_="it_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_4"/>
+    <ROW Component="System.ServiceModel.Http.resources_13_.dll" ComponentId="{A8819C9D-EB15-431E-AE27-02206D86BF1B}" Directory_="ja_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_5"/>
+    <ROW Component="System.ServiceModel.Http.resources_14_.dll" ComponentId="{3DE5B411-1EE8-4470-8F06-D0926DD6D31A}" Directory_="ko_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_6"/>
+    <ROW Component="System.ServiceModel.Http.resources_15_.dll" ComponentId="{E0D0ACA2-56FF-4798-9155-C6B1FD128C1C}" Directory_="pl_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_7"/>
+    <ROW Component="System.ServiceModel.Http.resources_16_.dll" ComponentId="{6FF1FE83-2D18-443F-AC29-E7923DE0C5F2}" Directory_="ptBR_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_8"/>
+    <ROW Component="System.ServiceModel.Http.resources_17_.dll" ComponentId="{190AF557-4A7A-4265-AF66-17E04F5C3C17}" Directory_="ru_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources.dll_9"/>
+    <ROW Component="System.ServiceModel.Http.resources_18_.dll" ComponentId="{3D43ACB8-F190-4AC7-943D-87356487D7A7}" Directory_="tr_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources_10_.dll"/>
+    <ROW Component="System.ServiceModel.Http.resources_19_.dll" ComponentId="{2D975C6B-75B4-4D78-95D0-5C9A4B39E41C}" Directory_="zhHans_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources_11_.dll"/>
+    <ROW Component="System.ServiceModel.Http.resources_20_.dll" ComponentId="{D7244C06-79EF-4B44-902D-BAC291018DD8}" Directory_="zhHant_Dir" Attributes="0" KeyPath="System.ServiceModel.Http.resources_12_.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase.dll" ComponentId="{E6A52C60-7A43-4D90-87E7-0666CE6036F9}" Directory_="APPDIR" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase.resources.dll" ComponentId="{5281CAA5-62EC-455C-8B1D-ACD8037A2461}" Directory_="cs_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_10_.resources.dll" ComponentId="{8FDEEE18-AA09-456D-800A-A4DB2618161E}" Directory_="tr_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_10_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_11_.resources.dll" ComponentId="{068E1E33-7D5C-4B84-9509-94A6EEFDC814}" Directory_="zhHans_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_11_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_12_.resources.dll" ComponentId="{A3B4E6C3-1426-458B-9C45-EAC172929632}" Directory_="zhHant_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_12_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_1_.resources.dll" ComponentId="{80B01261-C3A9-4229-9B1F-AEC9AE0051A3}" Directory_="de_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_1_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_2_.resources.dll" ComponentId="{E44865AF-34CA-4798-89BB-91F53A3C4BF3}" Directory_="es_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_2_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_3_.resources.dll" ComponentId="{8C62110B-1F6D-4AEF-966C-2F986504BB8D}" Directory_="fr_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_3_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_4_.resources.dll" ComponentId="{BF8C26EC-7F7F-4F5B-8650-1010891E501A}" Directory_="it_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_4_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_5_.resources.dll" ComponentId="{1AE5A6C2-4E62-4F54-B1AD-F8D672300978}" Directory_="ja_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_5_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_6_.resources.dll" ComponentId="{C4CF5EDE-631C-465C-97D8-8D1EC3639567}" Directory_="ko_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_6_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_7_.resources.dll" ComponentId="{1719D775-F18C-4B50-838A-28D7EA96707F}" Directory_="pl_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_7_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_8_.resources.dll" ComponentId="{0507B89A-9810-4F1A-A6D0-6F2B208A7043}" Directory_="ptBR_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_8_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetFramingBase_9_.resources.dll" ComponentId="{28DFA90C-4B94-488A-AE13-05CD70689F20}" Directory_="ru_Dir" Attributes="0" KeyPath="System.ServiceModel.NetFramingBase_9_.resources.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.dll" ComponentId="{1D99629E-DF36-48CE-A346-91EAC1653A9C}" Directory_="APPDIR" Attributes="0" KeyPath="System.ServiceModel.NetTcp.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_10_es.dll" ComponentId="{3095B65A-4B5D-47F5-905E-ADCC76D993B9}" Directory_="tr_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_10_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_11_es.dll" ComponentId="{F03DCB96-514F-4D4A-A223-564017C15B21}" Directory_="zhHans_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_11_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_12_es.dll" ComponentId="{4A8505BC-5D4A-4D3A-9394-CBA32D5401C5}" Directory_="zhHant_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_12_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_1_es.dll" ComponentId="{2ABB1919-AF25-4BA5-BFFC-861B48A369DE}" Directory_="de_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_1_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_2_es.dll" ComponentId="{9BE8F673-4B9F-4964-8ABD-D1C09F98AD29}" Directory_="es_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_2_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_3_es.dll" ComponentId="{2E32A691-8AC6-49FF-B104-B583133D1B62}" Directory_="fr_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_3_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_4_es.dll" ComponentId="{BD1557D5-5827-4F60-8310-0FB131185936}" Directory_="it_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_4_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_5_es.dll" ComponentId="{067759F3-8142-40F0-ACDF-3B2D8EEE0EF1}" Directory_="ja_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_5_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_6_es.dll" ComponentId="{0B9C0976-10C1-4D87-9BB1-158F23BEA026}" Directory_="ko_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_6_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_7_es.dll" ComponentId="{8EE77689-4FB3-4DCA-8EC6-29C8C7C64A0B}" Directory_="pl_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_7_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_8_es.dll" ComponentId="{03DA459A-D0B2-403A-A72B-CE90E2814690}" Directory_="ptBR_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_8_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resourc_9_es.dll" ComponentId="{25C176D9-7103-44D5-85EA-287649350DBB}" Directory_="ru_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resourc_9_es.dll"/>
+    <ROW Component="System.ServiceModel.NetTcp.resources.dll" ComponentId="{9D8A649D-A157-4374-AD98-27AEE4154763}" Directory_="cs_Dir" Attributes="0" KeyPath="System.ServiceModel.NetTcp.resources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.dll" ComponentId="{B29DCBB9-338F-473A-ADF2-25BB65367C45}" Directory_="APPDIR" Attributes="0" KeyPath="System.ServiceModel.Primitives.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_10_ources.dll" ComponentId="{D40191AC-4381-4E9A-9478-E04FF89019F9}" Directory_="tr_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_10_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_11_ources.dll" ComponentId="{6E290FF1-5951-4155-8F07-723B17EAC6B7}" Directory_="zhHans_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_11_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_12_ources.dll" ComponentId="{9684CE3E-9463-40D8-B4D4-AEDF8C8D19CC}" Directory_="zhHant_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_12_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_1_ources.dll" ComponentId="{B8393D2A-E02B-49ED-815F-595AEE2AE34A}" Directory_="de_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_1_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_2_ources.dll" ComponentId="{64D70A67-26D3-4112-B7EA-26F24685A71D}" Directory_="es_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_2_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_3_ources.dll" ComponentId="{90A7C125-8A2D-4E6A-A026-8F1F5FCE1162}" Directory_="fr_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_3_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_4_ources.dll" ComponentId="{9E1153EE-7FA7-4720-8B7C-13C8EAC751D8}" Directory_="it_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_4_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_5_ources.dll" ComponentId="{A9F00906-FF42-4BE2-8E5E-0CFC1C3FB312}" Directory_="ja_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_5_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_6_ources.dll" ComponentId="{E42E605D-D17A-445D-88E7-929163D8E4D9}" Directory_="ko_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_6_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_7_ources.dll" ComponentId="{B1773429-C694-4182-9BA2-2E9256713E96}" Directory_="pl_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_7_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_8_ources.dll" ComponentId="{BE99C764-0D84-4719-A3D7-498830BD6F1F}" Directory_="ptBR_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_8_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.res_9_ources.dll" ComponentId="{1E80B93B-E26D-4261-B03E-89F97CF23330}" Directory_="ru_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.res_9_ources.dll"/>
+    <ROW Component="System.ServiceModel.Primitives.resources.dll" ComponentId="{20329C0F-CF74-4245-BEC0-C84A694DCDC5}" Directory_="cs_Dir" Attributes="0" KeyPath="System.ServiceModel.Primitives.resources.dll"/>
+    <ROW Component="System.ServiceModel.Security.dll" ComponentId="{E963A9B1-F342-40E7-A5D5-BFA4AF5A1D28}" Directory_="APPDIR" Attributes="0" KeyPath="System.ServiceModel.Security.dll"/>
+    <ROW Component="System.ServiceModel.dll" ComponentId="{A0F74357-99A3-4508-9603-ED217D7FF040}" Directory_="APPDIR" Attributes="0" KeyPath="System.ServiceModel.dll"/>
+    <ROW Component="commpro.dll" ComponentId="{1FA9991B-A43E-40AA-90AC-FD90161355B9}" Directory_="APPDIR" Attributes="0" KeyPath="commpro.dll"/>
+    <ROW Component="commpro.dll_1" ComponentId="{C4CDC779-A4CA-43CC-9185-1C5B25B1D58C}" Directory_="sdk_Dir" Attributes="0" KeyPath="commpro.dll_1"/>
+    <ROW Component="comms.dll" ComponentId="{4CBB0CED-CEBD-4359-8CDE-23507AE0056D}" Directory_="APPDIR" Attributes="0" KeyPath="comms.dll"/>
+    <ROW Component="comms.dll_1" ComponentId="{5B760EFA-9756-4762-A5AD-A0CED13DFF1A}" Directory_="sdk_Dir" Attributes="0" KeyPath="comms.dll_1"/>
+    <ROW Component="libzklog.dll" ComponentId="{5C11D766-BACB-4122-A469-DB68B50A8ADD}" Directory_="APPDIR" Attributes="0" KeyPath="libzklog.dll"/>
+    <ROW Component="libzklog.dll_1" ComponentId="{46AE888E-59C1-4C54-A101-250BB632B7D3}" Directory_="sdk_Dir" Attributes="0" KeyPath="libzklog.dll_1"/>
+    <ROW Component="p4p.dll" ComponentId="{B38D35D2-6B58-4963-8DC5-4959146F351D}" Directory_="APPDIR" Attributes="0" KeyPath="p4p.dll"/>
+    <ROW Component="p4p.dll_1" ComponentId="{EEA9EE05-B3D7-4803-966B-9045819B82A3}" Directory_="sdk_Dir" Attributes="0" KeyPath="p4p.dll_1"/>
+    <ROW Component="p4pcomm.dll" ComponentId="{56FB61DC-8FD1-4168-8093-CC02AF90030B}" Directory_="APPDIR" Attributes="0" KeyPath="p4pcomm.dll"/>
+    <ROW Component="p4pcomm.dll_1" ComponentId="{150A1F04-469D-42CE-BF28-E38A685E57F6}" Directory_="sdk_Dir" Attributes="0" KeyPath="p4pcomm.dll_1"/>
+    <ROW Component="plcommpro.dll" ComponentId="{D8AE341E-ED06-457C-A8FC-9480FCFF73DC}" Directory_="APPDIR" Attributes="0" KeyPath="plcommpro.dll"/>
+    <ROW Component="plcommpro.dll_1" ComponentId="{6014004A-8E77-40BD-A992-07CC2AF6DB2C}" Directory_="sdk_Dir" Attributes="0" KeyPath="plcommpro.dll_1"/>
+    <ROW Component="plcomms.dll" ComponentId="{59928143-3F4F-4B04-AFA8-FEE7A04BCCF5}" Directory_="APPDIR" Attributes="0" KeyPath="plcomms.dll"/>
+    <ROW Component="plcomms.dll_1" ComponentId="{34A25C2E-4F63-4A2C-BC0E-CD2C9F1F3148}" Directory_="sdk_Dir" Attributes="0" KeyPath="plcomms.dll_1"/>
+    <ROW Component="plrscagent.dll" ComponentId="{26DFC526-E2DB-4451-B8AA-7205ECBBD6D7}" Directory_="APPDIR" Attributes="0" KeyPath="plrscagent.dll"/>
+    <ROW Component="plrscagent.dll_1" ComponentId="{8795A7AD-5D50-422F-BF02-8DFB81153329}" Directory_="sdk_Dir" Attributes="0" KeyPath="plrscagent.dll_1"/>
+    <ROW Component="plrscomm.dll" ComponentId="{32039B17-4B06-47D2-AF06-342C776CFC93}" Directory_="APPDIR" Attributes="0" KeyPath="plrscomm.dll"/>
+    <ROW Component="plrscomm.dll_1" ComponentId="{F4E9EADA-D317-4EB3-A0A4-1154331D1A86}" Directory_="sdk_Dir" Attributes="0" KeyPath="plrscomm.dll_1"/>
+    <ROW Component="pltcpcomm.dll" ComponentId="{81D505CF-017B-4263-90E6-876515C1CCAB}" Directory_="APPDIR" Attributes="0" KeyPath="pltcpcomm.dll"/>
+    <ROW Component="pltcpcomm.dll_1" ComponentId="{F4BE36C8-4F66-4230-8967-E88FE649D564}" Directory_="sdk_Dir" Attributes="0" KeyPath="pltcpcomm.dll_1"/>
+    <ROW Component="plusbcomm.dll" ComponentId="{6FF90EE2-928D-4BE7-B260-9AE80AB534B1}" Directory_="APPDIR" Attributes="0" KeyPath="plusbcomm.dll"/>
+    <ROW Component="plusbcomm.dll_1" ComponentId="{C197CAC9-2AB1-4181-A663-22DA97BEE787}" Directory_="sdk_Dir" Attributes="0" KeyPath="plusbcomm.dll_1"/>
+    <ROW Component="rscagent.dll" ComponentId="{A230BEE9-C422-483D-93EA-F5F6803CDA73}" Directory_="APPDIR" Attributes="0" KeyPath="rscagent.dll"/>
+    <ROW Component="rscagent.dll_1" ComponentId="{B5B3D3F4-2DD0-454E-8A6B-8D6B936FD6F6}" Directory_="sdk_Dir" Attributes="0" KeyPath="rscagent.dll_1"/>
+    <ROW Component="rscomm.dll" ComponentId="{C2071849-9004-438E-8587-948B32421C31}" Directory_="APPDIR" Attributes="0" KeyPath="rscomm.dll"/>
+    <ROW Component="rscomm.dll_1" ComponentId="{CCA2D2EC-AF21-432E-A009-A32A2F6E5F91}" Directory_="sdk_Dir" Attributes="0" KeyPath="rscomm.dll_1"/>
+    <ROW Component="sni.dll" ComponentId="{9664BEE4-7330-40FC-B3DE-A0633B03F29A}" Directory_="native_1_Dir" Attributes="256" KeyPath="sni.dll"/>
+    <ROW Component="sni.dll_1" ComponentId="{D00E83DB-3A3C-4985-9CED-C93999750025}" Directory_="native_2_Dir" Attributes="256" KeyPath="sni.dll_1"/>
+    <ROW Component="sni.dll_2" ComponentId="{327515A7-A441-4B6F-8255-1718632ADBF1}" Directory_="native_3_Dir" Attributes="0" KeyPath="sni.dll_2"/>
+    <ROW Component="tcpcomm.dll" ComponentId="{9A863230-C909-44B1-A7C1-AFD84C506C3F}" Directory_="APPDIR" Attributes="0" KeyPath="tcpcomm.dll"/>
+    <ROW Component="tcpcomm.dll_1" ComponentId="{08F92CF5-EFCF-4814-9BCB-8A6019CD3377}" Directory_="sdk_Dir" Attributes="0" KeyPath="tcpcomm.dll_1"/>
+    <ROW Component="usbcomm.dll" ComponentId="{09CF4C5E-C8C1-49BA-82FF-33AA876CED47}" Directory_="APPDIR" Attributes="0" KeyPath="usbcomm.dll"/>
+    <ROW Component="usbcomm.dll_1" ComponentId="{3597694D-7D59-4D00-8895-610C71A9838F}" Directory_="sdk_Dir" Attributes="0" KeyPath="usbcomm.dll_1"/>
+    <ROW Component="usbstd.dll" ComponentId="{B42D69B8-DD40-46A2-A267-4EC53AA06367}" Directory_="APPDIR" Attributes="0" KeyPath="usbstd.dll"/>
+    <ROW Component="usbstd.dll_1" ComponentId="{1032E380-F245-47E6-8DB3-A80E8AD29898}" Directory_="sdk_Dir" Attributes="0" KeyPath="usbstd.dll_1"/>
+    <ROW Component="zkemkeeper.dll" ComponentId="{5116714E-F5DB-4A20-A4B4-9892547BD776}" Directory_="APPDIR" Attributes="0" KeyPath="zkemkeeper.dll"/>
+    <ROW Component="zkemkeeper.dll_1" ComponentId="{799A6334-962D-485F-9A63-55F105221A59}" Directory_="sdk_Dir" Attributes="0" KeyPath="zkemkeeper.dll_1"/>
+    <ROW Component="zkemsdk.dll" ComponentId="{6765371A-8433-4425-9F3F-DBF37A46F0F3}" Directory_="APPDIR" Attributes="0" KeyPath="zkemsdk.dll"/>
+    <ROW Component="zkemsdk.dll_1" ComponentId="{88B9CE9F-54CC-4EB5-9DC7-9348CD170A4B}" Directory_="sdk_Dir" Attributes="0" KeyPath="zkemsdk.dll_1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Azure.Core.dll" Component_="Azure.Core.dll" FileName="AZUREC~1.DLL|Azure.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Azure.Core.dll" SelfReg="false"/>
+    <ROW File="Azure.Identity.dll" Component_="Azure.Identity.dll" FileName="AZUREI~1.DLL|Azure.Identity.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Azure.Identity.dll" SelfReg="false"/>
+    <ROW File="ClosedXML.dll" Component_="ClosedXML.dll" FileName="CLOSED~1.DLL|ClosedXML.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ClosedXML.dll" SelfReg="false"/>
+    <ROW File="ClosedXML.Extensions.WebApi.dll" Component_="ClosedXML.Extensions.WebApi.dll" FileName="CLOSED~2.DLL|ClosedXML.Extensions.WebApi.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ClosedXML.Extensions.WebApi.dll" SelfReg="false"/>
+    <ROW File="commpro.dll" Component_="commpro.dll" FileName="commpro.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\commpro.dll" SelfReg="false"/>
+    <ROW File="comms.dll" Component_="comms.dll" FileName="comms.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\comms.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll" Component_="System.ServiceModel.Http.resources.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\cs\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase.resources.dll" Component_="System.ServiceModel.NetFramingBase.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\cs\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resources.dll" Component_="System.ServiceModel.NetTcp.resources.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\cs\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.resources.dll" Component_="System.ServiceModel.Primitives.resources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\cs\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_1" Component_="System.ServiceModel.Http.resources.dll_1" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\de\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_1_.resources.dll" Component_="System.ServiceModel.NetFramingBase_1_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\de\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_1_es.dll" Component_="System.ServiceModel.NetTcp.resourc_1_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\de\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_1_ources.dll" Component_="System.ServiceModel.Primitives.res_1_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\de\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Charts.v25.1.Core.dll" Component_="DevExpress.Charts.v25.1.Core.dll" FileName="DEVEXP~1.DLL|DevExpress.Charts.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Charts.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.CodeParser.v25.1.dll" Component_="DevExpress.CodeParser.v25.1.dll" FileName="DEVEXP~2.DLL|DevExpress.CodeParser.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.CodeParser.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Data.Desktop.v25.1.dll" Component_="DevExpress.Data.Desktop.v25.1.dll" FileName="DEVEXP~3.DLL|DevExpress.Data.Desktop.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Data.Desktop.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Data.v25.1.dll" Component_="DevExpress.Data.v25.1.dll" FileName="DEVEXP~4.DLL|DevExpress.Data.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Data.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.DataAccess.v25.1.dll" Component_="DevExpress.DataAccess.v25.1.dll" FileName="DEVEXP~5.DLL|DevExpress.DataAccess.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.DataAccess.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.DataAccess.v25.1.UI.dll" Component_="DevExpress.DataAccess.v25.1.UI.dll" FileName="DEVEXP~6.DLL|DevExpress.DataAccess.v25.1.UI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.DataAccess.v25.1.UI.dll" SelfReg="false"/>
+    <ROW File="DevExpress.DataVisualization.v25.1.Core.dll" Component_="DevExpress.DataVisualization.v25.1.Core.dll" FileName="DEVEXP~7.DLL|DevExpress.DataVisualization.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.DataVisualization.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Diagram.v25.1.Core.dll" Component_="DevExpress.Diagram.v25.1.Core.dll" FileName="DEVEXP~8.DLL|DevExpress.Diagram.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Diagram.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Dialogs.v25.1.Core.dll" Component_="DevExpress.Dialogs.v25.1.Core.dll" FileName="DEVEXP~9.DLL|DevExpress.Dialogs.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Dialogs.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Drawing.v25.1.dll" Component_="DevExpress.Drawing.v25.1.dll" FileName="DEVEX~10.DLL|DevExpress.Drawing.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Drawing.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Images.v25.1.dll" Component_="DevExpress.Images.v25.1.dll" FileName="DEVEX~11.DLL|DevExpress.Images.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Images.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Map.v25.1.Core.dll" Component_="DevExpress.Map.v25.1.Core.dll" FileName="DEVEX~12.DLL|DevExpress.Map.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Map.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Mvvm.v25.1.dll" Component_="DevExpress.Mvvm.v25.1.dll" FileName="DEVEX~13.DLL|DevExpress.Mvvm.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Mvvm.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Office.v25.1.Core.dll" Component_="DevExpress.Office.v25.1.Core.dll" FileName="DEVEX~14.DLL|DevExpress.Office.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Office.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Pdf.v25.1.Core.dll" Component_="DevExpress.Pdf.v25.1.Core.dll" FileName="DEVEX~15.DLL|DevExpress.Pdf.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Pdf.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Pdf.v25.1.Drawing.dll" Component_="DevExpress.Pdf.v25.1.Drawing.dll" FileName="DEVEX~16.DLL|DevExpress.Pdf.v25.1.Drawing.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Pdf.v25.1.Drawing.dll" SelfReg="false"/>
+    <ROW File="DevExpress.PivotGrid.v25.1.Core.dll" Component_="DevExpress.PivotGrid.v25.1.Core.dll" FileName="DEVEX~17.DLL|DevExpress.PivotGrid.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.PivotGrid.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Printing.v25.1.Core.dll" Component_="DevExpress.Printing.v25.1.Core.dll" FileName="DEVEX~18.DLL|DevExpress.Printing.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Printing.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.RichEdit.v25.1.Core.dll" Component_="DevExpress.RichEdit.v25.1.Core.dll" FileName="DEVEX~19.DLL|DevExpress.RichEdit.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.RichEdit.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.RichEdit.v25.1.Export.dll" Component_="DevExpress.RichEdit.v25.1.Export.dll" FileName="DEVEX~20.DLL|DevExpress.RichEdit.v25.1.Export.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.RichEdit.v25.1.Export.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Sparkline.v25.1.Core.dll" Component_="DevExpress.Sparkline.v25.1.Core.dll" FileName="DEVEX~21.DLL|DevExpress.Sparkline.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Sparkline.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.SpellChecker.v25.1.Core.dll" Component_="DevExpress.SpellChecker.v25.1.Core.dll" FileName="DEVEX~22.DLL|DevExpress.SpellChecker.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.SpellChecker.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Spreadsheet.v25.1.Core.dll" Component_="DevExpress.Spreadsheet.v25.1.Core.dll" FileName="DEVEX~23.DLL|DevExpress.Spreadsheet.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Spreadsheet.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.TreeMap.v25.1.Core.dll" Component_="DevExpress.TreeMap.v25.1.Core.dll" FileName="DEVEX~24.DLL|DevExpress.TreeMap.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.TreeMap.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Utils.v25.1.dll" Component_="DevExpress.Utils.v25.1.dll" FileName="DEVEX~25.DLL|DevExpress.Utils.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Utils.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Utils.v25.1.UI.dll" Component_="DevExpress.Utils.v25.1.UI.dll" FileName="DEVEX~26.DLL|DevExpress.Utils.v25.1.UI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Utils.v25.1.UI.dll" SelfReg="false"/>
+    <ROW File="DevExpress.Xpo.v25.1.dll" Component_="DevExpress.Xpo.v25.1.dll" FileName="DEVEX~27.DLL|DevExpress.Xpo.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.Xpo.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraBars.v25.1.dll" Component_="DevExpress.XtraBars.v25.1.dll" FileName="DEVEX~28.DLL|DevExpress.XtraBars.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraBars.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraCharts.v25.1.dll" Component_="DevExpress.XtraCharts.v25.1.dll" FileName="DEVEX~29.DLL|DevExpress.XtraCharts.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraCharts.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraCharts.v25.1.Extensions.dll" Component_="DevExpress.XtraCharts.v25.1.Extensions.dll" FileName="DEVEX~30.DLL|DevExpress.XtraCharts.v25.1.Extensions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraCharts.v25.1.Extensions.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraCharts.v25.1.UI.dll" Component_="DevExpress.XtraCharts.v25.1.UI.dll" FileName="DEVEX~31.DLL|DevExpress.XtraCharts.v25.1.UI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraCharts.v25.1.UI.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraCharts.v25.1.Wizard.dll" Component_="DevExpress.XtraCharts.v25.1.Wizard.dll" FileName="DEVEX~32.DLL|DevExpress.XtraCharts.v25.1.Wizard.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraCharts.v25.1.Wizard.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraDiagram.v25.1.dll" Component_="DevExpress.XtraDiagram.v25.1.dll" FileName="DEVEX~33.DLL|DevExpress.XtraDiagram.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraDiagram.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraDialogs.v25.1.dll" Component_="DevExpress.XtraDialogs.v25.1.dll" FileName="DEVEX~34.DLL|DevExpress.XtraDialogs.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraDialogs.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraEditors.v25.1.dll" Component_="DevExpress.XtraEditors.v25.1.dll" FileName="DEVEX~35.DLL|DevExpress.XtraEditors.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraEditors.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraGantt.v25.1.dll" Component_="DevExpress.XtraGantt.v25.1.dll" FileName="DEVEX~36.DLL|DevExpress.XtraGantt.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraGantt.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraGauges.v25.1.Core.dll" Component_="DevExpress.XtraGauges.v25.1.Core.dll" FileName="DEVEX~37.DLL|DevExpress.XtraGauges.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraGauges.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraGauges.v25.1.Presets.dll" Component_="DevExpress.XtraGauges.v25.1.Presets.dll" FileName="DEVEX~38.DLL|DevExpress.XtraGauges.v25.1.Presets.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraGauges.v25.1.Presets.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraGauges.v25.1.Win.dll" Component_="DevExpress.XtraGauges.v25.1.Win.dll" FileName="DEVEX~39.DLL|DevExpress.XtraGauges.v25.1.Win.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraGauges.v25.1.Win.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraGrid.v25.1.dll" Component_="DevExpress.XtraGrid.v25.1.dll" FileName="DEVEX~40.DLL|DevExpress.XtraGrid.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraGrid.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraLayout.v25.1.dll" Component_="DevExpress.XtraLayout.v25.1.dll" FileName="DEVEX~41.DLL|DevExpress.XtraLayout.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraLayout.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraMap.v25.1.dll" Component_="DevExpress.XtraMap.v25.1.dll" FileName="DEVEX~42.DLL|DevExpress.XtraMap.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraMap.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraNavBar.v25.1.dll" Component_="DevExpress.XtraNavBar.v25.1.dll" FileName="DEVEX~43.DLL|DevExpress.XtraNavBar.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraNavBar.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraPdfViewer.v25.1.dll" Component_="DevExpress.XtraPdfViewer.v25.1.dll" FileName="DEVEX~44.DLL|DevExpress.XtraPdfViewer.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraPdfViewer.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraPivotGrid.v25.1.dll" Component_="DevExpress.XtraPivotGrid.v25.1.dll" FileName="DEVEX~45.DLL|DevExpress.XtraPivotGrid.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraPivotGrid.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraPrinting.v25.1.dll" Component_="DevExpress.XtraPrinting.v25.1.dll" FileName="DEVEX~46.DLL|DevExpress.XtraPrinting.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraPrinting.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraReports.v25.1.dll" Component_="DevExpress.XtraReports.v25.1.dll" FileName="DEVEX~47.DLL|DevExpress.XtraReports.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraReports.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraReports.v25.1.Extensions.dll" Component_="DevExpress.XtraReports.v25.1.Extensions.dll" FileName="DEVEX~48.DLL|DevExpress.XtraReports.v25.1.Extensions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraReports.v25.1.Extensions.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraRichEdit.v25.1.dll" Component_="DevExpress.XtraRichEdit.v25.1.dll" FileName="DEVEX~49.DLL|DevExpress.XtraRichEdit.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraRichEdit.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraScheduler.v25.1.Core.Desktop.dll" Component_="DevExpress.XtraScheduler.v25.1.Core.Desktop.dll" FileName="DEVEX~50.DLL|DevExpress.XtraScheduler.v25.1.Core.Desktop.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraScheduler.v25.1.Core.Desktop.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraScheduler.v25.1.Core.dll" Component_="DevExpress.XtraScheduler.v25.1.Core.dll" FileName="DEVEX~51.DLL|DevExpress.XtraScheduler.v25.1.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraScheduler.v25.1.Core.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraScheduler.v25.1.dll" Component_="DevExpress.XtraScheduler.v25.1.dll" FileName="DEVEX~52.DLL|DevExpress.XtraScheduler.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraScheduler.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraScheduler.v25.1.Extensions.dll" Component_="DevExpress.XtraScheduler.v25.1.Extensions.dll" FileName="DEVEX~53.DLL|DevExpress.XtraScheduler.v25.1.Extensions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraScheduler.v25.1.Extensions.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraScheduler.v25.1.Reporting.dll" Component_="DevExpress.XtraScheduler.v25.1.Reporting.dll" FileName="DEVEX~54.DLL|DevExpress.XtraScheduler.v25.1.Reporting.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraScheduler.v25.1.Reporting.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraScheduler.v25.1.Reporting.Extensions.dll" Component_="DevExpress.XtraScheduler.v25.1.Rep_1_orting.Extensions.dll" FileName="DEVEX~55.DLL|DevExpress.XtraScheduler.v25.1.Reporting.Extensions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraScheduler.v25.1.Reporting.Extensions.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraSpellChecker.v25.1.dll" Component_="DevExpress.XtraSpellChecker.v25.1.dll" FileName="DEVEX~56.DLL|DevExpress.XtraSpellChecker.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraSpellChecker.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraSpreadsheet.v25.1.dll" Component_="DevExpress.XtraSpreadsheet.v25.1.dll" FileName="DEVEX~57.DLL|DevExpress.XtraSpreadsheet.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraSpreadsheet.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraTreeList.v25.1.dll" Component_="DevExpress.XtraTreeList.v25.1.dll" FileName="DEVEX~58.DLL|DevExpress.XtraTreeList.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraTreeList.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraTreeMap.v25.1.dll" Component_="DevExpress.XtraTreeMap.v25.1.dll" FileName="DEVEX~59.DLL|DevExpress.XtraTreeMap.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraTreeMap.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraTreeMap.v25.1.UI.dll" Component_="DevExpress.XtraTreeMap.v25.1.UI.dll" FileName="DEVEX~60.DLL|DevExpress.XtraTreeMap.v25.1.UI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraTreeMap.v25.1.UI.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraVerticalGrid.v25.1.dll" Component_="DevExpress.XtraVerticalGrid.v25.1.dll" FileName="DEVEX~61.DLL|DevExpress.XtraVerticalGrid.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraVerticalGrid.v25.1.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraWizard.v25.1.dll" Component_="DevExpress.XtraWizard.v25.1.dll" FileName="DEVEX~62.DLL|DevExpress.XtraWizard.v25.1.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DevExpress.XtraWizard.v25.1.dll" SelfReg="false"/>
+    <ROW File="DocumentFormat.OpenXml.dll" Component_="DocumentFormat.OpenXml.dll" FileName="DOCUME~1.DLL|DocumentFormat.OpenXml.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\DocumentFormat.OpenXml.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_2" Component_="System.ServiceModel.Http.resources_10_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\es\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_2_.resources.dll" Component_="System.ServiceModel.NetFramingBase_2_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\es\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_2_es.dll" Component_="System.ServiceModel.NetTcp.resourc_2_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\es\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_2_ources.dll" Component_="System.ServiceModel.Primitives.res_2_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\es\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="ExcelNumberFormat.dll" Component_="ExcelNumberFormat.dll" FileName="EXCELN~1.DLL|ExcelNumberFormat.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ExcelNumberFormat.dll" SelfReg="false"/>
+    <ROW File="FastMember.dll" Component_="FastMember.dll" FileName="FASTME~1.DLL|FastMember.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\FastMember.dll" SelfReg="false"/>
+    <ROW File="Follow_Extremist.Core.dll" Component_="Follow_Extremist.Core.dll" FileName="FOLLOW~1.DLL|Follow_Extremist.Core.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.Core.dll" SelfReg="false"/>
+    <ROW File="Follow_Extremist.Core.pdb" Component_="Follow_Extremist.Core.dll" FileName="FOLLOW~1.PDB|Follow_Extremist.Core.pdb" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.Core.pdb" SelfReg="false"/>
+    <ROW File="Follow_Extremist.Data.dll" Component_="Follow_Extremist.Data.dll" FileName="FOLLOW~2.DLL|Follow_Extremist.Data.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.Data.dll" SelfReg="false"/>
+    <ROW File="Follow_Extremist.Data.pdb" Component_="Follow_Extremist.Data.dll" FileName="FOLLOW~2.PDB|Follow_Extremist.Data.pdb" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.Data.pdb" SelfReg="false"/>
+    <ROW File="Follow_Extremist.deps.json" Component_="Follow_Extremist.deps.json" FileName="FOLLOW~1.JSO|Follow_Extremist.deps.json" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.deps.json" SelfReg="false"/>
+    <ROW File="Follow_Extremist.dll" Component_="Follow_Extremist.dll" FileName="FOLLOW~3.DLL|Follow_Extremist.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.dll" SelfReg="false"/>
+    <ROW File="Follow_Extremist.dll.config" Component_="Follow_Extremist.deps.json" FileName="FOLLOW~1.CON|Follow_Extremist.dll.config" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.dll.config" SelfReg="false"/>
+    <ROW File="Follow_Extremist.exe" Component_="Follow_Extremist.exe" FileName="FOLLOW~1.EXE|Follow_Extremist.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.exe" SelfReg="false"/>
+    <ROW File="Follow_Extremist.pdb" Component_="Follow_Extremist.exe" FileName="FOLLOW~3.PDB|Follow_Extremist.pdb" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.pdb" SelfReg="false"/>
+    <ROW File="Follow_Extremist.runtimeconfig.json" Component_="Follow_Extremist.deps.json" FileName="FOLLOW~2.JSO|Follow_Extremist.runtimeconfig.json" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Follow_Extremist.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_3" Component_="System.ServiceModel.Http.resources_11_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\fr\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_3_.resources.dll" Component_="System.ServiceModel.NetFramingBase_3_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\fr\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_3_es.dll" Component_="System.ServiceModel.NetTcp.resourc_3_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\fr\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_3_ources.dll" Component_="System.ServiceModel.Primitives.res_3_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\fr\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="IOTCAPIs.dll" Component_="IOTCAPIs.dll" FileName="IOTCAPIs.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\IOTCAPIs.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_4" Component_="System.ServiceModel.Http.resources_12_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\it\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_4_.resources.dll" Component_="System.ServiceModel.NetFramingBase_4_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\it\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_4_es.dll" Component_="System.ServiceModel.NetTcp.resourc_4_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\it\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_4_ources.dll" Component_="System.ServiceModel.Primitives.res_4_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\it\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_5" Component_="System.ServiceModel.Http.resources_13_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ja\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_5_.resources.dll" Component_="System.ServiceModel.NetFramingBase_5_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ja\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_5_es.dll" Component_="System.ServiceModel.NetTcp.resourc_5_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ja\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_5_ources.dll" Component_="System.ServiceModel.Primitives.res_5_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ja\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_6" Component_="System.ServiceModel.Http.resources_14_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ko\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_6_.resources.dll" Component_="System.ServiceModel.NetFramingBase_6_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ko\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_6_es.dll" Component_="System.ServiceModel.NetTcp.resourc_6_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ko\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_6_ources.dll" Component_="System.ServiceModel.Primitives.res_6_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ko\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="libzklog.dll" Component_="libzklog.dll" FileName="libzklog.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\libzklog.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Bcl.AsyncInterfaces.dll" Component_="Microsoft.Bcl.AsyncInterfaces.dll" FileName="MICROS~1.DLL|Microsoft.Bcl.AsyncInterfaces.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Bcl.AsyncInterfaces.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Data.SqlClient.dll" Component_="Microsoft.Data.SqlClient.dll" FileName="MICROS~2.DLL|Microsoft.Data.SqlClient.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Data.SqlClient.dll" SelfReg="false"/>
+    <ROW File="Microsoft.EntityFrameworkCore.Abstractions.dll" Component_="Microsoft.EntityFrameworkCore.Abstractions.dll" FileName="MICROS~3.DLL|Microsoft.EntityFrameworkCore.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.EntityFrameworkCore.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.EntityFrameworkCore.dll" Component_="Microsoft.EntityFrameworkCore.dll" FileName="MICROS~4.DLL|Microsoft.EntityFrameworkCore.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.EntityFrameworkCore.dll" SelfReg="false"/>
+    <ROW File="Microsoft.EntityFrameworkCore.Relational.dll" Component_="Microsoft.EntityFrameworkCore.Relational.dll" FileName="MICROS~5.DLL|Microsoft.EntityFrameworkCore.Relational.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.EntityFrameworkCore.Relational.dll" SelfReg="false"/>
+    <ROW File="Microsoft.EntityFrameworkCore.SqlServer.dll" Component_="Microsoft.EntityFrameworkCore.SqlServer.dll" FileName="MICROS~6.DLL|Microsoft.EntityFrameworkCore.SqlServer.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.EntityFrameworkCore.SqlServer.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Caching.Abstractions.dll" Component_="Microsoft.Extensions.Caching.Abstractions.dll" FileName="MICROS~7.DLL|Microsoft.Extensions.Caching.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.Caching.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Caching.Memory.dll" Component_="Microsoft.Extensions.Caching.Memory.dll" FileName="MICROS~8.DLL|Microsoft.Extensions.Caching.Memory.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.Caching.Memory.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.Abstractions.dll" Component_="Microsoft.Extensions.Configuration.Abstractions.dll" FileName="MICROS~9.DLL|Microsoft.Extensions.Configuration.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.Configuration.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Component_="Microsoft.Extensions.DependencyInjection.Abstractions.dll" FileName="MICRO~10.DLL|Microsoft.Extensions.DependencyInjection.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.DependencyInjection.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.dll" Component_="Microsoft.Extensions.DependencyInj_1_ection.dll" FileName="MICRO~11.DLL|Microsoft.Extensions.DependencyInjection.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.DependencyInjection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Abstractions.dll" Component_="Microsoft.Extensions.Logging.Abstractions.dll" FileName="MICRO~12.DLL|Microsoft.Extensions.Logging.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.Logging.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.dll" Component_="Microsoft.Extensions.Logging.dll" FileName="MICRO~13.DLL|Microsoft.Extensions.Logging.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.Logging.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.ObjectPool.dll" Component_="Microsoft.Extensions.ObjectPool.dll" FileName="MICRO~14.DLL|Microsoft.Extensions.ObjectPool.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.ObjectPool.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Options.dll" Component_="Microsoft.Extensions.Options.dll" FileName="MICRO~15.DLL|Microsoft.Extensions.Options.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.Options.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Primitives.dll" Component_="Microsoft.Extensions.Primitives.dll" FileName="MICRO~16.DLL|Microsoft.Extensions.Primitives.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Extensions.Primitives.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Identity.Client.dll" Component_="Microsoft.Identity.Client.dll" FileName="MICRO~17.DLL|Microsoft.Identity.Client.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Identity.Client.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Identity.Client.Extensions.Msal.dll" Component_="Microsoft.Identity.Client.Extensions.Msal.dll" FileName="MICRO~18.DLL|Microsoft.Identity.Client.Extensions.Msal.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.Identity.Client.Extensions.Msal.dll" SelfReg="false"/>
+    <ROW File="Microsoft.IdentityModel.Abstractions.dll" Component_="Microsoft.IdentityModel.Abstractions.dll" FileName="MICRO~19.DLL|Microsoft.IdentityModel.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.IdentityModel.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.IdentityModel.JsonWebTokens.dll" Component_="Microsoft.IdentityModel.JsonWebTokens.dll" FileName="MICRO~20.DLL|Microsoft.IdentityModel.JsonWebTokens.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.IdentityModel.JsonWebTokens.dll" SelfReg="false"/>
+    <ROW File="Microsoft.IdentityModel.Logging.dll" Component_="Microsoft.IdentityModel.Logging.dll" FileName="MICRO~21.DLL|Microsoft.IdentityModel.Logging.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.IdentityModel.Logging.dll" SelfReg="false"/>
+    <ROW File="Microsoft.IdentityModel.Protocols.dll" Component_="Microsoft.IdentityModel.Protocols.dll" FileName="MICRO~22.DLL|Microsoft.IdentityModel.Protocols.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.IdentityModel.Protocols.dll" SelfReg="false"/>
+    <ROW File="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" Component_="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" FileName="MICRO~23.DLL|Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" SelfReg="false"/>
+    <ROW File="Microsoft.IdentityModel.Tokens.dll" Component_="Microsoft.IdentityModel.Tokens.dll" FileName="MICRO~24.DLL|Microsoft.IdentityModel.Tokens.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.IdentityModel.Tokens.dll" SelfReg="false"/>
+    <ROW File="Microsoft.SqlServer.Server.dll" Component_="Microsoft.SqlServer.Server.dll" FileName="MICRO~25.DLL|Microsoft.SqlServer.Server.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\Microsoft.SqlServer.Server.dll" SelfReg="false"/>
+    <ROW File="p4p.dll" Component_="p4p.dll" FileName="p4p.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\p4p.dll" SelfReg="false"/>
+    <ROW File="p4pcomm.dll" Component_="p4pcomm.dll" FileName="p4pcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\p4pcomm.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_7" Component_="System.ServiceModel.Http.resources_15_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pl\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_7_.resources.dll" Component_="System.ServiceModel.NetFramingBase_7_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pl\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_7_es.dll" Component_="System.ServiceModel.NetTcp.resourc_7_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pl\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_7_ources.dll" Component_="System.ServiceModel.Primitives.res_7_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pl\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="plcommpro.dll" Component_="plcommpro.dll" FileName="PLCOMM~1.DLL|plcommpro.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\plcommpro.dll" SelfReg="false"/>
+    <ROW File="plcomms.dll" Component_="plcomms.dll" FileName="plcomms.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\plcomms.dll" SelfReg="false"/>
+    <ROW File="plrscagent.dll" Component_="plrscagent.dll" FileName="PLRSCA~1.DLL|plrscagent.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\plrscagent.dll" SelfReg="false"/>
+    <ROW File="plrscomm.dll" Component_="plrscomm.dll" FileName="plrscomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\plrscomm.dll" SelfReg="false"/>
+    <ROW File="pltcpcomm.dll" Component_="pltcpcomm.dll" FileName="PLTCPC~1.DLL|pltcpcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pltcpcomm.dll" SelfReg="false"/>
+    <ROW File="plusbcomm.dll" Component_="plusbcomm.dll" FileName="PLUSBC~1.DLL|plusbcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\plusbcomm.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_8" Component_="System.ServiceModel.Http.resources_16_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pt-BR\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_8_.resources.dll" Component_="System.ServiceModel.NetFramingBase_8_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pt-BR\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_8_es.dll" Component_="System.ServiceModel.NetTcp.resourc_8_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pt-BR\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_8_ources.dll" Component_="System.ServiceModel.Primitives.res_8_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\pt-BR\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="RDTAPIs.dll" Component_="RDTAPIs.dll" FileName="RDTAPIs.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\RDTAPIs.dll" SelfReg="false"/>
+    <ROW File="rscagent.dll" Component_="rscagent.dll" FileName="rscagent.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\rscagent.dll" SelfReg="false"/>
+    <ROW File="rscomm.dll" Component_="rscomm.dll" FileName="rscomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\rscomm.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources.dll_9" Component_="System.ServiceModel.Http.resources_17_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ru\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_9_.resources.dll" Component_="System.ServiceModel.NetFramingBase_9_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ru\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_9_es.dll" Component_="System.ServiceModel.NetTcp.resourc_9_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ru\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_9_ources.dll" Component_="System.ServiceModel.Primitives.res_9_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\ru\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Data.SqlClient.dll_1" Component_="Microsoft.Data.SqlClient.dll_1" FileName="MICROS~1.DLL|Microsoft.Data.SqlClient.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll" SelfReg="false"/>
+    <ROW File="System.Data.SqlClient.dll" Component_="System.Data.SqlClient.dll" FileName="SYSTEM~1.DLL|System.Data.SqlClient.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Data.SqlClient.dll_2" Component_="Microsoft.Data.SqlClient.dll_2" FileName="MICROS~1.DLL|Microsoft.Data.SqlClient.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll" SelfReg="false"/>
+    <ROW File="System.Runtime.Caching.dll" Component_="System.Runtime.Caching.dll" FileName="SYSTEM~1.DLL|System.Runtime.Caching.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win\lib\net6.0\System.Runtime.Caching.dll" SelfReg="false"/>
+    <ROW File="System.Data.OleDb.dll" Component_="System.Data.OleDb.dll" FileName="SYSTEM~1.DLL|System.Data.OleDb.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win\lib\net8.0\System.Data.OleDb.dll" SelfReg="false"/>
+    <ROW File="System.Data.SqlClient.dll_1" Component_="System.Data.SqlClient.dll_1" FileName="SYSTEM~1.DLL|System.Data.SqlClient.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Data.SqlClient.SNI.dll" Component_="Microsoft.Data.SqlClient.SNI.dll" FileName="MICROS~1.DLL|Microsoft.Data.SqlClient.SNI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Data.SqlClient.SNI.dll_1" Component_="Microsoft.Data.SqlClient.SNI.dll_1" FileName="MICROS~1.DLL|Microsoft.Data.SqlClient.SNI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll" SelfReg="false"/>
+    <ROW File="sni.dll" Component_="sni.dll" FileName="sni.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win-arm64\native\sni.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Data.SqlClient.SNI.dll_2" Component_="Microsoft.Data.SqlClient.SNI.dll_2" FileName="MICROS~1.DLL|Microsoft.Data.SqlClient.SNI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll" SelfReg="false"/>
+    <ROW File="sni.dll_1" Component_="sni.dll_1" FileName="sni.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win-x64\native\sni.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Data.SqlClient.SNI.dll_3" Component_="Microsoft.Data.SqlClient.SNI.dll_3" FileName="MICROS~1.DLL|Microsoft.Data.SqlClient.SNI.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll" SelfReg="false"/>
+    <ROW File="sni.dll_2" Component_="sni.dll_2" FileName="sni.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\runtimes\win-x86\native\sni.dll" SelfReg="false"/>
+    <ROW File="System.ClientModel.dll" Component_="System.ClientModel.dll" FileName="SYSTEM~1.DLL|System.ClientModel.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ClientModel.dll" SelfReg="false"/>
+    <ROW File="System.Data.OleDb.dll_1" Component_="System.Data.OleDb.dll_1" FileName="SYSTEM~2.DLL|System.Data.OleDb.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.Data.OleDb.dll" SelfReg="false"/>
+    <ROW File="System.Data.SqlClient.dll_2" Component_="System.Data.SqlClient.dll_2" FileName="SYSTEM~3.DLL|System.Data.SqlClient.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.Data.SqlClient.dll" SelfReg="false"/>
+    <ROW File="System.IdentityModel.Tokens.Jwt.dll" Component_="System.IdentityModel.Tokens.Jwt.dll" FileName="SYSTEM~4.DLL|System.IdentityModel.Tokens.Jwt.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.IdentityModel.Tokens.Jwt.dll" SelfReg="false"/>
+    <ROW File="System.Memory.Data.dll" Component_="System.Memory.Data.dll" FileName="SYSTEM~5.DLL|System.Memory.Data.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.Memory.Data.dll" SelfReg="false"/>
+    <ROW File="System.Runtime.Caching.dll_1" Component_="System.Runtime.Caching.dll_1" FileName="SYSTEM~6.DLL|System.Runtime.Caching.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.Runtime.Caching.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.dll" Component_="System.ServiceModel.dll" FileName="SYSTEM~7.DLL|System.ServiceModel.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ServiceModel.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Duplex.dll" Component_="System.ServiceModel.Duplex.dll" FileName="SYSTEM~8.DLL|System.ServiceModel.Duplex.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ServiceModel.Duplex.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.dll" Component_="System.ServiceModel.Http.dll" FileName="SYSTEM~9.DLL|System.ServiceModel.Http.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ServiceModel.Http.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase.dll" Component_="System.ServiceModel.NetFramingBase.dll" FileName="SYSTE~10.DLL|System.ServiceModel.NetFramingBase.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ServiceModel.NetFramingBase.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.dll" Component_="System.ServiceModel.NetTcp.dll" FileName="SYSTE~11.DLL|System.ServiceModel.NetTcp.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ServiceModel.NetTcp.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.dll" Component_="System.ServiceModel.Primitives.dll" FileName="SYSTE~12.DLL|System.ServiceModel.Primitives.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ServiceModel.Primitives.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Security.dll" Component_="System.ServiceModel.Security.dll" FileName="SYSTE~13.DLL|System.ServiceModel.Security.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\System.ServiceModel.Security.dll" SelfReg="false"/>
+    <ROW File="tcpcomm.dll" Component_="tcpcomm.dll" FileName="tcpcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\tcpcomm.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources_10_.dll" Component_="System.ServiceModel.Http.resources_18_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\tr\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_10_.resources.dll" Component_="System.ServiceModel.NetFramingBase_10_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\tr\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_10_es.dll" Component_="System.ServiceModel.NetTcp.resourc_10_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\tr\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_10_ources.dll" Component_="System.ServiceModel.Primitives.res_10_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\tr\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="usbcomm.dll" Component_="usbcomm.dll" FileName="usbcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\usbcomm.dll" SelfReg="false"/>
+    <ROW File="usbstd.dll" Component_="usbstd.dll" FileName="usbstd.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\usbstd.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources_11_.dll" Component_="System.ServiceModel.Http.resources_19_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hans\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_11_.resources.dll" Component_="System.ServiceModel.NetFramingBase_11_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hans\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_11_es.dll" Component_="System.ServiceModel.NetTcp.resourc_11_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hans\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_11_ources.dll" Component_="System.ServiceModel.Primitives.res_11_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hans\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Http.resources_12_.dll" Component_="System.ServiceModel.Http.resources_20_.dll" FileName="SYSTEM~1.DLL|System.ServiceModel.Http.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hant\System.ServiceModel.Http.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetFramingBase_12_.resources.dll" Component_="System.ServiceModel.NetFramingBase_12_.resources.dll" FileName="SYSTEM~2.DLL|System.ServiceModel.NetFramingBase.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hant\System.ServiceModel.NetFramingBase.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.NetTcp.resourc_12_es.dll" Component_="System.ServiceModel.NetTcp.resourc_12_es.dll" FileName="SYSTEM~3.DLL|System.ServiceModel.NetTcp.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hant\System.ServiceModel.NetTcp.resources.dll" SelfReg="false"/>
+    <ROW File="System.ServiceModel.Primitives.res_12_ources.dll" Component_="System.ServiceModel.Primitives.res_12_ources.dll" FileName="SYSTEM~4.DLL|System.ServiceModel.Primitives.resources.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zh-Hant\System.ServiceModel.Primitives.resources.dll" SelfReg="false"/>
+    <ROW File="zkemkeeper.dll" Component_="zkemkeeper.dll" FileName="ZKEMKE~1.DLL|zkemkeeper.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zkemkeeper.dll" SelfReg="true"/>
+    <ROW File="zkemsdk.dll" Component_="zkemsdk.dll" FileName="zkemsdk.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\zkemsdk.dll" SelfReg="false"/>
+    <ROW File="commpro.dll_1" Component_="commpro.dll_1" FileName="commpro.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\commpro.dll" SelfReg="false"/>
+    <ROW File="comms.dll_1" Component_="comms.dll_1" FileName="comms.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\comms.dll" SelfReg="false"/>
+    <ROW File="Delete_SDK.bat" Component_="Delete_SDK.bat" FileName="DELETE~1.BAT|Delete_SDK.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\Delete_SDK.bat" SelfReg="false"/>
+    <ROW File="Delete_SDK_x86.bat" Component_="Delete_SDK.bat" FileName="DELETE~2.BAT|Delete_SDK_x86.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\Delete_SDK_x86.bat" SelfReg="false"/>
+    <ROW File="IOTCAPIs.dll_1" Component_="IOTCAPIs.dll_1" FileName="IOTCAPIs.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\IOTCAPIs.dll" SelfReg="false"/>
+    <ROW File="libzklog.dll_1" Component_="libzklog.dll_1" FileName="libzklog.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\libzklog.dll" SelfReg="false"/>
+    <ROW File="p4p.dll_1" Component_="p4p.dll_1" FileName="p4p.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\p4p.dll" SelfReg="false"/>
+    <ROW File="p4pcomm.dll_1" Component_="p4pcomm.dll_1" FileName="p4pcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\p4pcomm.dll" SelfReg="false"/>
+    <ROW File="plcommpro.dll_1" Component_="plcommpro.dll_1" FileName="PLCOMM~1.DLL|plcommpro.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\plcommpro.dll" SelfReg="false"/>
+    <ROW File="plcomms.dll_1" Component_="plcomms.dll_1" FileName="plcomms.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\plcomms.dll" SelfReg="false"/>
+    <ROW File="plrscagent.dll_1" Component_="plrscagent.dll_1" FileName="PLRSCA~1.DLL|plrscagent.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\plrscagent.dll" SelfReg="false"/>
+    <ROW File="plrscomm.dll_1" Component_="plrscomm.dll_1" FileName="plrscomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\plrscomm.dll" SelfReg="false"/>
+    <ROW File="pltcpcomm.dll_1" Component_="pltcpcomm.dll_1" FileName="PLTCPC~1.DLL|pltcpcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\pltcpcomm.dll" SelfReg="false"/>
+    <ROW File="plusbcomm.dll_1" Component_="plusbcomm.dll_1" FileName="PLUSBC~1.DLL|plusbcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\plusbcomm.dll" SelfReg="false"/>
+    <ROW File="RDTAPIs.dll_1" Component_="RDTAPIs.dll_1" FileName="RDTAPIs.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\RDTAPIs.dll" SelfReg="false"/>
+    <ROW File="Register_SDK.bat" Component_="Delete_SDK.bat" FileName="REGIST~1.BAT|Register_SDK.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\Register_SDK.bat" SelfReg="false"/>
+    <ROW File="Register_SDK_x86.bat" Component_="Register_SDK_x86.bat" FileName="REGIST~2.BAT|Register_SDK_x86.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\Register_SDK_x86.bat" SelfReg="false"/>
+    <ROW File="rscagent.dll_1" Component_="rscagent.dll_1" FileName="rscagent.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\rscagent.dll" SelfReg="false"/>
+    <ROW File="rscomm.dll_1" Component_="rscomm.dll_1" FileName="rscomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\rscomm.dll" SelfReg="false"/>
+    <ROW File="SDKinstall32.bat" Component_="Delete_SDK.bat" FileName="SDKINS~1.BAT|SDKinstall32.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\SDKinstall32.bat" SelfReg="false"/>
+    <ROW File="SDKUninstall32.bat" Component_="Delete_SDK.bat" FileName="SDKUNI~1.BAT|SDKUninstall32.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\SDKUninstall32.bat" SelfReg="false"/>
+    <ROW File="socketerror.txt" Component_="Delete_SDK.bat" FileName="SOCKET~1.TXT|socketerror.txt" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\socketerror.txt" SelfReg="false"/>
+    <ROW File="tcpcomm.dll_1" Component_="tcpcomm.dll_1" FileName="tcpcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\tcpcomm.dll" SelfReg="false"/>
+    <ROW File="UpdateSDK.dat" Component_="Delete_SDK.bat" FileName="UPDATE~1.DAT|UpdateSDK.dat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\UpdateSDK.dat" SelfReg="false"/>
+    <ROW File="usbcomm.dll_1" Component_="usbcomm.dll_1" FileName="usbcomm.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\usbcomm.dll" SelfReg="false"/>
+    <ROW File="usbstd.dll_1" Component_="usbstd.dll_1" FileName="usbstd.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\usbstd.dll" SelfReg="false"/>
+    <ROW File="Web.config" Component_="Delete_SDK.bat" FileName="WEB~1.CON|Web.config" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\Web.config" SelfReg="false"/>
+    <ROW File="zkemkeeper.dll_1" Component_="zkemkeeper.dll_1" FileName="ZKEMKE~1.DLL|zkemkeeper.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\zkemkeeper.dll" SelfReg="false"/>
+    <ROW File="zkemsdk.dll_1" Component_="zkemsdk.dll_1" FileName="zkemsdk.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="sdk\zkemsdk.dll" SelfReg="false"/>
+    <ROW File="app_icon.ico" Component_="Follow_Extremist.deps.json" FileName="app_icon.ico" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\app_icon.ico" SelfReg="false"/>
+    <ROW File="____.ico" Component_="Follow_Extremist.deps.json" FileName="شعار_ق~1.ICO|شعار_قطاع_الأمن_الوطني_(مصر).ico" Version="65535.65535.65535.65535" Attributes="0" SourcePath="publish\شعار_قطاع_الأمن_الوطني_(مصر).ico" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="[|AI_AIP_FOLDER][|AI_AIP_FILENAME]-SetupFiles" PackageFileName="[|AI_AIP_FILENAME]" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="Azure.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="Azure.Identity.dll"/>
+    <ROW Feature_="MainFeature" Component_="ClosedXML.dll"/>
+    <ROW Feature_="MainFeature" Component_="ClosedXML.Extensions.WebApi.dll"/>
+    <ROW Feature_="MainFeature" Component_="commpro.dll"/>
+    <ROW Feature_="MainFeature" Component_="comms.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_1_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_1_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_1_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Charts.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.CodeParser.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Data.Desktop.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Data.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.DataAccess.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.DataAccess.v25.1.UI.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.DataVisualization.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Diagram.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Dialogs.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Drawing.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Images.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Map.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Mvvm.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Office.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Pdf.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Pdf.v25.1.Drawing.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.PivotGrid.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Printing.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.RichEdit.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.RichEdit.v25.1.Export.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Sparkline.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.SpellChecker.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Spreadsheet.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.TreeMap.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Utils.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Utils.v25.1.UI.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.Xpo.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraBars.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraCharts.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraCharts.v25.1.Extensions.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraCharts.v25.1.UI.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraCharts.v25.1.Wizard.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraDiagram.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraDialogs.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraEditors.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraGantt.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraGauges.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraGauges.v25.1.Presets.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraGauges.v25.1.Win.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraGrid.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraLayout.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraMap.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraNavBar.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraPdfViewer.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraPivotGrid.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraPrinting.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraReports.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraReports.v25.1.Extensions.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraRichEdit.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraScheduler.v25.1.Core.Desktop.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraScheduler.v25.1.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraScheduler.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraScheduler.v25.1.Extensions.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraScheduler.v25.1.Reporting.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraScheduler.v25.1.Rep_1_orting.Extensions.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraSpellChecker.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraSpreadsheet.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraTreeList.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraTreeMap.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraTreeMap.v25.1.UI.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraVerticalGrid.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DevExpress.XtraWizard.v25.1.dll"/>
+    <ROW Feature_="MainFeature" Component_="DocumentFormat.OpenXml.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_10_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_2_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_2_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_2_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="ExcelNumberFormat.dll"/>
+    <ROW Feature_="MainFeature" Component_="FastMember.dll"/>
+    <ROW Feature_="MainFeature" Component_="Follow_Extremist.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="Follow_Extremist.Data.dll"/>
+    <ROW Feature_="MainFeature" Component_="Follow_Extremist.deps.json"/>
+    <ROW Feature_="MainFeature" Component_="Follow_Extremist.dll"/>
+    <ROW Feature_="MainFeature" Component_="Follow_Extremist.exe"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_11_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_3_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_3_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_3_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="IOTCAPIs.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_12_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_4_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_4_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_4_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_13_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_5_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_5_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_5_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_14_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_6_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_6_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_6_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="libzklog.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Bcl.AsyncInterfaces.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Data.SqlClient.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.EntityFrameworkCore.Abstractions.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.EntityFrameworkCore.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.EntityFrameworkCore.Relational.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.EntityFrameworkCore.SqlServer.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.Caching.Abstractions.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.Caching.Memory.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.DependencyInj_1_ection.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.Logging.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.ObjectPool.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.Options.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Extensions.Primitives.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Identity.Client.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Identity.Client.Extensions.Msal.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.IdentityModel.Abstractions.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.IdentityModel.JsonWebTokens.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.IdentityModel.Logging.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.IdentityModel.Protocols.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.IdentityModel.Tokens.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.SqlServer.Server.dll"/>
+    <ROW Feature_="MainFeature" Component_="p4p.dll"/>
+    <ROW Feature_="MainFeature" Component_="p4pcomm.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_15_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_7_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_7_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_7_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="plcommpro.dll"/>
+    <ROW Feature_="MainFeature" Component_="plcomms.dll"/>
+    <ROW Feature_="MainFeature" Component_="plrscagent.dll"/>
+    <ROW Feature_="MainFeature" Component_="plrscomm.dll"/>
+    <ROW Feature_="MainFeature" Component_="pltcpcomm.dll"/>
+    <ROW Feature_="MainFeature" Component_="plusbcomm.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_16_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_8_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_8_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_8_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="RDTAPIs.dll"/>
+    <ROW Feature_="MainFeature" Component_="rscagent.dll"/>
+    <ROW Feature_="MainFeature" Component_="rscomm.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_17_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_9_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_9_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_9_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Data.SqlClient.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.SqlClient.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Data.SqlClient.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.Runtime.Caching.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.OleDb.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.SqlClient.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Data.SqlClient.SNI.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Data.SqlClient.SNI.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="sni.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Data.SqlClient.SNI.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="sni.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Data.SqlClient.SNI.dll_3"/>
+    <ROW Feature_="MainFeature" Component_="sni.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.ClientModel.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.OleDb.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.SqlClient.dll_2"/>
+    <ROW Feature_="MainFeature" Component_="System.IdentityModel.Tokens.Jwt.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Memory.Data.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Runtime.Caching.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Duplex.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Security.dll"/>
+    <ROW Feature_="MainFeature" Component_="tcpcomm.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_18_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_10_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_10_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_10_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="usbcomm.dll"/>
+    <ROW Feature_="MainFeature" Component_="usbstd.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_19_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_11_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_11_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_11_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Http.resources_20_.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetFramingBase_12_.resources.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.NetTcp.resourc_12_es.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ServiceModel.Primitives.res_12_ources.dll"/>
+    <ROW Feature_="MainFeature" Component_="zkemkeeper.dll"/>
+    <ROW Feature_="MainFeature" Component_="zkemsdk.dll"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+    <ROW Feature_="MainFeature" Component_="commpro.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="comms.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Delete_SDK.bat"/>
+    <ROW Feature_="MainFeature" Component_="IOTCAPIs.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="libzklog.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="p4p.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="p4pcomm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="plcommpro.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="plcomms.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="plrscagent.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="plrscomm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="pltcpcomm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="plusbcomm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="RDTAPIs.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="rscagent.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="rscomm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="tcpcomm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="usbcomm.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="usbstd.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="zkemkeeper.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="zkemsdk.dll_1"/>
+    <ROW Feature_="MainFeature" Component_="Register_SDK_x86.bat"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 600)" Description="[ProductName] cannot be installed on [WindowsTypeNT60Display]." DescriptionLocId="AI.LaunchCondition.NoNT60" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Manufacturer" Root="-1" Key="Software\[Manufacturer]" Name="\"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
+    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Follow_Extremist" Directory_="DesktopFolder" Name="FOLLOW~1|Follow Extremist" Component_="Follow_Extremist.exe" Target="[#Follow_Extremist.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+    <ROW Shortcut="Follow_Extremist_1" Directory_="SHORTCUTDIR" Name="FOLLOW~1|Follow Extremist" Component_="Follow_Extremist.exe" Target="[#Follow_Extremist.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+    <ROW Shortcut="RegisterFingerprintSDK" Directory_="SHORTCUTDIR" Name="REGIST~1|Register Fingerprint SDK" Component_="Register_SDK_x86.bat" Target="[#Register_SDK_x86.bat]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SynchronizedFolderComponent">
+    <ROW Directory_="APPDIR" SourcePath="publish" Feature="MainFeature"/>
+    <ROW Directory_="sdk_Dir" SourcePath="sdk" Feature="MainFeature"/>
+  </COMPONENT>
+</DOCUMENT>

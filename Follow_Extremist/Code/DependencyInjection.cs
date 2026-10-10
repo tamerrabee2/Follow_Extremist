@@ -19,6 +19,12 @@ namespace Follow_Extremist.Code
             ConfigurationObjectManager.Register("ElementFollowAdd", new ElementFollowAddEntity());
             ConfigurationObjectManager.Register("ElementCases", new ElementCasesEntity());
             ConfigurationObjectManager.Register("ElementInfoView", new ElementInfoViewEntity());
+            ConfigurationObjectManager.Register("FingerprintDevice", new FingerprintDeviceEntity());
+            ConfigurationObjectManager.Register("ElementFingerprint", new ElementFingerprintEntity());
+            ConfigurationObjectManager.Register("AttendanceLog", new AttendanceLogEntity());
+            ConfigurationObjectManager.Register("ElementWantedStatus", new ElementWantedStatusEntity());
+            ConfigurationObjectManager.Register("PrintSetting", new PrintSettingEntity());
+            ConfigurationObjectManager.Register("TodayAttendanceView", new TodayAttendanceViewEntity());
         }
     }
 }

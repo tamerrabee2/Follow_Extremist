@@ -58,6 +58,12 @@ namespace Follow_Extremist
             ChangeButtonColor(sender as Button);
         }
 
+        private void buttonFingerprintAttendance_Click(object sender, EventArgs e)
+        {
+            pageManager.LoadPage(Gui.GuiFingerprint.FingerprintAttendanceUserControl.Instance());
+            ChangeButtonColor(sender as Button);
+        }
+
         private void buttonUsers_Click(object sender, EventArgs e)
         {
             pageManager.LoadPage(Gui.GuiUsers.UsersUserControl.Instance());

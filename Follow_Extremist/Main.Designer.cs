@@ -35,6 +35,7 @@ namespace Follow_Extremist
             this.buttonElement = new System.Windows.Forms.Button();
             this.buttonElementAddInfo = new System.Windows.Forms.Button();
             this.buttonFollow = new System.Windows.Forms.Button();
+            this.buttonFingerprintAttendance = new System.Windows.Forms.Button();
             this.buttonUsers = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@ namespace Follow_Extremist
             this.flowLayoutPanel1.Controls.Add(this.buttonElement);
             this.flowLayoutPanel1.Controls.Add(this.buttonElementAddInfo);
             this.flowLayoutPanel1.Controls.Add(this.buttonFollow);
+            this.flowLayoutPanel1.Controls.Add(this.buttonFingerprintAttendance);
             this.flowLayoutPanel1.Controls.Add(this.buttonUsers);
             this.flowLayoutPanel1.Controls.Add(this.buttonSettings);
             this.flowLayoutPanel1.Controls.Add(this.buttonLogout);
@@ -118,6 +120,20 @@ namespace Follow_Extremist
             this.buttonFollow.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonFollow.UseVisualStyleBackColor = true;
             this.buttonFollow.Click += new System.EventHandler(this.buttonFollow_Click);
+            // 
+            // buttonFingerprintAttendance
+            // 
+            this.buttonFingerprintAttendance.Image = global::Follow_Extremist.Properties.Resources.Print;
+            this.buttonFingerprintAttendance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFingerprintAttendance.Location = new System.Drawing.Point(382, 10);
+            this.buttonFingerprintAttendance.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonFingerprintAttendance.Name = "buttonFingerprintAttendance";
+            this.buttonFingerprintAttendance.Size = new System.Drawing.Size(165, 55);
+            this.buttonFingerprintAttendance.TabIndex = 5;
+            this.buttonFingerprintAttendance.Text = "حضور البصمة";
+            this.buttonFingerprintAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonFingerprintAttendance.UseVisualStyleBackColor = true;
+            this.buttonFingerprintAttendance.Click += new System.EventHandler(this.buttonFingerprintAttendance_Click);
             // 
             // buttonUsers
             // 
@@ -240,6 +256,7 @@ namespace Follow_Extremist
         private System.Windows.Forms.Button buttonElement;
         private System.Windows.Forms.Button buttonElementAddInfo;
         private System.Windows.Forms.Button buttonFollow;
+        private System.Windows.Forms.Button buttonFingerprintAttendance;
         private System.Windows.Forms.Button buttonUsers;
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button buttonLogout;

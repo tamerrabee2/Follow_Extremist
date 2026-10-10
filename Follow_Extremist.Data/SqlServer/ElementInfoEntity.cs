@@ -238,41 +238,65 @@ namespace Follow_Extremist.Data.SqlServer
             }
         }
 
-        public  List<ElementInfo> Search(string SearchItem)
+        public List<ElementInfo> Search(string SearchItem)
         {
             try
             {
+                db = new DBContext();
                 if (db.Database.CanConnect())
                 {
-                    DateTime searchDate;
-                    bool isDate = DateTime.TryParseExact(SearchItem, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out searchDate);
+                    if (string.IsNullOrWhiteSpace(SearchItem))
+                    {
+                        return db.ElementInfo.ToList();
+                    }
+
+                    SearchItem = SearchItem.Trim();
+                    bool isDate = DateTime.TryParse(SearchItem, out DateTime searchDate);
+                    bool isInt = int.TryParse(SearchItem, out int searchId);
+                    bool isYear = isInt && searchId >= 1900 && searchId <= 2100;
 
                     var query = db.ElementInfo.AsQueryable();
-                    if (isDate)
-                    {
-                        query = query.Where(x => x.DateFollowNow.Date == searchDate
-                                         || x.DateFollowStart.Date == searchDate
-                                         || x.DateFollowNext.Date == searchDate);
-                    }
-                    else
-                    {
-                        query = query.Where(x => x.Id.ToString() == SearchItem
-                                         || x.ElementName.Contains(SearchItem)
-                                         || x.Job.Contains(SearchItem)
-                                         || x.Mobile.Contains(SearchItem)
-                                         || x.Mobile2.Contains(SearchItem)
-                                         || x.MotherName.Contains(SearchItem)
-                                         || x.NationalId.Contains(SearchItem)
-                                         || x.Qualification.Contains(SearchItem)
-                                         || x.FacebookAcount.Contains(SearchItem)
-                                         || x.FacebookID.Contains(SearchItem)
-                                         || x.RegulatoryStatus.Contains(SearchItem)
-                                         || x.PrisonedOrnot.Contains(SearchItem));
-                    }
+
+                    query = query.Where(x =>
+                        (isInt && x.Id == searchId)
+                        || (isYear && x.BirthDate.Year == searchId)
+                        || x.Id.ToString().Contains(SearchItem)
+                        || (x.ElementName != null && x.ElementName.Contains(SearchItem))
+                        || (x.NationalId != null && x.NationalId.Contains(SearchItem))
+                        || (x.MotherName != null && x.MotherName.Contains(SearchItem))
+                        || (x.Job != null && x.Job.Contains(SearchItem))
+                        || (x.Qualification != null && x.Qualification.Contains(SearchItem))
+                        || (x.Address != null && x.Address.Contains(SearchItem))
+                        || (x.BirthPlace != null && x.BirthPlace.Contains(SearchItem))
+                        || (x.Phone != null && x.Phone.Contains(SearchItem))
+                        || (x.Mobile != null && x.Mobile.Contains(SearchItem))
+                        || (x.Mobile2 != null && x.Mobile2.Contains(SearchItem))
+                        || (x.Mobile3 != null && x.Mobile3.Contains(SearchItem))
+                        || (x.FollowState != null && x.FollowState.Contains(SearchItem))
+                        || (x.ReasonEndFollow != null && x.ReasonEndFollow.Contains(SearchItem))
+                        || (x.Notes != null && x.Notes.Contains(SearchItem))
+                        || (x.RegulatoryStatus != null && x.RegulatoryStatus.Contains(SearchItem))
+                        || (x.FacebookAcount != null && x.FacebookAcount.Contains(SearchItem))
+                        || (x.FacebookID != null && x.FacebookID.Contains(SearchItem))
+                        || (x.PrisonedOrnot != null && x.PrisonedOrnot.Contains(SearchItem))
+                        || (x.CaseData != null && x.CaseData.Contains(SearchItem))
+                        || (isDate && (x.DateFollowNow.Date == searchDate.Date
+                                    || x.DateFollowStart.Date == searchDate.Date
+                                    || x.DateFollowNext.Date == searchDate.Date
+                                    || x.BirthDate.Date == searchDate.Date))
+                        || (x.ElementCases != null && x.ElementCases.Any(c =>
+                               (c.CasesData != null && c.CasesData.Contains(SearchItem))
+                            || (c.ElementStateJailOrNot != null && c.ElementStateJailOrNot.Contains(SearchItem))
+                            || (c.ElementName != null && c.ElementName.Contains(SearchItem))))
+                        || (x.ElementAddInfo != null && x.ElementAddInfo.Any(a =>
+                               (a.NameRelationElement != null && a.NameRelationElement.Contains(SearchItem))
+                            || (a.Relationship != null && a.Relationship.Contains(SearchItem))
+                            || (a.ElementRelationNationalID != null && a.ElementRelationNationalID.Contains(SearchItem))))
+                    );
+
                     var results = query.ToList();
                     Debug.WriteLine($"SearchItem: {SearchItem}, Results Count: {results.Count}");
                     return results;
-
                 }
                 else
                 {
@@ -291,38 +315,61 @@ namespace Follow_Extremist.Data.SqlServer
         {
             try
             {
+                db = new DBContext();
                 if (await db.Database.CanConnectAsync())
                 {
-                    DateTime searchDate;
-                    bool isDate = DateTime.TryParseExact(SearchItem, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out searchDate);
+                    if (string.IsNullOrWhiteSpace(SearchItem))
+                    {
+                        return await Task.Run(() => db.ElementInfo.ToList());
+                    }
+
+                    SearchItem = SearchItem.Trim();
+                    bool isDate = DateTime.TryParse(SearchItem, out DateTime searchDate);
+                    bool isInt = int.TryParse(SearchItem, out int searchId);
+                    bool isYear = isInt && searchId >= 1900 && searchId <= 2100;
 
                     var query = db.ElementInfo.AsQueryable();
-                    if (isDate)
-                    {
-                        query = query.Where(x => x.DateFollowNow.Date == searchDate
-                                         || x.DateFollowStart.Date == searchDate
-                                         || x.DateFollowNext.Date == searchDate);
-                    }
-                    else
-                    {
-                        query = query.Where(x => x.Id.ToString() == SearchItem
-                                         || x.ElementName.Contains(SearchItem)
-                                         || x.Job.Contains(SearchItem)
-                                         || x.Mobile.Contains(SearchItem)
-                                         || x.Mobile2.Contains(SearchItem)
-                                         || x.MotherName.Contains(SearchItem)
-                                         || x.NationalId.Contains(SearchItem)
-                                         || x.Qualification.Contains(SearchItem)
-                                         || x.FacebookAcount.Contains(SearchItem)
-                                         || x.FacebookID.Contains(SearchItem)
-                                         || x.RegulatoryStatus.Contains(SearchItem)
-                                         || x.PrisonedOrnot.Contains(SearchItem));
-                    }
-                    var results = query.ToList();
+
+                    query = query.Where(x =>
+                        (isInt && x.Id == searchId)
+                        || (isYear && x.BirthDate.Year == searchId)
+                        || x.Id.ToString().Contains(SearchItem)
+                        || (x.ElementName != null && x.ElementName.Contains(SearchItem))
+                        || (x.NationalId != null && x.NationalId.Contains(SearchItem))
+                        || (x.MotherName != null && x.MotherName.Contains(SearchItem))
+                        || (x.Job != null && x.Job.Contains(SearchItem))
+                        || (x.Qualification != null && x.Qualification.Contains(SearchItem))
+                        || (x.Address != null && x.Address.Contains(SearchItem))
+                        || (x.BirthPlace != null && x.BirthPlace.Contains(SearchItem))
+                        || (x.Phone != null && x.Phone.Contains(SearchItem))
+                        || (x.Mobile != null && x.Mobile.Contains(SearchItem))
+                        || (x.Mobile2 != null && x.Mobile2.Contains(SearchItem))
+                        || (x.Mobile3 != null && x.Mobile3.Contains(SearchItem))
+                        || (x.FollowState != null && x.FollowState.Contains(SearchItem))
+                        || (x.ReasonEndFollow != null && x.ReasonEndFollow.Contains(SearchItem))
+                        || (x.Notes != null && x.Notes.Contains(SearchItem))
+                        || (x.RegulatoryStatus != null && x.RegulatoryStatus.Contains(SearchItem))
+                        || (x.FacebookAcount != null && x.FacebookAcount.Contains(SearchItem))
+                        || (x.FacebookID != null && x.FacebookID.Contains(SearchItem))
+                        || (x.PrisonedOrnot != null && x.PrisonedOrnot.Contains(SearchItem))
+                        || (x.CaseData != null && x.CaseData.Contains(SearchItem))
+                        || (isDate && (x.DateFollowNow.Date == searchDate.Date
+                                    || x.DateFollowStart.Date == searchDate.Date
+                                    || x.DateFollowNext.Date == searchDate.Date
+                                    || x.BirthDate.Date == searchDate.Date))
+                        || (x.ElementCases != null && x.ElementCases.Any(c =>
+                               (c.CasesData != null && c.CasesData.Contains(SearchItem))
+                            || (c.ElementStateJailOrNot != null && c.ElementStateJailOrNot.Contains(SearchItem))
+                            || (c.ElementName != null && c.ElementName.Contains(SearchItem))))
+                        || (x.ElementAddInfo != null && x.ElementAddInfo.Any(a =>
+                               (a.NameRelationElement != null && a.NameRelationElement.Contains(SearchItem))
+                            || (a.Relationship != null && a.Relationship.Contains(SearchItem))
+                            || (a.ElementRelationNationalID != null && a.ElementRelationNationalID.Contains(SearchItem))))
+                    );
+
+                    var results = await Task.Run(() => query.ToList());
                     Debug.WriteLine($"SearchItem: {SearchItem}, Results Count: {results.Count}");
                     return results;
-                    
-
                 }
                 else
                 {
@@ -333,7 +380,136 @@ namespace Follow_Extremist.Data.SqlServer
             catch (Exception ex)
             {
                 Debug.WriteLine($"Search method exception: {ex.Message}");
+                return null;
+            }
+        }
 
+        public async Task<List<ElementInfo>> AdvancedSearchAsync(ElementSearchCriteria criteria)
+        {
+            try
+            {
+                db = new DBContext();
+                if (await db.Database.CanConnectAsync())
+                {
+                    var query = db.ElementInfo.AsQueryable();
+
+                    if (criteria != null)
+                    {
+                        if (!string.IsNullOrWhiteSpace(criteria.ElementName))
+                        {
+                            string val = criteria.ElementName.Trim();
+                            query = query.Where(x => x.ElementName != null && x.ElementName.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.NationalId))
+                        {
+                            string val = criteria.NationalId.Trim();
+                            query = query.Where(x => x.NationalId != null && x.NationalId.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.MotherName))
+                        {
+                            string val = criteria.MotherName.Trim();
+                            query = query.Where(x => x.MotherName != null && x.MotherName.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.PhoneOrMobile))
+                        {
+                            string val = criteria.PhoneOrMobile.Trim();
+                            query = query.Where(x => (x.Phone != null && x.Phone.Contains(val))
+                                                  || (x.Mobile != null && x.Mobile.Contains(val))
+                                                  || (x.Mobile2 != null && x.Mobile2.Contains(val))
+                                                  || (x.Mobile3 != null && x.Mobile3.Contains(val)));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.Address))
+                        {
+                            string val = criteria.Address.Trim();
+                            query = query.Where(x => x.Address != null && x.Address.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.BirthPlace))
+                        {
+                            string val = criteria.BirthPlace.Trim();
+                            query = query.Where(x => x.BirthPlace != null && x.BirthPlace.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.Job))
+                        {
+                            string val = criteria.Job.Trim();
+                            query = query.Where(x => x.Job != null && x.Job.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.Qualification))
+                        {
+                            string val = criteria.Qualification.Trim();
+                            query = query.Where(x => x.Qualification != null && x.Qualification.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.RegulatoryStatus))
+                        {
+                            string val = criteria.RegulatoryStatus.Trim();
+                            query = query.Where(x => x.RegulatoryStatus != null && x.RegulatoryStatus.Contains(val));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.PrisonedOrnot) && criteria.PrisonedOrnot != "الكل")
+                        {
+                            string val = criteria.PrisonedOrnot.Trim();
+                            query = query.Where(x => x.PrisonedOrnot != null && x.PrisonedOrnot == val);
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.FollowState) && criteria.FollowState != "الكل")
+                        {
+                            string val = criteria.FollowState.Trim();
+                            query = query.Where(x => x.FollowState != null && (x.FollowState.Trim() == val || x.FollowState.Contains(val)));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.CaseData))
+                        {
+                            string val = criteria.CaseData.Trim();
+                            query = query.Where(x => (x.CaseData != null && x.CaseData.Contains(val))
+                                                  || (x.ElementCases != null && x.ElementCases.Any(c => c.CasesData != null && c.CasesData.Contains(val))));
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(criteria.Notes))
+                        {
+                            string val = criteria.Notes.Trim();
+                            query = query.Where(x => x.Notes != null && x.Notes.Contains(val));
+                        }
+
+                        if (criteria.UseBirthDateFilter && criteria.BirthDateFrom.HasValue && criteria.BirthDateTo.HasValue)
+                        {
+                            DateTime bFrom = criteria.BirthDateFrom.Value.Date;
+                            DateTime bTo = criteria.BirthDateTo.Value.Date;
+                            query = query.Where(x => x.BirthDate.Date >= bFrom && x.BirthDate.Date <= bTo);
+                        }
+                        else if (criteria.BirthYear.HasValue && criteria.BirthYear.Value >= 1900 && criteria.BirthYear.Value <= 2100)
+                        {
+                            int bYear = criteria.BirthYear.Value;
+                            query = query.Where(x => x.BirthDate.Year == bYear);
+                        }
+
+                        if (criteria.UseDateFilter && criteria.DateFollowFrom.HasValue && criteria.DateFollowTo.HasValue)
+                        {
+                            DateTime from = criteria.DateFollowFrom.Value.Date;
+                            DateTime to = criteria.DateFollowTo.Value.Date;
+                            query = query.Where(x => x.DateFollowNow.Date >= from && x.DateFollowNow.Date <= to);
+                        }
+                    }
+
+                    var results = await Task.Run(() => query.ToList());
+                    Debug.WriteLine($"AdvancedSearch Results Count: {results.Count}");
+                    return results;
+                }
+                else
+                {
+                    Debug.WriteLine("Database connection failed.");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"AdvancedSearchAsync exception: {ex.Message}");
                 return null;
             }
         }

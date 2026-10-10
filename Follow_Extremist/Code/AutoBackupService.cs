@@ -72,7 +72,7 @@ namespace Follow_Extremist.Code
                 using (var db = new DBContext())
                 {
                     dbName = db.Database.GetDbConnection().Database;
-                    if (string.IsNullOrEmpty(dbName)) dbName = "FollowDataBase";
+                    if (string.IsNullOrEmpty(dbName)) dbName = "FollowExtremistDatabase";
                 }
 
                 // اسم ملف النسخة الجديدة مع التاريخ والوقت

@@ -35,11 +35,13 @@ namespace Follow_Extremist.Core
         public string FacebookID { get; set; }
         public string PrisonedOrnot { get; set; }
         public string CaseData { get; set; }
+        public int? DeviceEnrollId { get; set; } // رقم المعرف الموحد على ماكينة البصمة (مشترك بين قواعد البيانات)
         // Navigation
         public List<ElementAddInfo> ElementAddInfo { get; set; }
         public List<ElementFollowAdd> ElementFollowAdd { get; set; }
         public List<ElementCases> ElementCases { get; set; }
-
-
+        public ElementWantedStatus ElementWantedStatus { get; set; }
+        public List<ElementFingerprint> ElementFingerprints { get; set; }
+        public List<AttendanceLog> AttendanceLogs { get; set; }
     }
 }

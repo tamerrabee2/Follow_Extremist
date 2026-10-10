@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Advanced Installer cache & outputs
+publish/
+*-SetupFiles/
+*-cache/
+Follow_ExtremistSetup-cache/
+FollowSetup-cache/
+

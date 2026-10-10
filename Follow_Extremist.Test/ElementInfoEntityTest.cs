@@ -59,6 +59,33 @@ namespace Follow_Extremist.Test
             Assert.AreEqual(expt, act);
         }
 
-        
+        [TestMethod]
+        public async Task PrintSettingSaveTest()
+        {
+            var printHelper = new PrintSettingEntity();
+            var all = await printHelper.GetAllDataAsync();
+            var setting = all?.FirstOrDefault() ?? new PrintSetting();
+
+            setting.OutputMode = "ScreenOnly";
+            setting.ScreenDurationSeconds = 15;
+            setting.HeaderText = "حضور متابعة";
+
+            int res;
+            if (setting.Id == 0)
+            {
+                res = await printHelper.AddAsync(setting);
+            }
+            else
+            {
+                res = await printHelper.EditAsync(setting);
+            }
+
+            Assert.AreEqual(1, res);
+
+            var reloaded = await printHelper.FindAsync(setting.Id);
+            Assert.IsNotNull(reloaded);
+            Assert.AreEqual("ScreenOnly", reloaded.OutputMode);
+            Assert.AreEqual(15, reloaded.ScreenDurationSeconds);
+        }
     }
 }

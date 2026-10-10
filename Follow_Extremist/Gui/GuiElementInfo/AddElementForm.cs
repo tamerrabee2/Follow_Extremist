@@ -43,6 +43,7 @@ namespace Follow_Extremist.Gui.GuiElementInfo
             textBoxName.KeyPress += textBoxName_KeyPress;
             textBoxNationalId.KeyPress += textBoxNationalId_KeyPress;
             textBoxNationalId.Leave += textBoxNationalId_Leave;
+            dateTimePickerFollowNew.ValueChanged += dateTimePickerFollowNew_ValueChanged;
             this.isEditMode = isEditMode;
             groupBox4.Visible = false;
             if (isEditMode)
@@ -74,8 +75,9 @@ namespace Follow_Extremist.Gui.GuiElementInfo
                     DisableAllControlsExceptDatePicker(control);
                 }
             }
-            dateTimePickerFollowNew.Enabled = false;
-            textBoxDaysCount.Enabled = false;
+            dateTimePickerFollowNew.Enabled = true;
+            dateTimePickerFollowNew.ShowUpDown = false;
+            textBoxDaysCount.Enabled = true;
             dateTimePickerFollowStartDate.Enabled = false;
         }
 
@@ -95,9 +97,9 @@ namespace Follow_Extremist.Gui.GuiElementInfo
                 }
             }
             dateTimePickerFollowNew.Enabled = true;
+            dateTimePickerFollowNew.ShowUpDown = false;
             textBoxDaysCount.Enabled = true;
-            dateTimePickerFollowStartDate.Enabled = true;
-
+            dateTimePickerFollowStartDate.Enabled = false;
         }
 
         #region Events
@@ -173,9 +175,15 @@ namespace Follow_Extremist.Gui.GuiElementInfo
         
         private bool IsFieldsEmpty()
         {
-            if (textBoxName.Text== string.Empty|| textBoxNationalId.Text == string.Empty
-                || textBoxDaysCount.Text == null || comboBoxStatusCase.SelectedItem == null)
-                
+            if (isEditingFollowDateOnly)
+            {
+                return string.IsNullOrWhiteSpace(textBoxDaysCount.Text);
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxName.Text) ||
+                string.IsNullOrWhiteSpace(textBoxNationalId.Text) ||
+                string.IsNullOrWhiteSpace(textBoxDaysCount.Text) ||
+                comboBoxStatusCase.SelectedItem == null)
             {
                 return true;
             }
@@ -261,8 +269,14 @@ namespace Follow_Extremist.Gui.GuiElementInfo
 
         private async Task<bool> EditData()
         {
+            if (existingData == null)
+            {
+                existingData = await dataHelper.FindAsync(ID);
+            }
+
             if (isEditingFollowDateOnly)
             {
+                int daysCount = int.TryParse(textBoxDaysCount.Text, out int dc) ? dc : (existingData?.FollowDaysCount ?? 15);
                 table = new ElementInfo
                 {
                     Id = ID,
@@ -281,12 +295,12 @@ namespace Follow_Extremist.Gui.GuiElementInfo
                     FollowState = existingData.FollowState,
                     ReasonEndFollow = existingData.ReasonEndFollow,
                     DateFollowStart = dateTimePickerFollowStartDate.Value.Date,
-                    FollowDaysCount =Convert.ToInt32(textBoxDaysCount.Text),
-                    DateFollowNow = dateTimePickerFollowNew.Value,
+                    FollowDaysCount = daysCount,
+                    DateFollowNow = dateTimePickerFollowNew.Value.Date,
                     ElementImage = existingData.ElementImage,
                     NationalIdImage = existingData.NationalIdImage,
                     Notes = existingData.Notes,
-                    DateFollowNext = dateTimePickerFollowNew.Value.AddDays(Convert.ToInt32(textBoxDaysCount.Text)),
+                    DateFollowNext = dateTimePickerFollowNew.Value.Date.AddDays(daysCount),
                     RegulatoryStatus = existingData.RegulatoryStatus,
                     FacebookAcount = existingData.FacebookAcount,
                     FacebookID = existingData.FacebookID,
@@ -507,6 +521,18 @@ namespace Follow_Extremist.Gui.GuiElementInfo
                     textBoxQualification.Text = existingData.Qualification;
                     textBoxJob.Text = existingData.Job;
                     comboBoxStatusCase.SelectedItem = existingData.FollowState;
+                    if (comboBoxStatusCase.SelectedItem == null && !string.IsNullOrEmpty(existingData.FollowState))
+                    {
+                        var trimmed = existingData.FollowState.Trim();
+                        for (int i = 0; i < comboBoxStatusCase.Items.Count; i++)
+                        {
+                            if (comboBoxStatusCase.Items[i]?.ToString()?.Trim() == trimmed)
+                            {
+                                comboBoxStatusCase.SelectedIndex = i;
+                                break;
+                            }
+                        }
+                    }
                     textBoxEndreason.Text = existingData.ReasonEndFollow;
                     dateTimePickerFollowStartDate.Value = existingData.DateFollowStart;
                     textBoxDaysCount.Text = existingData.FollowDaysCount.ToString();
@@ -614,10 +640,44 @@ namespace Follow_Extremist.Gui.GuiElementInfo
            // addCaseElementForm.Show();
         }
 
+        private bool isSyncingFollowDates = false;
+
         private void textBoxDaysCount_TextChanged(object sender, EventArgs e)
         {
-            dateTimePickerFollowNew.Value = dateTimePickerFollowStartDate.Value.AddDays(Convert.ToInt32(textBoxDaysCount.Text));
+            if (isSyncingFollowDates) return;
+            if (int.TryParse(textBoxDaysCount.Text, out int days))
+            {
+                try
+                {
+                    isSyncingFollowDates = true;
+                    dateTimePickerFollowNew.Value = dateTimePickerFollowStartDate.Value.AddDays(days);
+                }
+                finally
+                {
+                    isSyncingFollowDates = false;
+                }
+            }
+        }
 
+        private void dateTimePickerFollowNew_ValueChanged(object sender, EventArgs e)
+        {
+            if (isSyncingFollowDates) return;
+            if (isEditingFollowDateOnly)
+            {
+                int diff = (dateTimePickerFollowNew.Value.Date - dateTimePickerFollowStartDate.Value.Date).Days;
+                if (diff > 0)
+                {
+                    try
+                    {
+                        isSyncingFollowDates = true;
+                        textBoxDaysCount.Text = diff.ToString();
+                    }
+                    finally
+                    {
+                        isSyncingFollowDates = false;
+                    }
+                }
+            }
         }
 
         private bool CheckDuplicateData()
